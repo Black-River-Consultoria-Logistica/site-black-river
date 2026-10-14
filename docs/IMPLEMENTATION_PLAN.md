@@ -74,7 +74,7 @@ Regra: executar uma etapa por vez, marcar [x], resumir e parar para aprovação.
 ## Etapa 7 — Cases e faixa de logos
 - [x] `/cases` e modelo de case (contexto → desafio → causa raiz → solução → "meta traçada" → o que o diagnóstico entregou), com faixa "Em números", caixa "O que é…", frentes do case, outros cases e CTA com a frente pré-selecionada (14/10/2026)
 - [x] Os 4 cases aprovados (WMS, cross docking, estrutura do Centro de Distribuição, separação), adaptados para a web a partir dos one-pagers, mantendo o anonimato e as regras editoriais do João (texto em `lib/content/cases.ts`; fonte única também para Home e páginas de frente)
-- [x] Faixa de logos autorizados (12 logos monocromáticos #666666, estática, 6 × 2 no desktop e 3 × 4 no celular), sem ligar logo a case
+- [x] Faixa de logos autorizados (12 logos monocromáticos #666666, estática, 6 × 2 no desktop e 3 × 4 no celular), sem ligar logo a case; também na Home, logo abaixo do hero, em versão compacta (decisão do João, 14/10/2026)
 - [x] `break-ui` com textos longos e curtos (rota temporária, já removida; 3 correções); `/impeccable critique` com as avaliações A e B isoladas (correções aplicadas); prints em 320, 375, 768 e 1280px, sem rolagem lateral
 - Pronto quando: os 4 cases publicados localmente, revisados contra as regras de confidencialidade, e nenhum cliente identificável
 

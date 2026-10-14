@@ -120,7 +120,7 @@ Prévia com 3 dos 4 cases (texto completo na Etapa 7):
 
 - Produto parado não é cross docking
 - Quase metade do quadro fora da operação
-- 60 caixas por hora: quase 50% abaixo do mercado
+- 60 caixas por homem-hora: quase 50% abaixo do mercado *(unidade corrigida na Etapa 7, aprovado pelo João em 14/10/2026)*
 
 **Link:** Ver todos os cases
 
@@ -365,7 +365,7 @@ Todas as páginas de frente de trabalho seguem o mesmo modelo: abertura com a re
 3. Novos processos, rotinas e gestão visual, implantados com a equipe
 4. Acompanhamento diário dos indicadores até as metas
 
-**Cases relacionados:** Produto parado não é cross docking · Quase metade do quadro fora da operação · 60 caixas por hora: quase 50% abaixo do mercado.
+**Cases relacionados:** Produto parado não é cross docking · Quase metade do quadro fora da operação · 60 caixas por homem-hora: quase 50% abaixo do mercado.
 
 **Perguntas frequentes \[VALIDAR COM LUIS\]:**
 

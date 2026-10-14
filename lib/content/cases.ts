@@ -5,7 +5,9 @@
 // - nenhum número de resultado de cliente (CONTEUDO.md): só indicadores do diagnóstico;
 // - "Centro de Distribuição" por extenso; siglas definidas na primeira menção;
 // - voz da Black River na terceira pessoa.
-// Títulos de cross docking, estrutura e separação: aprovados na Etapa 3 (CONTEUDO.md).
+// Títulos de cross docking e estrutura: aprovados na Etapa 3 (CONTEUDO.md). Decisões do João na Etapa 7 (14/10/2026):
+// título do WMS mantido; separação "por homem-hora"; cross docking com o percentual de queda (~42%);
+// lead time do WMS em faixa única (4 a 9 dias, sem citar linha de produto); bloco "Depois do diagnóstico".
 
 import { modulos, type Frente } from "@/lib/site";
 
@@ -56,6 +58,14 @@ export const paginaCases = {
   logos: {
     titulo: "Alguns dos nossos clientes",
     nota: "Os cases não identificam clientes, e nenhum logo indica a empresa de um case.",
+  },
+  // Bloco fixo ao fim de cada case (aprovado pelo João em 14/10/2026). Genérico: não afirma nada
+  // sobre o cliente do case, só como a Black River trabalha depois do diagnóstico.
+  depois: {
+    titulo: "Depois do diagnóstico",
+    texto:
+      "O diagnóstico é a primeira etapa. Com ele validado, a Black River fixa o cronograma e as entregas e executa junto com o time do cliente, dentro da operação, até as metas serem atingidas e o time sustentar o resultado.",
+    link: { rotulo: "Ver como trabalhamos", href: "/como-trabalhamos" },
   },
   ctaFinal: {
     titulo: "Vamos conversar sobre a sua operação?",
@@ -224,7 +234,7 @@ export const cases: Case[] = [
       {
         rotulo: "Principal resultado",
         texto:
-          "o lead time médio já mostra queda, de 12 dias no período avaliado para 7 no mês seguinte, uma tendência que ainda depende de rotina e sistema para se consolidar.",
+          "o lead time médio já mostra queda, de 12 dias no período avaliado para 7 no mês seguinte, uma redução de cerca de 42%. É uma tendência observada, que ainda depende de rotina e sistema para se consolidar.",
       },
       { rotulo: "Meta definida com o cliente", texto: "cross docking em D+1, a partir de um prazo de referência de D+2." },
       {
@@ -325,7 +335,7 @@ export const cases: Case[] = [
   {
     slug: "separacao",
     tema: "Separação",
-    titulo: "60 caixas por hora: quase 50% abaixo do mercado",
+    titulo: "60 caixas por homem-hora: quase 50% abaixo do mercado",
     title: "Case: produtividade da separação | Black River",
     description:
       "Case Black River: a separação de um Centro de Distribuição produzia 60 caixas por homem-hora, quase 50% abaixo das melhores práticas. Causas e recomendações.",

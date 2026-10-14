@@ -6,9 +6,11 @@ import {
   FaixaCtaFinal,
   h2,
   linkInline,
+  linkTexto,
   overline,
   secao,
   Seta,
+  TextoComSeta,
 } from "@/components/site/blocos";
 import { CardDeCase } from "@/components/site/cards";
 import {
@@ -78,15 +80,34 @@ export function PaginaListaDeCases() {
 // Tamanho de cada logo calculado pela área, para logos largos e altos terem o mesmo peso visual.
 const AREA_DO_LOGO = 4400; // px² no desktop
 
-export function FaixaDeLogos() {
+// `compacta` (Home, logo abaixo do hero): fundo branco com fio acima, título em rótulo e menos respiro.
+// Branco porque a seção seguinte da Home já é #F2F2F2 e duas faixas cinza seguidas viram um bloco só.
+// Sem a nota sobre cases: na Home a faixa fica longe da prévia de cases.
+export function FaixaDeLogos({ compacta = false }: { compacta?: boolean }) {
   return (
-    <section aria-labelledby="logos-titulo" className={cn("bg-ink-05", secao)}>
-      <div className={cn(container, "flex flex-col items-center gap-10 lg:gap-12")}>
-        <div className="flex flex-col items-center gap-3">
-          <h2 id="logos-titulo" className="text-h4 md:text-h3">
+    <section
+      aria-labelledby="logos-titulo"
+      className={compacta ? "pb-12 lg:pb-16" : cn("bg-ink-05", secao)}
+    >
+      <div
+        className={cn(
+          container,
+          "flex flex-col items-center",
+          compacta ? "gap-8" : "gap-10 lg:gap-12",
+        )}
+      >
+        <div
+          className={cn(
+            "flex w-full flex-col items-center gap-3",
+            compacta && "border-t border-ink-10 pt-10 lg:pt-12",
+          )}
+        >
+          <h2 id="logos-titulo" className={compacta ? cn(overline, "text-ink-60") : "text-h4 md:text-h3"}>
             {paginaCases.logos.titulo}
           </h2>
-          <p className="max-w-[48ch] text-center text-small text-ink-60">{paginaCases.logos.nota}</p>
+          {!compacta && (
+            <p className="max-w-[48ch] text-center text-small text-ink-60">{paginaCases.logos.nota}</p>
+          )}
         </div>
         <ul className="grid w-full grid-cols-3 gap-x-4 gap-y-6 md:gap-x-6 lg:grid-cols-6 lg:gap-y-10">
           {logosDeClientes.map((l) => {
@@ -204,6 +225,12 @@ export function PaginaCase({ c }: { c: Case }) {
           )}
           <Bloco id="entregas" titulo="O que o diagnóstico entregou" primeiro={!c.meta}>
             <ListaDeTopicos itens={c.entregas} />
+          </Bloco>
+          <Bloco id="depois" titulo={paginaCases.depois.titulo}>
+            <Paragrafo>{paginaCases.depois.texto}</Paragrafo>
+            <Link href={paginaCases.depois.link.href} className={cn(linkTexto, "self-start")}>
+              <TextoComSeta>{paginaCases.depois.link.rotulo}</TextoComSeta>
+            </Link>
           </Bloco>
         </div>
       </div>
