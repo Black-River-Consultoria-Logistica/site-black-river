@@ -176,6 +176,8 @@ Luis Ricardo Pedro tem 30 anos de carreira em Supply Chain. Foi diretor de Suppl
 
 É engenheiro de produção pela Escola Politécnica da USP, pós-graduado em Finanças pela FGV e vice-presidente da ABRALOG, a Associação Brasileira de Logística. Especialista em supply chain do varejo, atua em gestão de estoques, abastecimento, armazenagem e transportes.
 
+**Lista de empresas:** título "Onde foi diretor de Supply Chain"; Varejo: Grupo Pão de Açúcar e Carrefour · Atacado: Martins Atacadista · Indústria: Bertin/JBS · Distribuição: Ultragaz (aprovado em 14/10/2026).
+
 **Link:** [Perfil no LinkedIn](https://www.linkedin.com/in/luis-ricardo-pedro-8878b914/)
 
 ### História
@@ -199,6 +201,8 @@ Esta página mostra a jornada com etapas e entregas claras (lacunas C e D). Os p
 **H1:** Como funciona a consultoria de logística da Black River
 
 **Abertura:** Uma consultoria de logística da Black River funciona em três etapas: diagnóstico validado pelo cliente, cronograma com entregas definidas e execução conjunta dentro da operação. O projeto termina quando o seu time sustenta o resultado sem a consultoria.
+
+**Linha do tempo (abaixo da abertura):** Antes de tudo: Conversa de diagnóstico, sem custo · Etapa 1: Diagnóstico validado · Etapa 2: Cronograma e entregas definidos · Etapa 3: Execução conjunta · Resultado: Seu time sustenta o resultado sozinho (aprovado em 14/10/2026).
 
 ### Antes de tudo: a conversa de diagnóstico
 

@@ -4,8 +4,8 @@ import { Logo } from "./logo";
 
 // Alvo de toque confortável (py-2) sem mudar o ritmo visual da lista.
 const linkRodape =
-  "inline-block py-2 text-small text-ink-20 underline-offset-4 transition-[color,text-decoration-color] duration-150 hover:text-paper hover:underline active:text-paper";
-const tituloColuna = "text-overline font-bold tracking-[0.12em] text-brand uppercase";
+  "inline-flex min-h-11 items-center text-small text-ink-20 underline-offset-4 transition-[color,text-decoration-color] duration-150 hover:text-paper hover:underline active:text-paper";
+const tituloColuna = "flex min-h-11 items-center text-overline font-bold tracking-[0.12em] text-brand uppercase";
 
 // Rodapé preto com logo todo verde (DESIGN.md › Componentes › Rodapé).
 // Contatos e LinkedIn só aparecem quando os dados de entidade existirem (pendência #3).
@@ -24,11 +24,11 @@ export function SiteFooter() {
 
           <nav aria-label="Soluções" className="flex flex-col gap-3 lg:col-span-4">
             <h2 className={tituloColuna}>
-              <Link href="/solucoes" className="underline-offset-4 hover:underline">
+              <Link href="/solucoes" className="inline-flex min-h-11 items-center underline-offset-4 hover:underline">
                 Soluções
               </Link>
             </h2>
-            <ul className="flex flex-col gap-1">
+            <ul className="flex flex-col">
               {modulos.map((m) => (
                 <li key={m.href}>
                   <Link href={m.href} className={linkRodape}>
@@ -41,7 +41,7 @@ export function SiteFooter() {
 
           <nav aria-label="Institucional" className="flex flex-col gap-3 lg:col-span-2">
             <h2 className={tituloColuna}>Empresa</h2>
-            <ul className="flex flex-col gap-1">
+            <ul className="flex flex-col">
               {navegacaoPrincipal
                 .filter((item) => item.href !== "/solucoes")
                 .map((item) => (
@@ -59,7 +59,7 @@ export function SiteFooter() {
             <p className="max-w-[32ch] text-small">
               Conversa de diagnóstico sem custo, online ou presencial. Atendemos no Brasil e na América Latina.
             </p>
-            <ul className="flex flex-col gap-1">
+            <ul className="flex flex-col">
               <li>
                 <Link href={site.cta.href} className={linkRodape}>
                   {site.cta.rotulo}

@@ -1,8 +1,18 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import { Stripes } from "@/components/brand/stripes";
-import { Button } from "@/components/ui/button";
+import {
+  container,
+  Cta,
+  FaixaCtaFinal,
+  h2,
+  linkInline,
+  linkTexto,
+  overline,
+  secao,
+  Seta,
+  TextoComSeta,
+} from "@/components/site/blocos";
 import {
   antesDepois,
   cases,
@@ -18,13 +28,7 @@ import { modulos, site } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 // Seções da Home (Etapa 4). Fundo: branco · #F2F2F2 · branco · #F2F2F2 · branco · #F2F2F2 · branco · preto.
-const container = "mx-auto w-full max-w-site px-safe";
-const secao = "py-16 lg:py-24";
-const h2 = "text-h4 md:text-h2 max-w-[36ch]";
-const overline = "text-overline font-bold tracking-[0.12em] uppercase";
-// Link de texto com alvo de toque de 44px; a seta fica presa à última palavra quando o texto quebra.
-const linkTexto =
-  "group inline-flex min-h-11 items-center font-medium text-ink underline underline-offset-4 transition-[color,text-decoration-color] duration-150 hover:text-primary active:text-primary";
+
 // Card-link: borda escurece no hover (desktop) e no toque (celular). Sem sombra nem escala (DESIGN.md).
 const cardLink =
   "group flex h-full flex-col border border-ink-10 transition-[border-color] duration-150 hover:border-ink active:border-ink";
@@ -34,50 +38,16 @@ const rotuloCard =
 // Headshot P&B do Luis (4:5). Enquanto o arquivo não chega, a seção Insights mostra só o bloco de autoria.
 const FOTO_LUIS: string | null = "/fotos/luis-ricardo-pedro.webp";
 
-function Seta({ className }: { className?: string }) {
-  return (
-    <ArrowRight
-      aria-hidden
-      className={cn(
-        "ml-2 inline size-4 align-[-0.125em] transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] motion-safe:group-hover:translate-x-1 motion-safe:group-focus-visible:translate-x-1",
-        className
-      )}
-    />
-  );
-}
-
-function TextoComSeta({ children }: { children: string }) {
-  const palavras = children.split(" ");
-  const ultima = palavras.pop();
-  return (
-    <span>
-      {palavras.join(" ")}{" "}
-      <span className="whitespace-nowrap">
-        {ultima}
-        <Seta />
-      </span>
-    </span>
-  );
-}
-
 function LegendaComLink({ legenda, destaque }: { legenda: string; destaque: { texto: string; href: string } }) {
   const [antes, depois] = legenda.split(destaque.texto);
   return (
     <>
       {antes}
-      <Link href={destaque.href} className="font-semibold text-ink underline underline-offset-4 hover:text-primary active:text-primary">
+      <Link href={destaque.href} className={linkInline}>
         {destaque.texto}
       </Link>
       {depois}
     </>
-  );
-}
-
-function Cta({ className }: { className?: string }) {
-  return (
-    <Button asChild className={className}>
-      <Link href={site.cta.href}>{site.cta.rotulo}</Link>
-    </Button>
   );
 }
 
@@ -289,7 +259,7 @@ export function Insights() {
             )}
             <figcaption className="text-small text-ink-80">
               Artigos de{" "}
-              <Link href="/sobre" className="font-semibold text-ink underline underline-offset-4 hover:text-primary active:text-primary">
+              <Link href="/sobre" className={linkInline}>
                 {insights.autor}
               </Link>
               , sócio-diretor da Black River.
@@ -339,16 +309,5 @@ export function Objecoes() {
 }
 
 export function CtaFinal() {
-  return (
-    <section aria-labelledby="cta-final-titulo" data-cta-final className="relative overflow-hidden bg-ink">
-      <div className={cn(container, "relative flex flex-col gap-6 py-16 lg:py-24")}>
-        <h2 id="cta-final-titulo" className={cn(h2, "text-paper")}>
-          {ctaFinal.titulo}
-        </h2>
-        <p className="max-w-[52ch] text-lead text-ink-20">{ctaFinal.texto}</p>
-        <Cta className="self-start" />
-        <Stripes variante="escuro" className="mt-6 w-56 self-end md:w-72 lg:absolute lg:right-6 lg:bottom-16 lg:mt-0 lg:w-[360px]" />
-      </div>
-    </section>
-  );
+  return <FaixaCtaFinal titulo={ctaFinal.titulo} texto={ctaFinal.texto} />;
 }
