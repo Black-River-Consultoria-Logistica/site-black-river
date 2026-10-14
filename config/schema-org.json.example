@@ -1,0 +1,25 @@
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "[Nome fantasia]",
+  "legalName": "[Razão social]",
+  "taxID": "[CNPJ]",
+  "url": "https://[dominio].com.br",
+  "logo": "https://[dominio].com.br/logo.png",
+  "description": "[Proposta de valor em uma frase, do BRIEF.md]",
+  "telephone": "+55-11-0000-0000",
+  "email": "contato@[dominio].com.br",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "[Rua, número]",
+    "addressLocality": "[Cidade]",
+    "addressRegion": "[UF]",
+    "postalCode": "[CEP]",
+    "addressCountry": "BR"
+  },
+  "areaServed": "[Cidades, estados ou Brasil]",
+  "sameAs": [
+    "https://www.linkedin.com/company/[empresa]",
+    "https://www.instagram.com/[empresa]"
+  ]
+}

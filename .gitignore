@@ -1,0 +1,17 @@
+# Segredos
+.env
+.env.*
+!.env.example
+
+# Dependências e build
+node_modules/
+.next/
+out/
+dist/
+.vercel/
+.wrangler/
+.open-next/
+
+# Sistema
+.DS_Store
+*.log
