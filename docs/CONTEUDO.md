@@ -240,17 +240,17 @@ Nossos consultores trabalham dentro da operação, ao lado do seu time. Revisamo
 
 A página de Soluções apresenta as 7 frentes de trabalho e explica que eles se combinam a partir do diagnóstico.
 
-**H1:** Consultoria em logística e supply chain em 7 frentes de trabalho para entregar exatamente o resultado que você deseja.-
+**H1:** Consultoria em logística e supply chain em 7 frentes de trabalho *(encurtado pelo João em 14/10/2026)*
 
 **Abertura:** A consultoria em logística e supply chain da Black River é organizada em sete frentes de trabalho, do diagnóstico da operação à malha de transporte. Todo projeto começa pelo diagnóstico, e é ele que define quais frentes de trabalho a sua operação precisa e em que ordem.
 
 ### Como as frentes de trabalho se combinam
 
-O diagnóstico mostra onde estão as perdas e o que as causa. A partir dele, o trabalho pode seguir para o Centro de Distribuição (o projeto de um novo ou a eficiência do atual), para o equilíbrio entre estoque e abastecimento das lojas, ou para as frentes que geram receita e dão suporte à operação: verbas logísticas, sistemas e transporte. A maioria dos projetos combina mais de uma delas.&#32;
+O diagnóstico mostra onde estão as perdas e o que as causa. A partir dele, o trabalho pode seguir para o Centro de Distribuição (o projeto de um novo ou a eficiência do atual), para o equilíbrio entre estoque e abastecimento das lojas, ou para as frentes que geram receita e dão suporte à operação: verbas logísticas, sistemas e transporte. **\[VALIDAR COM LUIS\]** A maioria dos projetos combina mais de uma delas. *(fora do site até a confirmação)*
 
 ### As 7 frentes de trabalho
 
-Cada card leva o nome, a linha de descrição (a mesma da Home) e o link "Conhecer a frente de trabalho".
+Cada card leva o nome, a linha de descrição (a mesma da Home) e o link "Conhecer a frente de trabalho". Os cards ficam em 4 grupos (aprovado em 14/10/2026): Ponto de partida (1) · Centro de Distribuição (2 e 3) · Estoque e lojas (4) · Receita e suporte (5, 6 e 7).
 
 1. Análise e Diagnóstico de Operações Logísticas
 2. Projeto de Centro de Distribuição

@@ -1,6 +1,4 @@
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { site } from "@/lib/site";
+import { CtaCabecalho } from "./cta-cabecalho";
 import { Logo } from "./logo";
 import { MobileMenu } from "./mobile-menu";
 import { NavLinks } from "./nav-links";
@@ -16,9 +14,7 @@ export function SiteHeader() {
           <NavLinks />
         </nav>
         <div className="flex items-center gap-4">
-          <Button asChild className="hidden lg:inline-flex">
-            <Link href={site.cta.href}>{site.cta.rotulo}</Link>
-          </Button>
+          <CtaCabecalho />
           <div className="lg:hidden">
             <MobileMenu />
           </div>

@@ -16,6 +16,11 @@ export const overline = "text-overline font-bold tracking-[0.12em] uppercase";
 export const linkTexto =
   "group inline-flex min-h-11 items-center font-medium text-ink underline underline-offset-4 transition-[color,text-decoration-color] duration-150 hover:text-primary active:text-primary";
 // Link dentro de texto corrido.
+// Card-link: borda escurece no hover (desktop) e no toque (celular). Sem sombra nem escala (DESIGN.md).
+export const cardLink =
+  "group flex h-full flex-col border border-ink-10 transition-[border-color] duration-150 hover:border-ink active:border-ink";
+export const rotuloCard =
+  "text-small font-medium text-ink underline underline-offset-4 group-hover:text-primary group-active:text-primary";
 export const linkInline = "font-semibold text-ink underline underline-offset-4 hover:text-primary active:text-primary";
 
 export function Seta({ className }: { className?: string }) {
@@ -44,10 +49,10 @@ export function TextoComSeta({ children }: { children: string }) {
   );
 }
 
-export function Cta({ className }: { className?: string }) {
+export function Cta({ className, href = site.cta.href }: { className?: string; href?: string }) {
   return (
     <Button asChild className={className}>
-      <Link href={site.cta.href}>{site.cta.rotulo}</Link>
+      <Link href={href}>{site.cta.rotulo}</Link>
     </Button>
   );
 }
@@ -59,9 +64,12 @@ export function AberturaDePagina({
   titulo,
   abertura,
   lado,
+  acima,
   children,
 }: {
   id: string;
+  /** Acima do H1 (trilha de navegação, por exemplo). */
+  acima?: React.ReactNode;
   titulo: string;
   abertura: string;
   /** Coluna da direita no desktop (provas, por exemplo). */
@@ -74,6 +82,7 @@ export function AberturaDePagina({
       <div className={cn(container, "flex flex-col gap-12 pt-16 pb-16 md:pt-20 lg:pt-24 lg:pb-20")}>
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-6">
           <div className="flex flex-col gap-6 lg:col-span-8">
+            {acima}
             <h1 id={id} className={cn("max-w-[20ch] text-h3 text-balance md:text-h1", !lado && "lg:max-w-[24ch]")}>
               {titulo}
             </h1>
@@ -87,7 +96,7 @@ export function AberturaDePagina({
   );
 }
 
-export function FaixaCtaFinal({ titulo, texto }: { titulo: string; texto?: string }) {
+export function FaixaCtaFinal({ titulo, texto, href }: { titulo: string; texto?: string; href?: string }) {
   return (
     <section aria-labelledby="cta-final-titulo" data-cta-final className="relative overflow-hidden bg-ink">
       <div className={cn(container, "relative flex flex-col gap-6 py-16 lg:py-24")}>
@@ -95,8 +104,9 @@ export function FaixaCtaFinal({ titulo, texto }: { titulo: string; texto?: strin
           {titulo}
         </h2>
         {texto && <p className="max-w-[52ch] text-lead text-ink-20">{texto}</p>}
-        <Cta className="self-start" />
-        <Stripes variante="escuro" className="mt-6 w-56 self-end md:w-72 lg:absolute lg:right-6 lg:bottom-16 lg:mt-0 lg:w-[360px]" />
+        <Cta className="self-start" href={href} />
+        {/* Absolutas só a partir de 1280px: abaixo disso ficariam perto demais do texto (DESIGN.md: nunca atrás de texto). */}
+        <Stripes variante="escuro" className="mt-6 w-56 self-end md:w-72 xl:absolute xl:right-6 xl:bottom-16 xl:mt-0 xl:w-[360px]" />
       </div>
     </section>
   );

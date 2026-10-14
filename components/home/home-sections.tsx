@@ -1,7 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Stripes } from "@/components/brand/stripes";
+import { CardDeCase, CardDeFrente } from "@/components/site/cards";
 import {
+  cardLink,
   container,
   Cta,
   FaixaCtaFinal,
@@ -9,8 +11,8 @@ import {
   linkInline,
   linkTexto,
   overline,
+  rotuloCard,
   secao,
-  Seta,
   TextoComSeta,
 } from "@/components/site/blocos";
 import {
@@ -28,12 +30,6 @@ import { modulos, site } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 // Seções da Home (Etapa 4). Fundo: branco · #F2F2F2 · branco · #F2F2F2 · branco · #F2F2F2 · branco · preto.
-
-// Card-link: borda escurece no hover (desktop) e no toque (celular). Sem sombra nem escala (DESIGN.md).
-const cardLink =
-  "group flex h-full flex-col border border-ink-10 transition-[border-color] duration-150 hover:border-ink active:border-ink";
-const rotuloCard =
-  "text-small font-medium text-ink underline underline-offset-4 group-hover:text-primary group-active:text-primary";
 
 // Headshot P&B do Luis (4:5). Enquanto o arquivo não chega, a seção Insights mostra só o bloco de autoria.
 const FOTO_LUIS: string | null = "/fotos/luis-ricardo-pedro.webp";
@@ -169,18 +165,7 @@ export function Solucoes() {
         <ul className="grid gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3 xl:grid-cols-4">
           {modulos.map((m, i) => (
             <li key={m.href}>
-              <Link href={m.href} className={cn(cardLink, "gap-3 bg-paper p-5 sm:p-6 lg:p-8")}>
-                <span className={cn(overline, "text-primary")}>Frente {String(i + 1).padStart(2, "0")}</span>
-                <h3 className="text-h5 text-ink">
-                  {m.rotulo}
-                  {/* No celular o card inteiro é o link: só a seta, sem repetir o rótulo. */}
-                  <Seta className="sm:hidden" />
-                </h3>
-                <p className="text-small text-ink-80">{solucoes.linhas.at(i)}</p>
-                <span className={cn(rotuloCard, "mt-auto hidden pt-2 sm:inline")}>
-                  <TextoComSeta>Conhecer a frente de trabalho</TextoComSeta>
-                </span>
-              </Link>
+              <CardDeFrente indice={i} />
             </li>
           ))}
           <li className="flex flex-col justify-center gap-3 p-5 sm:p-6 lg:p-8">
@@ -220,13 +205,7 @@ export function Cases() {
           </li>
           {outros.map((c) => (
             <li key={c.href} className="lg:col-span-5">
-              <Link href={c.href} className={cn(cardLink, "gap-4 p-6 lg:p-8")}>
-                <span className={cn(overline, "text-primary")}>{c.tema}</span>
-                <h3 className="text-h4 font-semibold">{c.titulo}</h3>
-                <span className={cn(rotuloCard, "mt-auto pt-2")}>
-                  <TextoComSeta>Ler o case</TextoComSeta>
-                </span>
-              </Link>
+              <CardDeCase {...c} />
             </li>
           ))}
         </ul>

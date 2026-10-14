@@ -71,16 +71,7 @@ export const jornada = {
 export const solucoes = {
   titulo: "Sete frentes de trabalho, do diagnóstico à malha de transporte.",
   texto: "Todo projeto começa pelo diagnóstico. A partir dele, combinamos as frentes que a sua operação precisa.",
-  // Linha de cada card, na ordem de `modulos` em lib/site.ts.
-  linhas: [
-    "O retrato completo da operação e a causa raiz dos problemas.",
-    "Layout, capacidade e fluxos desenhados para a operação que você vai ter.",
-    "Mais produtividade no recebimento, na armazenagem, na separação e na expedição.",
-    "Loja abastecida sem estoque parado: políticas, parâmetros e rotina.",
-    "A logística do varejo também gera receita. Mostramos como negociar.",
-    "Escolha e implantação de sistemas como o WMS, com processo antes de software.",
-    "Rotas, frota e localização de Centros de Distribuição pensadas pelo custo total.",
-  ],
+  // Linha de cada card: fonte única em lib/content/solucoes.ts (a mesma da página Soluções).
   // 8ª célula da grade (texto aprovado na página Soluções).
   convite: {
     titulo: "Não sabe por qual frente de trabalho começar?",

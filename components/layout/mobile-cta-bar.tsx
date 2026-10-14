@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { rotaAtiva, rotasSemBarraDeCta, site } from "@/lib/site";
+import { frenteDaRota, hrefContatoComFrente, rotaAtiva, rotasSemBarraDeCta, site } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 // Barra fixa de CTA no celular e tablet (DESIGN.md). Some em /contato e /obrigado e
@@ -35,7 +35,8 @@ export function MobileCtaBar() {
         aria-hidden={recolhida || undefined}
       >
         <Button asChild className="w-full" tabIndex={recolhida ? -1 : undefined}>
-          <Link href={site.cta.href}>{site.cta.rotulo}</Link>
+          {/* Nas páginas de frente de trabalho, o formulário abre com a frente já marcada. */}
+          <Link href={hrefContatoComFrente(frenteDaRota(pathname))}>{site.cta.rotulo}</Link>
         </Button>
       </div>
     </>

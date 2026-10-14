@@ -64,11 +64,12 @@ Regra: executar uma etapa por vez, marcar [x], resumir e parar para aprovação.
 - Notas (14/10/2026): esboço aprovado (Luis logo após a abertura; linha do tempo + etapas com "Entrega"). "História" e "Quanto tempo leva" ficam reservadas no código (`historia` e `prazos` = null) e aparecem quando o Luis confirmar. Critique A/B aplicada. **Aprovada pelo João em 14/10/2026**, com os três textos curtos novos (lista de empresas do Luis e linha do tempo).
 
 ## Etapa 6 — Soluções e páginas de módulo
-- [ ] `/solucoes` com os 7 módulos
-- [ ] Modelo único de página de módulo e as 7 páginas preenchidas com o conteúdo da Etapa 3
-- [ ] CTA com o módulo pré-selecionado no formulário (`?modulo=`)
-- [ ] Prints em 3 larguras de `/solucoes` e de 2 módulos; critique
+- [x] `/solucoes` com os 7 módulos
+- [x] Modelo único de página de módulo e as 7 páginas preenchidas com o conteúdo da Etapa 3
+- [x] CTA com o módulo pré-selecionado no formulário (`?modulo=`)
+- [x] Prints em 3 larguras de `/solucoes` e de 2 módulos; critique
 - Pronto quando: as 8 rotas existem, sem texto de exemplo, e os links entre módulos funcionam
+- Notas (14/10/2026): esboço aprovado (frentes em 4 grupos; H1 da Soluções encurtado). O parâmetro do formulário é `?modulo=<código do SCHEMA.md>`, usado pelo botão do cabeçalho, pela barra do celular e pela faixa final. Textos das 7 frentes aguardam a revisão do Luis (docs/REVISAO_LUIS.md). Critique A/B aplicada. **Aprovada pelo João em 14/10/2026.**
 
 ## Etapa 7 — Cases e faixa de logos
 - [ ] `/cases` e modelo de case (contexto → desafio → solução → "meta traçada")
