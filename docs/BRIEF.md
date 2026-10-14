@@ -72,7 +72,7 @@
 - Telefone / WhatsApp: WhatsApp institucional — número [A CONFIRMAR] (o celular do Luis Ricardo é de uso restrito 1:1 e não vai para o site)
 - E-mail: e-mail institucional — endereço [A CONFIRMAR] (não usar o e-mail do Luis Ricardo)
 - Área de atendimento: Brasil e América Latina
-- Redes sociais (sameAs): página da Black River no LinkedIn [URL A CONFIRMAR]; perfil do Luis Ricardo [URL A CONFIRMAR]
+- Redes sociais (sameAs): página da Black River no LinkedIn [URL A CONFIRMAR]; perfil do Luis Ricardo https://www.linkedin.com/in/luis-ricardo-pedro-8878b914/ (recebido em 14/10/2026)
 
 ## Decisões técnicas
 - Política para robôs de IA: liberar busca e treino (decisão do João, 13/10/2026; objetivo de ser citada pelas IAs). Nomes dos robôs verificados na documentação oficial antes de gerar robots.txt/llms.txt (Etapa 7). Conferir bloqueio padrão da Cloudflare.
