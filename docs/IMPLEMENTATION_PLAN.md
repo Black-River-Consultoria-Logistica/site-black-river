@@ -31,12 +31,12 @@ Regra: executar uma etapa por vez, marcar [x], resumir e parar para aprovação.
 - **Aprovada pelo João em 13/10/2026**, com ressalva: o envio ao GitHub fica para quando houver sessão com o repositório (até lá, git bundle). Decisão no mesmo dia: voltar ao `/impeccable critique` ao fim de cada etapa visual, como no processo original do kit.
 
 ## Etapa 2 — Layout base
-- [ ] Cabeçalho (logo "Horizontal — Site", navegação, botão do CTA) e menu do celular
-- [ ] Rodapé preto com logo todo verde, links, contatos institucionais, LinkedIn, Privacidade e Termos
-- [ ] Barra fixa de CTA no celular (some em /contato e /obrigado)
-- [ ] Página 404 personalizada (volta à Home e ao Contato)
-- [ ] `lang="pt-BR"`, HTML semântico (header, nav, main, footer), link "pular para o conteúdo", foco visível
-- [ ] Prints com Playwright em 375, 768 e 1280px; `/impeccable critique`
+- [x] Cabeçalho (logo "Horizontal — Site", navegação, botão do CTA) e menu do celular (navegação completa a partir de 1024px; abaixo disso, menu lateral com logo, 5 seções e CTA)
+- [x] Rodapé preto com logo todo verde, links, contatos institucionais, LinkedIn, Privacidade e Termos (e-mail, WhatsApp e LinkedIn entram sozinhos quando a pendência #3 for preenchida em `lib/site.ts`; até lá não aparecem)
+- [x] Barra fixa de CTA no celular (some em /contato e /obrigado)
+- [x] Página 404 personalizada (volta à Home e ao Contato, mais as 5 seções do site)
+- [x] `lang="pt-BR"`, HTML semântico (header, nav, main, footer), link "pular para o conteúdo", foco visível
+- [x] Prints com Playwright em 375, 768 e 1280px (e 1024); `/impeccable critique` com as duas avaliações isoladas; detector sem achados no código e nas URLs
 - Pronto quando: navegação funciona em todas as larguras, URL inexistente mostra a 404, sem rolagem horizontal
 
 ## Etapa 3 — Conteúdo (redação, sem código)

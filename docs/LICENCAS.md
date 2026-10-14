@@ -11,5 +11,6 @@ Preencher durante o projeto com cada componente de terceiros efetivamente usado.
 | class-variance-authority, clsx, tailwind-merge | npm | Apache 2.0 / MIT / MIT | Utilitários de classes |
 | Archivo (`@fontsource-variable/archivo`) | Google Fonts via Fontsource, auto-hospedada | SIL Open Font License 1.1 | Substituta web da Bliss Pro (DESIGN.md) |
 | Next.js, React, Tailwind CSS | npm | MIT | Base do site |
+| Logos Black River (`public/brand/`) | Arquivos oficiais da Black River (Brandbook), enviados pelo João em 13/10/2026 | Propriedade da Black River Consultoria | Moldura de exportação removida; versão do rodapé recolorida para #669933 conforme a regra da marca |
 
 Componentes da Spell UI, Cult UI ou outras bibliotecas entram nesta tabela na etapa em que forem instalados. Ferramentas de desenvolvimento (Impeccable, Taste Skill, skills de Emil Kowalski, Playwright) não vão para o site publicado e estão listadas no README.

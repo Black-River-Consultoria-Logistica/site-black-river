@@ -82,6 +82,7 @@
   --text-body: 1rem;          --text-body--line-height: 1.6;
   --text-small: 0.875rem;     --text-small--line-height: 1.55;
   --text-caption: 0.75rem;    --text-caption--line-height: 1.45;
+  --text-overline: 0.75rem;   --text-overline--line-height: 1.2;
 
   /* Raio 0 em tudo */
   --radius-sm: 0px;
@@ -109,6 +110,9 @@
     text-wrap: balance;
   }
   p { text-wrap: pretty; }
+  footer :focus-visible { outline-color: var(--br-green); }
+  ::selection { background: var(--br-green-tint-20); color: var(--br-ink); }
+  a { text-underline-offset: 0.2em; }
   :focus-visible { outline: 2px solid var(--br-green-deep); outline-offset: 2px; }
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {

@@ -14,7 +14,7 @@ const cores = [
 
 export default function Page() {
   return (
-    <main className="mx-auto flex max-w-site flex-col gap-12 px-4 py-16 md:px-6">
+    <div className="mx-auto flex max-w-site flex-col gap-12 px-4 py-16 md:px-6">
       <header className="flex flex-col gap-3">
         <p className="text-caption font-bold uppercase tracking-[0.12em] text-brand-deep">Etapa 1 · Setup</p>
         <h1 className="text-h3 md:text-display">Tokens da Black River</h1>
@@ -62,6 +62,6 @@ export default function Page() {
           </div>
         </form>
       </section>
-    </main>
+    </div>
   );
 }
