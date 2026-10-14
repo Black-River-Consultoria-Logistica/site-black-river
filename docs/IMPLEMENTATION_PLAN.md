@@ -21,7 +21,7 @@ Regra: executar uma etapa por vez, marcar [x], resumir e parar para aprovação.
 | Contas GA4, Search Console e Bing Webmaster; acesso ao DNS do domínio | 12 e 13 |
 
 ## Etapa 1 — Setup
-- [ ] Repositório no GitHub da Black River a partir do template kit-sites-ia; `docs/` deste planejamento copiado para lá (repositório criado; envio dos commits aguarda a pendência #7 — até lá o trabalho circula por git bundle)
+- [x] Repositório no GitHub da Black River a partir do template kit-sites-ia; `docs/` deste planejamento copiado para lá (commits enviados em 14/10/2026 ao branch `etapa-1-setup` de Black-River-Consultoria-Logistica/site-black-river; pendência #7 resolvida)
 - [x] Next.js (App Router) + TypeScript + Tailwind + shadcn/ui; `components.json` com os registros de `config/components.json`; Spell UI como biblioteca principal (13/10/2026: primitivas button, input, label, textarea, checkbox, select e sheet adaptadas ao DESIGN.md; registro `@spell` respondendo; componentes da Spell entram por etapa, conforme a seção pedir)
 - [x] Exportação estática (`output: "export"`) confirmada como caminho de publicação (a única parte de servidor é a Função da Cloudflare do formulário)
 - [x] Tokens do DESIGN.md no `globals.css` (cores, `--radius: 0`, escala tipográfica, espaçamento de 4px); Archivo variável auto-hospedada (`@fontsource-variable/archivo`)
@@ -72,10 +72,10 @@ Regra: executar uma etapa por vez, marcar [x], resumir e parar para aprovação.
 - Notas (14/10/2026): esboço aprovado (frentes em 4 grupos; H1 da Soluções encurtado). O parâmetro do formulário é `?modulo=<código do SCHEMA.md>`, usado pelo botão do cabeçalho, pela barra do celular e pela faixa final. Textos das 7 frentes aguardam a revisão do Luis (docs/REVISAO_LUIS.md). Critique A/B aplicada. **Aprovada pelo João em 14/10/2026.**
 
 ## Etapa 7 — Cases e faixa de logos
-- [ ] `/cases` e modelo de case (contexto → desafio → solução → "meta traçada")
-- [ ] Os 4 cases aprovados (WMS, cross docking, estrutura do Centro de Distribuição, separação), adaptados para a web a partir dos one-pagers, mantendo o anonimato e as regras editoriais do João
-- [ ] Faixa de logos autorizados (monocromáticos), sem ligar logo a case
-- [ ] `break-ui` com textos longos e curtos; prints em 3 larguras
+- [x] `/cases` e modelo de case (contexto → desafio → causa raiz → solução → "meta traçada" → o que o diagnóstico entregou), com faixa "Em números", caixa "O que é…", frentes do case, outros cases e CTA com a frente pré-selecionada (14/10/2026)
+- [x] Os 4 cases aprovados (WMS, cross docking, estrutura do Centro de Distribuição, separação), adaptados para a web a partir dos one-pagers, mantendo o anonimato e as regras editoriais do João (texto em `lib/content/cases.ts`; fonte única também para Home e páginas de frente)
+- [x] Faixa de logos autorizados (12 logos monocromáticos #666666, estática, 6 × 2 no desktop e 3 × 4 no celular), sem ligar logo a case
+- [x] `break-ui` com textos longos e curtos (rota temporária, já removida; 3 correções); `/impeccable critique` com as avaliações A e B isoladas (correções aplicadas); prints em 320, 375, 768 e 1280px, sem rolagem lateral
 - Pronto quando: os 4 cases publicados localmente, revisados contra as regras de confidencialidade, e nenhum cliente identificável
 
 ## Etapa 8 — Insights

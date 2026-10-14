@@ -53,25 +53,34 @@ export function CardDeFrente({
   );
 }
 
-// Card de case (Home e páginas de frente).
+// Card de case (Home, páginas de frente e lista de cases).
+// Na lista de cases: 2 linhas de contexto e o rótulo da meta traçada, quando houver (DESIGN.md).
 export function CardDeCase({
   tema,
   titulo,
   href,
+  resumo,
+  rotuloMeta,
   className,
   alinharTema = false,
 }: {
   tema: string;
   titulo: string;
   href: string;
+  resumo?: string;
+  rotuloMeta?: string;
   className?: string;
   /** Em grade com vários cards: reserva duas linhas para o tema e alinha os títulos. */
   alinharTema?: boolean;
 }) {
   return (
     <Link href={href} className={cn(cardLink, "gap-4 bg-paper p-6 lg:p-8", className)}>
-      <span className={cn(overline, "text-primary", alinharTema && "lg:min-h-[2.5em]")}>{tema}</span>
-      <h3 className="text-h4 font-semibold">{titulo}</h3>
+      <span className={cn(overline, "text-primary", alinharTema && "md:min-h-[2.5em]")}>{tema}</span>
+      <h3 className="text-h4 font-semibold text-balance">{titulo}</h3>
+      {resumo && <p className="max-w-[52ch] text-ink-80">{resumo}</p>}
+      {rotuloMeta && (
+        <p className="border-l-2 border-brand pl-3 text-small font-semibold text-ink">{rotuloMeta}</p>
+      )}
       <span className={cn(rotuloCard, "mt-auto pt-2")}>
         <TextoComSeta>Ler o case</TextoComSeta>
       </span>

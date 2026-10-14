@@ -1,3 +1,5 @@
+import { cardDoCase } from "@/lib/content/cases";
+
 // Textos da Home — fonte: docs/CONTEUDO.md (aprovado pelo João em 14/10/2026).
 // Estrutura aprovada no esboço da Etapa 4: Dor e Transformação unificadas em "Antes × Depois".
 
@@ -82,13 +84,9 @@ export const solucoes = {
 export const cases = {
   titulo: "Diagnósticos reais: a experiência da Black River na prática.",
   texto: "Cada case mostra o problema encontrado, a causa raiz e a meta traçada com o cliente.",
-  // Textos completos na Etapa 7; aqui só o que já foi aprovado (tema e título).
+  // Tema, título e endereço vêm de lib/content/cases.ts (Etapa 7).
   // O primeiro item é o destaque da Home (o único título com número).
-  itens: [
-    { tema: "Separação", titulo: "60 caixas por hora: quase 50% abaixo do mercado", href: "/cases/separacao" },
-    { tema: "Cross docking", titulo: "Produto parado não é cross docking", href: "/cases/cross-docking" },
-    { tema: "Estrutura do Centro de Distribuição", titulo: "Quase metade do quadro fora da operação", href: "/cases/estrutura-do-centro-de-distribuicao" },
-  ],
+  itens: [cardDoCase("separacao"), cardDoCase("cross-docking"), cardDoCase("estrutura-do-centro-de-distribuicao")],
   link: { rotulo: "Ver todos os cases", href: "/cases" },
 };
 

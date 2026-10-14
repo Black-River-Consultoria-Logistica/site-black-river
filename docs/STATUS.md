@@ -27,12 +27,14 @@ Atualizado: 14/10/2026 · Responsável interno: João Assad
 - Etapa 4 — Home (marco 2): **aprovada em 14/10/2026** (marco 2 do cliente: layout). Foto do Luis recebida (Drive) e publicada em `public/fotos/luis-ricardo-pedro.webp` (4:5, 34 KB).
 - Etapa 5 — Sobre e Como trabalhamos: **aprovada em 14/10/2026**. Seções "História" (Sobre) e "Quanto tempo leva" (Como trabalhamos) reservadas no código; entram quando o Luis confirmar (pendência #4). Peças comuns das páginas em `components/site/blocos.tsx`.
 - Etapa 6 — Soluções e páginas das 7 frentes de trabalho: **aprovada em 14/10/2026**. As 7 páginas só vão ao ar depois da revisão do Luis (docs/REVISAO_LUIS.md; documento para comentários dele: https://claude.ai/code/artifact/c5a2043e-66ae-46ab-bde0-2974113721bf). Formulário recebe `?modulo=<código>` do cabeçalho, da barra do celular e da faixa final.
-- Etapa 7 — Cases e faixa de logos: próxima.
+- Etapa 7 — Cases e faixa de logos: **concluída em 14/10/2026, aguardando aprovação**. 4 cases em `/cases/<slug>` a partir dos one-pagers do Drive (versões finais revisadas pelo João), com as regras editoriais mais recentes; 12 logos do slide "Alguns de nossos clientes" em faixa estática monocromática. Pontos para o João decidir listados no resumo da etapa.
+- Etapa 8 — Insights: próxima (depois da aprovação da Etapa 7).
+- (histórico) Envio ao GitHub resolvido em 14/10/2026: branch `etapa-1-setup` em Black-River-Consultoria-Logistica/site-black-river (pendência #7).
 - Decisões da Etapa 3 (14/10/2026): "frente de trabalho" no lugar de "módulo" em todo o site; duração da conversa de diagnóstico fora do site (pode assustar o cliente); subtítulo da Home na redação do João.
 - (histórico) Etapa 2: Logos oficiais recebidos (PNG), limpos da moldura de exportação e exportados em 2x; rodapé com o logo oficial em uma cor no verde exato #669933.
 - Decisões da Etapa 2 (13/10/2026): no site, "Centro de Distribuição" também nos nomes dos módulos ("Projeto de Centro de Distribuição", "Eficiência Operacional em Centro de Distribuição"), nunca "Centrais"; cabeçalho fixo no topo no computador.
 - Decisões: domínios dos componentes liberados (exceto componentry.dev); Impeccable instalado e `/impeccable critique` volta a rodar ao fim de cada etapa visual (João, 13/10/2026); Taste Skill variação/movimento/densidade médios.
-- Alerta para a Etapa 7: o `logos-carousel` da Spell UI roda em loop contínuo, o que contraria o DESIGN.md (nada em loop). Usar faixa estática ou adaptar com pausa e prefers-reduced-motion.
+- Etapa 7: faixa de logos feita estática, sem o `logos-carousel` da Spell UI (loop contínuo contraria o DESIGN.md).
 
 ## Pendências
 3. Dados de entidade: razão social, CNPJ, endereço, e-mail e WhatsApp institucionais, URLs do LinkedIn (página e Luis).

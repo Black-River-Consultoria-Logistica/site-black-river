@@ -6,6 +6,7 @@
 // ficaram fora: "vocês vendem algum
 // sistema?" (frente 6), a prova de verbas (frente 5) ("a maioria dos projetos combina", em Soluções, foi confirmado pelo Luis em 14/10/2026).
 
+import { cardDoCase } from "@/lib/content/cases";
 import { modulos, type Frente } from "@/lib/site";
 
 export const pagina = {
@@ -50,17 +51,12 @@ export const linhasDosCards = [
 
 type CaseRelacionado = { tema: string; titulo: string; href: string };
 
-// Cases (títulos aprovados; páginas na Etapa 7). O do WMS ainda não tem título aprovado:
-// usa a descrição do CONTEUDO.md e o endereço provisório até a Etapa 7.
+// Cases: fonte única em lib/content/cases.ts (Etapa 7).
 const casos = {
-  crossDocking: { tema: "Cross docking", titulo: "Produto parado não é cross docking", href: "/cases/cross-docking" },
-  estrutura: {
-    tema: "Estrutura do Centro de Distribuição",
-    titulo: "Quase metade do quadro fora da operação",
-    href: "/cases/estrutura-do-centro-de-distribuicao",
-  },
-  separacao: { tema: "Separação", titulo: "60 caixas por hora: quase 50% abaixo do mercado", href: "/cases/separacao" },
-  wms: { tema: "WMS", titulo: "O gargalo que travava um Centro de Distribuição inteiro", href: "/cases/wms" },
+  crossDocking: cardDoCase("cross-docking"),
+  estrutura: cardDoCase("estrutura-do-centro-de-distribuicao"),
+  separacao: cardDoCase("separacao"),
+  wms: cardDoCase("wms"),
 } satisfies Record<string, CaseRelacionado>;
 
 export type PaginaDeFrente = {
