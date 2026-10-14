@@ -1,19 +1,25 @@
 import type { Metadata } from "next";
+import { metadados } from "@/lib/seo";
 import Link from "next/link";
+import { EventoNaVisita } from "@/components/layout/evento-na-visita";
 import { container, linkTexto, TextoComSeta } from "@/components/site/blocos";
 import { obrigado } from "@/lib/content/contato";
 import { cn } from "@/lib/utils";
 
-// Obrigado (Etapa 10). Fora do Google: só faz sentido depois do envio. O evento de conversão do GA4
-// entra na Etapa 12, junto com o banner de cookies.
-export const metadata: Metadata = {
+// Obrigado (Etapa 10). Fora do Google: só faz sentido depois do envio. Evento "visita_obrigado" no GA4
+// (Etapa 12), só com o aceite de cookies; a conversão principal é o "generate_lead" do formulário.
+export const metadata: Metadata = metadados({
   title: "Obrigado | Black River",
-  robots: { index: false, follow: true },
-};
+  description:
+    "Pedido de conversa de diagnóstico recebido pela Black River Consultoria.",
+  caminho: "/obrigado",
+  indexar: false,
+});
 
 export default function Obrigado() {
   return (
     <section aria-labelledby="obrigado-titulo">
+      <EventoNaVisita evento={{ nome: "visita_obrigado" }} />
       <div className={cn(container, "flex flex-col gap-6 py-16 md:py-24 lg:py-32")}>
         <h1 id="obrigado-titulo" className="max-w-[20ch] text-h3 text-balance md:text-h1">
           {obrigado.titulo}

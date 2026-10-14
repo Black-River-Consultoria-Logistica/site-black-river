@@ -1,7 +1,8 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-@import "@fontsource-variable/archivo/wdth.css";
-@import "@fontsource-variable/archivo/wdth-italic.css";
+/* Archivo: a versão normal vem de next/font/local em app/layout.tsx (pré-carregada, 35 KB, só o eixo de peso).
+   A itálica só baixa se alguma página usar itálico. Etapa 12: troca do arquivo de 88 KB (eixos peso + largura). */
+@import "@fontsource-variable/archivo/wght-italic.css";
 
 /* Tokens — docs/DESIGN.md (design system Black River v2.0). Só tema claro. */
 :root {
@@ -70,7 +71,7 @@
   --color-brand-tint: var(--br-green-tint-20);
   --color-brand-tint-soft: var(--br-green-tint-10);
 
-  --font-sans: "Bliss Pro", "Archivo Variable", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-sans: "Bliss Pro", var(--font-archivo), "Archivo Variable", "Helvetica Neue", Helvetica, Arial, sans-serif;
 
   /* Escala tipográfica (modular 1,25, base 16px) */
   --text-display: 3.8125rem;  --text-display--line-height: 1;

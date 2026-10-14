@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
+import { metadados } from "@/lib/seo";
 import { container, overline } from "@/components/site/blocos";
 import { CanaisDiretos, FormularioDeAgendamento } from "@/components/paginas/formulario-de-agendamento";
 import { contato } from "@/lib/content/contato";
 import { cn } from "@/lib/utils";
 
 // Contato (Etapa 10). Palavra-chave: agendar diagnóstico logístico. Sem barra fixa de CTA (APP_FLOW).
-export const metadata: Metadata = {
+export const metadata: Metadata = metadados({
   title: "Agende uma conversa de diagnóstico | Black River",
   description:
     "Agende uma conversa de diagnóstico logístico com a Black River Consultoria: sem custo, online ou presencial. Retorno em até 1 dia útil.",
-};
+  caminho: "/contato",
+});
 
 export default function Contato() {
   return (

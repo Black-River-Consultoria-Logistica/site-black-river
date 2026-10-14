@@ -28,6 +28,10 @@ export const site = {
     endereco: null as string | null,
     cidadeDoForo: "São Paulo/SP", // Termos de Uso (decisão do João, 14/10/2026)
   },
+  // GA4 (Etapa 12). ID público por natureza; só carrega depois do aceite no aviso de cookies.
+  analytics: {
+    ga4: process.env.NEXT_PUBLIC_GA_ID ?? "G-LFYPZHSP9X",
+  },
   // Canal do encarregado de dados (Luis Ricardo Pedro). Caixa a ser criada pelo João (pendência #14).
   privacidade: {
     encarregado: "Luis Ricardo Pedro",

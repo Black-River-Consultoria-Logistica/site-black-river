@@ -77,18 +77,18 @@ export const paginaCases = {
 // institucional. Arquivos monocromáticos #666666 em public/logos-clientes (Etapa 7).
 // `escala`: compensa logos de traço fino, que parecem menores com a mesma área.
 export const logosDeClientes: { nome: string; arquivo: string; largura: number; altura: number; escala?: number }[] = [
-  { nome: "Americanas", arquivo: "americanas", largura: 199, altura: 160 },
-  { nome: "Festval", arquivo: "festval", largura: 465, altura: 160 },
-  { nome: "Cencosud", arquivo: "cencosud", largura: 320, altura: 160 },
-  { nome: "Koch", arquivo: "koch", largura: 359, altura: 160 },
-  { nome: "Amigão Supermercados", arquivo: "amigao", largura: 689, altura: 160 },
-  { nome: "Supermercados São Vicente", arquivo: "sao-vicente", largura: 540, altura: 160 },
-  { nome: "Martins", arquivo: "martins", largura: 227, altura: 160 },
-  { nome: "Braveo", arquivo: "braveo", largura: 517, altura: 110 },
-  { nome: "Rappi", arquivo: "rappi", largura: 206, altura: 160 },
-  { nome: "Supermercado Nordestão", arquivo: "nordestao", largura: 354, altura: 160 },
-  { nome: "Super Nosso", arquivo: "super-nosso", largura: 405, altura: 160 },
-  { nome: "Grupo Mundial Mix", arquivo: "mundial-mix", largura: 306, altura: 160, escala: 1.25 },
+  { nome: "Americanas", arquivo: "americanas", largura: 149, altura: 120 },
+  { nome: "Festval", arquivo: "festval", largura: 349, altura: 120 },
+  { nome: "Cencosud", arquivo: "cencosud", largura: 240, altura: 120 },
+  { nome: "Koch", arquivo: "koch", largura: 269, altura: 120 },
+  { nome: "Amigão Supermercados", arquivo: "amigao", largura: 517, altura: 120 },
+  { nome: "Supermercados São Vicente", arquivo: "sao-vicente", largura: 405, altura: 120 },
+  { nome: "Martins", arquivo: "martins", largura: 170, altura: 120 },
+  { nome: "Braveo", arquivo: "braveo", largura: 388, altura: 82 },
+  { nome: "Rappi", arquivo: "rappi", largura: 154, altura: 120 },
+  { nome: "Supermercado Nordestão", arquivo: "nordestao", largura: 266, altura: 120 },
+  { nome: "Super Nosso", arquivo: "super-nosso", largura: 304, altura: 120 },
+  { nome: "Grupo Mundial Mix", arquivo: "mundial-mix", largura: 230, altura: 120, escala: 1.25 },
 ];
 
 const DEFINICAO_WMS =

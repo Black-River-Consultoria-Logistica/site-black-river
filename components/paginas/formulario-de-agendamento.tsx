@@ -12,6 +12,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { contato } from "@/lib/content/contato";
 import { camposVisiveis, errosPorCampo, type CampoVisivel } from "@/lib/formulario/esquema";
+import { registrarEvento } from "@/lib/analytics";
 import { lerOrigem } from "@/lib/formulario/origem";
 import { site } from "@/lib/site";
 import { cn } from "@/lib/utils";
@@ -161,6 +162,8 @@ export function FormularioDeAgendamento() {
       const dados = (await resposta.json().catch(() => ({}))) as { ok?: boolean; campos?: Erros };
 
       if (resposta.ok && dados.ok) {
+        // Conversão (GA4, só com aceite): frente e página de origem, nunca dados pessoais.
+        registrarEvento({ nome: "generate_lead", params: { frente: modulo, origem: lerOrigem().pagina_origem } });
         router.push("/obrigado");
         return; // o botão continua em "Enviando..." até a troca de página
       }

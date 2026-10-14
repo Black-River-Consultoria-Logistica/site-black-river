@@ -45,6 +45,14 @@ Prefira a exportação estática sempre que o site não precisar de servidor. Ge
 | Erros | Monitor de erros gratuito (ex.: Sentry) ou logs da Cloudflare | Alerta em erro de formulário ou de página |
 | Backup | Repositório Git + exportação do banco | Exportar a tabela de leads todo mês no plano de manutenção (obrigatório no plano Free do Supabase, que não tem backup automático; ver SCHEMA.md) |
 
+### Configuração do GA4 da Black River (Etapa 12, 14/10/2026)
+
+Propriedade com o fluxo web `G-LFYPZHSP9X`. No painel (Administrador), além do que o João já fez (retenção de 14 meses, Indicadores do Google desligados, personalização de anúncios desligada):
+
+1. **Eventos-chave:** depois do primeiro envio real do formulário, em Administrador › Exibição de dados › Eventos, marcar `generate_lead` como evento-chave (conversão). `visita_obrigado`, `contato_email` e `contato_whatsapp` ficam como eventos comuns.
+2. **Canal de IA:** em Administrador › Exibição de dados › Grupos de canais › Criar novo grupo de canais, adicionar o canal "IA" com a condição "Origem da sessão" corresponde à regex `chatgpt\.com|perplexity\.ai|gemini\.google\.com|claude\.ai|copilot\.microsoft\.com` e colocá-lo acima de "Referência".
+3. **Search Console:** vincular ao GA4 na Etapa 13, depois de verificar o domínio.
+
 ## Cuidados
 
 - O plano gratuito da Cloudflare limita o processamento por requisição; recursos de IA pesados podem exigir o plano pago.

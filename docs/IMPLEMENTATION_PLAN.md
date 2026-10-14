@@ -104,12 +104,13 @@ Regra: executar uma etapa por vez, marcar [x], resumir e parar para aprovação.
 - Situação (14/10/2026): páginas e aviso prontos e testados no navegador (22 conferências). Textos em revisão jurídica (pendência #15); a Política depende também da razão social, do CNPJ e do endereço (pendência #3). O GA4 da Etapa 12 entra atrás de `useConsentimento()` (`lib/consentimento.ts`), com retenção de 14 meses configurada na conta.
 
 ## Etapa 12 — SEO, IA e analytics (marco 3)
-- [ ] Title e description únicos por página, Open Graph (1200×630), favicons, `sitemap.xml`, canonical, texto alternativo
-- [ ] Imagens em WebP/AVIF no tamanho exibido, carregamento sob demanda, nenhuma acima de ~200 KB sem motivo
-- [ ] JSON-LD: ProfessionalService em todas as páginas (com `sameAs` e dados de entidade), Person (Luis Ricardo), Service nos módulos, Article nos artigos, FAQPage e BreadcrumbList onde couber
-- [ ] Tabela dos robôs de IA verificada na documentação oficial (prompt do PROMPTS.md) e aprovada; `robots.txt` liberando busca e treino; `llms.txt`
-- [ ] GA4 após consentimento (só quando `useConsentimento()` devolver `analitico: true`; retenção de dados de 14 meses na conta, como diz a Política); eventos de conversão (envio, clique no WhatsApp, visita ao Obrigado); grupo de canais para tráfego de IA
+- [x] Title e description únicos por página, Open Graph (1200×630), favicons, `sitemap.xml`, canonical, texto alternativo
+- [x] Imagens em WebP/AVIF no tamanho exibido, carregamento sob demanda, nenhuma acima de ~200 KB sem motivo
+- [x] JSON-LD: ProfessionalService em todas as páginas (com `sameAs` e dados de entidade), Person (Luis Ricardo), Service nos módulos, Article nos artigos, FAQPage e BreadcrumbList onde couber
+- [x] Tabela dos robôs de IA verificada na documentação oficial (prompt do PROMPTS.md) e aprovada; `robots.txt` liberando busca e treino; `llms.txt`
+- [x] GA4 após consentimento (só quando `useConsentimento()` devolver `analitico: true`; retenção de dados de 14 meses na conta, como diz a Política); eventos de conversão (envio, clique no WhatsApp, visita ao Obrigado); grupo de canais para tráfego de IA
 - Pronto quando: Lighthouse acima de 90 em SEO e acessibilidade e PageSpeed acima de 90 no celular, nas páginas principais; aprovação para publicar
+- Situação (14/10/2026): 23 páginas no sitemap, title/description únicos, canônica e Open Graph em todas; JSON-LD conferido (ProfessionalService e WebSite em todas; Person no Sobre; Service, BreadcrumbList e FAQPage nas frentes; Article nos artigos; BreadcrumbList nos cases). Lighthouse no celular (local, com compressão como na Cloudflare): desempenho 95–99, acessibilidade 100, boas práticas 100 (96 no /contato só porque o Turnstile não abre no ambiente de teste), SEO 100, nas 10 páginas principais. Fonte Archivo trocada por arquivo só com o eixo de peso (88 → 35 KB) e pré-carregada; logos de clientes reduzidos para 2× o tamanho exibido. PageSpeed real no celular: medir depois do deploy (Etapa 13). Robôs de IA: política "liberar tudo" e `/llms.txt` aprovados pelo João (tabela em `docs/pesquisa/robos-ia.md`). GA4 `G-LFYPZHSP9X` atrás do consentimento, com eventos `generate_lead`, `visita_obrigado`, `contato_email` e `contato_whatsapp`.
 
 ## Etapa 13 — Publicação
 - [ ] `/impeccable polish` e `/impeccable audit`; `npx impeccable detect` sem achados críticos; `break-ui`
