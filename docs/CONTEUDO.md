@@ -246,7 +246,7 @@ A página de Soluções apresenta as 7 frentes de trabalho e explica que eles se
 
 ### Como as frentes de trabalho se combinam
 
-O diagnóstico mostra onde estão as perdas e o que as causa. A partir dele, o trabalho pode seguir para o Centro de Distribuição (o projeto de um novo ou a eficiência do atual), para o equilíbrio entre estoque e abastecimento das lojas, ou para as frentes que geram receita e dão suporte à operação: verbas logísticas, sistemas e transporte. **\[VALIDAR COM LUIS\]** A maioria dos projetos combina mais de uma delas. *(fora do site até a confirmação)*
+O diagnóstico mostra onde estão as perdas e o que as causa. A partir dele, o trabalho pode seguir para o Centro de Distribuição (o projeto de um novo ou a eficiência do atual), para o equilíbrio entre estoque e abastecimento das lojas, ou para as frentes que geram receita e dão suporte à operação: verbas logísticas, sistemas e transporte. A maioria dos projetos combina mais de uma delas. *(confirmado pelo Luis em 14/10/2026)*
 
 ### As 7 frentes de trabalho
 
@@ -308,7 +308,7 @@ Todas as páginas de frente de trabalho seguem o mesmo modelo: abertura com a re
 
 - **Quanto tempo leva um diagnóstico logístico?** **\[A CONFIRMAR\]** A duração depende do porte e do número de Centros de Distribuição; o prazo é fechado na conversa inicial.
 - **O diagnóstico já traz ações práticas?** Sim. Além das oportunidades de médio prazo, ele aponta ações imediatas de processo e rotina que a equipe pode começar a executar.
-- **Preciso contratar a execução depois?** Não. O diagnóstico é uma entrega completa. A maioria dos clientes segue para a execução conjunta porque é nela que o resultado se sustenta. **\[VALIDAR: "a maioria" precisa ser verdade\]**
+- **Preciso contratar a execução depois?** Não. O diagnóstico é uma entrega completa. A maioria dos clientes segue para a execução conjunta porque é nela que o resultado se sustenta. *(confirmado pelo Luis em 14/10/2026)*
 
 ### Frente de trabalho 2. Projeto de Centro de Distribuição
 
@@ -608,14 +608,14 @@ Os três artigos respondem perguntas que o público faz a buscadores e IAs, um p
 
 São 9 itens; os 3 primeiros travam páginas inteiras ou seções de prova, os demais são ajustes de redação. Tudo o que não for confirmado sai do lançamento, sem texto provisório.
 
-- [ ] Prazo típico do diagnóstico e faixa de duração por frente de trabalho (Como trabalhamos, Frente de trabalho 1, Artigo 3)
+- [x] Prazo típico do diagnóstico e duração por frente de trabalho: não existe prazo típico, depende do problema de cada cliente (Luis, 14/10/2026). A seção "Quanto tempo leva" de Como trabalhamos fica fora.
 - [ ] Prova para verbas logísticas: um case ou número agregado publicável, e as modalidades usadas no mercado (Frente de trabalho 5, Artigo 2)
 - [ ] As perguntas reais que os clientes fazem antes de contratar, para substituir ou confirmar as perguntas frequentes propostas (todas as frentes de trabalho)
 - [ ] Revisão completa das páginas das 7 frentes de trabalho: o que é, para quem, sinais, como conduzimos (etapas e ordem) e perguntas frequentes
 - [ ] Construir com ele as pautas dos 3 artigos de lançamento: temas, primeiras frases e roteiros
 - [ ] Objeção "é caro e demora": confirmar que o diagnóstico separa ações imediatas de investimentos (Home)
-- [ ] Frente de trabalho 1: confirmar se a maioria dos clientes segue do diagnóstico para a execução
-- [ ] Frente de trabalho 6: a Black River vende ou representa algum sistema?
+- [x] Frente de trabalho 1: a maioria dos clientes segue do diagnóstico para a execução (confirmado pelo Luis em 14/10/2026)
+- [x] Frente de trabalho 6: a Black River tem parceria para a distribuição comercial da Mar.IA, software de gestão logística com IA embutida (Luis, 14/10/2026). Pergunta frequente proposta aguarda ok.
 - [ ] Sobre: ano de fundação e um parágrafo de história
 - [ ] URL da página da Black River no LinkedIn (pendência #3; a do Luis já chegou)
 

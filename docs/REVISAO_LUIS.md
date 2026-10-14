@@ -12,14 +12,14 @@ Criado em 14/10/2026 (Etapa 6). Documento para os comentários do Luis: https://
 
 | Frente | Página | Pontos específicos |
 | --- | --- | --- |
-| 01 | /solucoes/diagnostico-logistico | Prazo típico do diagnóstico (hoje: "o prazo é fechado na conversa inicial"). Confirmar se a maioria dos clientes segue para a execução (frase retirada até confirmar). Case relacionado: WMS. |
+| 01 | /solucoes/diagnostico-logistico | Prazo típico: **não existe** — impossível dar prazo sem entender o problema do cliente (Luis, 14/10/2026); a pergunta frequente diz que o prazo é fechado na conversa inicial. "A maioria dos clientes segue para a execução": **confirmado** (Luis, 14/10/2026), frase de volta. Case relacionado: WMS. |
 | 02 | /solucoes/projeto-de-centro-de-distribuicao | Sem case relacionado. |
 | 03 | /solucoes/eficiencia-operacional-em-centro-de-distribuicao | Definição de cross docking. Cases: cross docking, estrutura, separação. |
 | 04 | /solucoes/gestao-de-abastecimento-e-estoques | Sem case relacionado. |
 | 05 | /solucoes/negociacao-de-verbas-logisticas | Definição de verba logística e modalidades usadas no mercado. Prova (case ou número agregado publicável): sem ela, a seção fica fora. |
-| 06 | /solucoes/tecnologia-aplicada-a-supply-chain | A Black River vende ou representa algum sistema? A pergunta frequente entra quando houver resposta. Case relacionado: WMS. |
+| 06 | /solucoes/tecnologia-aplicada-a-supply-chain | Parceria para a distribuição comercial da Mar.IA (software de gestão logística com IA), respondido em 14/10/2026; pergunta frequente proposta aguarda ok para publicar. Case relacionado: WMS. |
 | 07 | /solucoes/transporte-e-malha-logistica | Sem case relacionado. |
 
 ## Página Soluções
 
-- [ ] "A maioria dos projetos combina mais de uma frente de trabalho": frase retirada até o Luis confirmar.
+- [x] "A maioria dos projetos combina mais de uma frente de trabalho": confirmado (14/10/2026), frase de volta.

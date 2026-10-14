@@ -3,8 +3,8 @@
 //
 // ATENÇÃO: o conteúdo das 7 frentes está marcado [REVISAR COM LUIS] no CONTEUDO.md.
 // As páginas não vão ao ar antes dessa revisão (docs/REVISAO_LUIS.md). Trechos [A CONFIRMAR]
-// ficaram fora: "a maioria dos clientes segue para a execução" (frente 1), "vocês vendem algum
-// sistema?" (frente 6), a prova de verbas (frente 5) e "a maioria dos projetos combina" (Soluções).
+// ficaram fora: "vocês vendem algum
+// sistema?" (frente 6), a prova de verbas (frente 5) ("a maioria dos projetos combina", em Soluções, foi confirmado pelo Luis em 14/10/2026).
 
 import { modulos, type Frente } from "@/lib/site";
 
@@ -16,7 +16,7 @@ export const pagina = {
   combinam: {
     titulo: "Como as frentes de trabalho se combinam",
     texto:
-      "O diagnóstico mostra onde estão as perdas e o que as causa. A partir dele, o trabalho pode seguir para o Centro de Distribuição (o projeto de um novo ou a eficiência do atual), para o equilíbrio entre estoque e abastecimento das lojas, ou para as frentes que geram receita e dão suporte à operação: verbas logísticas, sistemas e transporte.",
+      "O diagnóstico mostra onde estão as perdas e o que as causa. A partir dele, o trabalho pode seguir para o Centro de Distribuição (o projeto de um novo ou a eficiência do atual), para o equilíbrio entre estoque e abastecimento das lojas, ou para as frentes que geram receita e dão suporte à operação: verbas logísticas, sistemas e transporte. A maioria dos projetos combina mais de uma delas.",
   },
   // Nomes dos grupos aprovados no esboço (14/10/2026). Índices na ordem de `modulos`.
   grupos: [
@@ -119,8 +119,9 @@ const dados: Omit<PaginaDeFrente, "frente" | "numero">[] = [
       },
       {
         pergunta: "Preciso contratar a execução depois?",
-        // Sem a frase "a maioria dos clientes segue para a execução" até o Luis confirmar.
-        resposta: "Não. O diagnóstico é uma entrega completa.",
+        // Frase "a maioria..." confirmada pelo Luis no documento de revisão (14/10/2026).
+        resposta:
+          "Não. O diagnóstico é uma entrega completa. A maioria dos clientes segue para a execução conjunta porque é nela que o resultado se sustenta.",
       },
     ],
   },
@@ -308,7 +309,8 @@ const dados: Omit<PaginaDeFrente, "frente" | "numero">[] = [
         resposta:
           "Quando o volume e a variedade de produtos já não cabem em controles manuais e os processos estão definidos o bastante para o sistema segui-los.",
       },
-      // "Vocês vendem ou representam algum sistema?" entra quando o Luis responder (pendência #4).
+      // "Vocês vendem ou representam algum sistema?": a Black River tem parceria para a distribuição comercial
+      // da Mar.IA (Luis, 14/10/2026). A resposta proposta aguarda o ok do João no documento de revisão.
     ],
   },
   {
