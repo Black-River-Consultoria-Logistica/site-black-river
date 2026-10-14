@@ -49,10 +49,10 @@ Regra: executar uma etapa por vez, marcar [x], resumir e parar para aprovação.
 - **Aprovada pelo João em 14/10/2026** (revisão por comentários no Claude Doc). Decisões: no site, "módulo" vira "frente de trabalho"; a duração da conversa de diagnóstico não aparece (só "sem custo, online ou presencial"); H1 da Home provisório, a revisitar. Itens marcados [VALIDAR/REVISAR/CONSTRUIR COM LUIS] e [A CONFIRMAR] só vão ao ar confirmados (lista no fim de `docs/CONTEUDO.md`; pendência #4).
 
 ## Etapa 4 — Home (marco 2: layout)
-- [ ] Hero com proposta de valor, CTA único acima da dobra e faixas a 22° num canto (ocultas no celular)
-- [ ] Dor → jornada → transformação; números de prova (30+ cases, 15 anos, 30 anos do Luis); destaque dos 7 módulos; prévia de cases e Insights; objeções respondidas; faixa de CTA final
-- [ ] `/impeccable critique` e `review-animations`; corrigir o que contrariar o DESIGN.md
-- [ ] Prints com Playwright em 375, 768 e 1280px
+- [x] Hero com proposta de valor, CTA único acima da dobra e faixas a 22° num canto (ocultas no celular); provas ao lado do título no desktop
+- [x] Dor → jornada → transformação (dor e transformação unificadas em "Antes × Depois", decisão do João); números de prova (30+ cases, 15 anos, 30 anos do Luis); as 7 frentes de trabalho com o mesmo peso; prévia de cases e Insights; objeções respondidas; faixa de CTA final
+- [x] `/impeccable critique` (avaliações A e B isoladas) e `review-animations`; 5 pontos prioritários corrigidos; detector sem achados no código e nas URLs
+- [x] Prints com Playwright em 375, 768 e 1280px (e 1024)
 - Pronto quando: Home completa no desktop e no celular com os textos aprovados, prints conferidos pelo João (aprovação do layout)
 
 ## Etapa 5 — Sobre e Como trabalhamos

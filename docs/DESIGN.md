@@ -47,7 +47,8 @@ Contraste mínimo AA (4,5:1 para texto normal). `#669933` **nunca** em texto peq
 | h1 | 49px (celular 31px) | 1,05 | 700 | Título de página interna |
 | h2 | 39px (celular 25px) | 1,10 | 700 | Título de seção |
 | h3 | 31px (celular 20px) | 1,20 | 700 | Subseção |
-| h4 | 25px | 1,25 | 600 | Título de card |
+| h4 | 25px | 1,25 | 600 | Título de card de case, etapas da jornada |
+| h5 | 20px | 1,30 | 700 | Título de card de frente de trabalho, artigo, pergunta (acrescentado na Etapa 4) |
 | lead | 20px | 1,50 | 400 | Abertura de seção |
 | body | 16px (artigo 18px) | 1,60 | 400 | Corpo |
 | small | 14px | 1,55 | 400 | Apoio, tabelas |

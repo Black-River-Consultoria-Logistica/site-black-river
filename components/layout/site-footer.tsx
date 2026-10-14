@@ -14,7 +14,7 @@ export function SiteFooter() {
   const ano = new Date().getFullYear(); // fixado no build; atualiza a cada publicação
 
   return (
-    <footer className="bg-ink text-ink-20">
+    <footer className="border-t border-ink-80 bg-ink text-ink-20">
       <div className="mx-auto flex max-w-site flex-col gap-12 px-4 py-16 md:px-6 lg:py-24">
         <div className="grid gap-12 md:grid-cols-2 md:gap-x-6 lg:grid-cols-12">
           <div className="flex flex-col gap-6 lg:col-span-3">
