@@ -12,8 +12,10 @@ Preencher durante o projeto com cada componente de terceiros efetivamente usado.
 | Archivo (`@fontsource-variable/archivo`) | Google Fonts via Fontsource, auto-hospedada | SIL Open Font License 1.1 | Substituta web da Bliss Pro (DESIGN.md) |
 | Next.js, React, Tailwind CSS | npm | MIT | Base do site |
 | `@next/mdx`, `@mdx-js/loader`, `@mdx-js/react` | npm (Vercel / unified) | MIT | Artigos de Insights em MDX (Etapa 8) |
+| Zod (`zod`) | github.com/colinhacks/zod | MIT | Validação do formulário no navegador e na Função (Etapa 10) |
+| Cloudflare Turnstile | Serviço da Cloudflare (script carregado de challenges.cloudflare.com) | Termos de serviço da Cloudflare (gratuito) | Antirrobô do formulário (Etapa 10); não é código copiado para o site |
 | Foto de Luis Ricardo Pedro (`public/fotos/luis-ricardo-pedro.webp`) | Arquivo da Black River no Google Drive, enviado pelo João em 14/10/2026 | Propriedade da Black River / uso autorizado | Recorte 4:5 e conversão para WebP |
 | Logos de clientes (`public/logos-clientes/`, 12 arquivos) | Slide "Alguns de nossos clientes" da apresentação institucional da Black River | Marcas dos respectivos titulares; uso autorizado pelos clientes (declarado pelo João, 13/10/2026, BRIEF.md) | Recortados do slide e convertidos para monocromático #666666 com fundo transparente (Etapa 7, 14/10/2026). Nunca ligados a um case |
 | Logos Black River (`public/brand/`) | Arquivos oficiais da Black River (Brandbook), enviados pelo João em 13/10/2026 | Propriedade da Black River Consultoria | Moldura de exportação removida; versão do rodapé recolorida para #669933 conforme a regra da marca |
 
-Componentes da Spell UI, Cult UI ou outras bibliotecas entram nesta tabela na etapa em que forem instalados. Ferramentas de desenvolvimento (Impeccable, Taste Skill, skills de Emil Kowalski, Playwright) não vão para o site publicado e estão listadas no README.
+Componentes da Spell UI, Cult UI ou outras bibliotecas entram nesta tabela na etapa em que forem instalados. Ferramentas de desenvolvimento (tsx para os testes, Impeccable, Taste Skill, skills de Emil Kowalski, Playwright) não vão para o site publicado e estão listadas no README.

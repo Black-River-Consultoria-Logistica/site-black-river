@@ -91,10 +91,11 @@ Regra: executar uma etapa por vez, marcar [x], resumir e parar para aprovação.
 - Pronto quando: gravação com a chave de serviço funciona; leitura e gravação com a chave anônima são bloqueadas (conferido pelos privilégios no banco em 14/10/2026; o teste de ponta a ponta pela API entra na Etapa 10, com a função do formulário)
 
 ## Etapa 10 — Formulário e envio
-- [ ] Formulário em `/contato` conforme APP_FLOW: obrigatórios, opcionais, consentimento desmarcado, erros por campo sem perder o que foi digitado, estado de carregamento
-- [ ] Função da Cloudflare `/api/agendamento`: Turnstile, honeypot, rate limit, validação com Zod, gravação no Supabase **e** e-mail de aviso em paralelo (o aviso não depende do banco; decisão de 14/10/2026), e-mail de confirmação ao visitante (formato provisório até resolver a pendência #5)
-- [ ] Falha de envio com "tentar de novo" + e-mail e WhatsApp como alternativa; sucesso redireciona a `/obrigado` (retorno em até 1 dia útil, convite para Insights)
+- [x] Formulário em `/contato` conforme APP_FLOW: obrigatórios, opcionais, consentimento desmarcado, erros por campo sem perder o que foi digitado, estado de carregamento
+- [x] Função da Cloudflare `/api/agendamento`: Turnstile, honeypot, rate limit, validação com Zod, gravação no Supabase **e** e-mail de aviso em paralelo (o aviso não depende do banco; decisão de 14/10/2026), e-mail de confirmação ao visitante (formato provisório até resolver a pendência #5)
+- [x] Falha de envio com "tentar de novo" + e-mail e WhatsApp como alternativa; sucesso redireciona a `/obrigado` (retorno em até 1 dia útil, convite para Insights)
 - Pronto quando: todos os caminhos do APP_FLOW testados (válido, inválido, falha simulada, robô bloqueado, envio repetido limitado) e os dois e-mails chegando
+- Situação (14/10/2026): caminhos testados com Turnstile, Supabase e Resend simulados (`npm test`: 13 testes da Função; navegador: 23 conferências). Falta, quando as contas existirem: um envio real de ponta a ponta (banco + os dois e-mails) e a regra de limite de envios no painel da Cloudflare — feitos no deploy de prévia ou na Etapa 13.
 
 ## Etapa 11 — Páginas legais e cookies
 - [ ] Política de privacidade (dados do formulário, finalidade, retenção de 12 meses, Luis Ricardo como encarregado, contato) e Termos de uso
@@ -113,7 +114,7 @@ Regra: executar uma etapa por vez, marcar [x], resumir e parar para aprovação.
 - [ ] `/impeccable polish` e `/impeccable audit`; `npx impeccable detect` sem achados críticos; `break-ui`
 - [ ] Auditoria contra `checklists/producao.md`, `checklists/seguranca.md` e `checklists/seo-ia.md` (item 19 de segurança feito pessoalmente pelo João)
 - [ ] `docs/LICENCAS.md` completo
-- [ ] Headers de segurança (`_headers` da Cloudflare: CSP, HSTS, X-Content-Type-Options, Referrer-Policy) com nota A em securityheaders.com; Gitleaks no histórico sem achados
+- [ ] Headers de segurança (`_headers` da Cloudflare: CSP liberando `challenges.cloudflare.com` em script e frame para o Turnstile, HSTS, X-Content-Type-Options, Referrer-Policy) com nota A em securityheaders.com; Gitleaks no histórico sem achados
 - [ ] Deploy na Cloudflare; domínio blackriverconsultoria.com.br apontado; HTTPS forçado; www e sem www numa única versão; redirecionamentos 301 de endereços do site antigo que existirem
 - [ ] Configuração de robôs de IA da Cloudflare conferida (sem bloqueio padrão); teste pós-deploy dos robôs com resposta 200
 - [ ] SPF, DKIM e DMARC do e-mail; Search Console e Bing Webmaster com sitemap; Perfil da Empresa no Google igual ao site

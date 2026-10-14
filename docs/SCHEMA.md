@@ -51,12 +51,12 @@ Passar para o Pro (US$ 25/mês: nunca pausa, backup diário por 7 dias) quando o
 | `email` | texto, formato e-mail | sim | formulário | Contato; e-mail corporativo pedido no rótulo, sem bloquear domínios gratuitos |
 | `empresa` | texto (2–160) | sim | formulário | Qualificação |
 | `cargo` | texto (2–120) | sim | formulário | Qualificação (público é C-level e diretoria) |
-| `telefone` | texto (até 20) | não | formulário | Retorno por WhatsApp/telefone, se a pessoa quiser |
-| `preferencia_formato` | `online` · `presencial` · `tanto_faz` | não | formulário | A conversa de 1 hora pode ser online ou presencial |
-| `modulo_interesse` | um dos 7 módulos ou `nao_sei` | não | formulário (pré-selecionado se veio de uma página de módulo) | Preparar a conversa |
-| `mensagem` | texto (até 1.000) | não | formulário | Contexto livre |
-| `pagina_origem` | texto | automático | página onde o CTA foi clicado | Saber se módulos, Insights ou cases geram conversas |
-| `utm_source/medium/campaign` | texto | automático | URL | Medir LinkedIn e e-mail (não é dado pessoal) |
+| `telefone` | texto (até 20, só dígitos) | sim no formulário (decisão do João, 14/10/2026); a coluna aceita vazio | formulário | Retorno por WhatsApp/telefone |
+| `preferencia_formato` | `online` · `presencial` · `tanto_faz` | não | **fora do formulário** (decisão de 14/10/2026: nenhum campo opcional visível; o formato é combinado no retorno) | Coluna reservada |
+| `modulo_interesse` | uma das 7 frentes ou `nao_sei` | não | automático: vem escondido do link `?modulo=` quando a pessoa chega por uma página de frente (código desconhecido é ignorado) | Preparar a conversa |
+| `mensagem` | texto (até 1.000) | não | **fora do formulário** (decisão de 14/10/2026) | Coluna reservada |
+| `pagina_origem` | texto (até 300) | automático | última página do site antes do formulário; se a pessoa chegou direto, o site de onde veio | Saber se frentes, Insights ou cases geram conversas |
+| `utm_source/medium/campaign` | texto (até 120) | automático | URL da chegada ao site, guardada só na aba do navegador até o envio | Medir LinkedIn e e-mail (não é dado pessoal) |
 | `consentimento_lgpd` | booleano | sim (`true`) | caixa de seleção, **desmarcada por padrão** | Base legal |
 | `versao_politica` | texto (ex.: `2026-10`) | automático | constante no código | Prova de qual política foi aceita |
 | `status` | `novo` · `contatado` · `agendado` · `realizado` · `descartado` | automático (`novo`); atualizado no painel | — | **Medir a meta de 90 dias** (conversas agendadas e realizadas) |
@@ -108,7 +108,11 @@ Segundo script, [`20261014010000_ajustes_advisor.sql`](../supabase/migrations/20
 
 ## Variáveis de ambiente (Cloudflare, nunca no código)
 
-`SUPABASE_URL` · `SUPABASE_SERVICE_ROLE_KEY` · `SUPABASE_ANON_KEY` (só no Worker `manter-ativo`; pública por natureza) · `RESEND_API_KEY` · `LEAD_NOTIFY_TO` (e-mail institucional) · `TURNSTILE_SECRET_KEY` · `NEXT_PUBLIC_TURNSTILE_SITE_KEY` (pública por natureza) · `NEXT_PUBLIC_GA_ID` (pública por natureza). Nenhuma chave secreta com prefixo `NEXT_PUBLIC_`.
+`SUPABASE_URL` · `SUPABASE_SERVICE_ROLE_KEY` · `SUPABASE_ANON_KEY` (só no Worker `manter-ativo`; pública por natureza) · `RESEND_API_KEY` · `LEAD_NOTIFY_TO` (e-mail institucional) · `EMAIL_FROM` (remetente, no domínio verificado no Resend) · `ALLOWED_ORIGINS` (endereços do site aceitos pela Função, separados por vírgula) · `TURNSTILE_SECRET_KEY` · `NEXT_PUBLIC_GA_ID` (pública por natureza). Nenhuma chave secreta com prefixo `NEXT_PUBLIC_`.
+
+**Turnstile (Etapa 10):** a chave do site é pública e fica em `lib/site.ts` (`NEXT_PUBLIC_TURNSTILE_SITE_KEY` só se precisar trocá-la sem mexer no código). Ela vale apenas no domínio oficial; em qualquer outro endereço (máquina local, prévias `*.pages.dev`) o site usa a chave de teste oficial da Cloudflare, e a Função dessas prévias deve receber a chave secreta de teste correspondente. Widget no modo "só quando precisar": invisível para quase todo visitante.
+
+**Limite de envios por IP:** regra de rate limiting no painel da Cloudflare (Security › WAF › Rate limiting rules), criada na Etapa 13: caminho `/api/agendamento`, método POST, 5 pedidos por IP a cada 10 minutos → bloquear por 10 minutos. Fica fora do código porque a Função não guarda estado entre pedidos.
 
 ## E-mails
 
@@ -116,6 +120,7 @@ Segundo script, [`20261014010000_ajustes_advisor.sql`](../supabase/migrations/20
 - **Confirmação ao visitante** (aprovado pelo João, 13/10/2026): "Recebemos seu pedido; retornamos em até 1 dia útil para agendar". Exige SPF, DKIM e DMARC no domínio. **Pendência:** formatar este e-mail com um case ou outro conteúdo que valorize a marca e seja útil ao lead (ver `docs/PENDENCIAS.md`).
 
 ## Cuidados
+- Código: regras dos campos em `lib/formulario/esquema.ts` (as mesmas no navegador e na Função); processamento em `lib/formulario/processar.ts`; envelope da Cloudflare em `functions/api/agendamento.ts`; testes em `tests/agendamento.test.ts` (`npm test`).
 - A chave service role nunca vai para o navegador nem para o repositório.
 - Mensagens de erro ao visitante são genéricas; detalhes só nos logs da Cloudflare.
 - Encarregado de dados (DPO) citado na Política de Privacidade: Luis Ricardo Pedro (decisão do João, 13/10/2026). Canal de contato do encarregado: e-mail institucional [A CONFIRMAR].

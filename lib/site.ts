@@ -20,6 +20,14 @@ export const site = {
   linkedin: {
     pagina: null as string | null,
   },
+  // Turnstile (antirrobô da Cloudflare, Etapa 10). A chave do site é pública por natureza;
+  // a chave secreta fica só no painel da Cloudflare. O widget de produção aceita apenas o domínio
+  // oficial; em qualquer outro endereço (local, prévias) o site usa a chave de teste oficial da Cloudflare.
+  turnstile: {
+    chaveDoSite: "0x4AAAAAAFWrCtAShq4RTDl8",
+    chaveDeTeste: "1x00000000000000000000AA",
+    dominio: "blackriverconsultoria.com.br",
+  },
 } as const;
 
 export type ItemDeNavegacao = { rotulo: string; href: string };
@@ -59,6 +67,7 @@ export function frenteDaRota(pathname: string) {
 }
 
 // Rotas em que a barra fixa de CTA do celular não aparece (APP_FLOW/DESIGN).
+// O botão do cabeçalho também some nelas: quem está no formulário não precisa de outro atalho para ele.
 export const rotasSemBarraDeCta = ["/contato", "/obrigado"];
 
 export function rotaAtiva(pathname: string, href: string) {

@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { MobileCtaBar } from "@/components/layout/mobile-cta-bar";
+import { RastreioDeOrigem } from "@/components/layout/rastreio-de-origem";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { site } from "@/lib/site";
@@ -35,6 +36,7 @@ export default function RootLayout({
         </main>
         <SiteFooter />
         <MobileCtaBar />
+        <RastreioDeOrigem />
       </body>
     </html>
   );
