@@ -531,7 +531,7 @@ Estas páginas fecham o fluxo de conversão: o formulário, a confirmação e a 
 
 **Canais secundários (abaixo de "O que esperar"):** E-mail: contato@blackriverconsultoria.com.br (informado pelo João, 14/10/2026) · WhatsApp **\[A CONFIRMAR\]**. Sem a barra fixa de CTA nesta página.
 
-**Grafia:** "Política de Privacidade", com maiúsculas, no formulário e no rodapé (João, 14/10/2026).
+**Grafia:** "Política de Privacidade" e "Termos de Uso", com maiúsculas, no formulário e no rodapé (João, 14/10/2026). Os títulos das duas páginas seguem a mesma grafia na Etapa 11.
 
 ### Obrigado
 

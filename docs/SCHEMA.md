@@ -108,7 +108,7 @@ Segundo script, [`20261014010000_ajustes_advisor.sql`](../supabase/migrations/20
 
 ## Variáveis de ambiente (Cloudflare, nunca no código)
 
-`SUPABASE_URL` · `SUPABASE_SERVICE_ROLE_KEY` · `SUPABASE_ANON_KEY` (só no Worker `manter-ativo`; pública por natureza) · `RESEND_API_KEY` · `LEAD_NOTIFY_TO` (e-mail institucional; proposta: contato@blackriverconsultoria.com.br) · `EMAIL_FROM` (remetente, no domínio verificado no Resend) · `ALLOWED_ORIGINS` (endereços do site aceitos pela Função, separados por vírgula) · `TURNSTILE_SECRET_KEY` · `NEXT_PUBLIC_GA_ID` (pública por natureza). Nenhuma chave secreta com prefixo `NEXT_PUBLIC_`.
+`SUPABASE_URL` · `SUPABASE_SERVICE_ROLE_KEY` · `SUPABASE_ANON_KEY` (só no Worker `manter-ativo`; pública por natureza) · `RESEND_API_KEY` · `LEAD_NOTIFY_TO` (contato@blackriverconsultoria.com.br, confirmado pelo João em 14/10/2026) · `EMAIL_FROM` (remetente, no domínio verificado no Resend) · `ALLOWED_ORIGINS` (endereços do site aceitos pela Função, separados por vírgula) · `TURNSTILE_SECRET_KEY` · `NEXT_PUBLIC_GA_ID` (pública por natureza). Nenhuma chave secreta com prefixo `NEXT_PUBLIC_`.
 
 **Turnstile (Etapa 10):** a chave do site é pública e fica em `lib/site.ts` (`NEXT_PUBLIC_TURNSTILE_SITE_KEY` só se precisar trocá-la sem mexer no código). Ela vale apenas no domínio oficial; em qualquer outro endereço (máquina local, prévias `*.pages.dev`) o site usa a chave de teste oficial da Cloudflare, e a Função dessas prévias deve receber a chave secreta de teste correspondente. Widget no modo "só quando precisar": invisível para quase todo visitante.
 

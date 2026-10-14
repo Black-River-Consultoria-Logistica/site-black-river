@@ -102,7 +102,7 @@ export function SiteFooter() {
             </li>
             <li>
               <Link href="/termos" className={linkRodape}>
-                Termos de uso
+                Termos de Uso
               </Link>
             </li>
           </ul>
