@@ -39,7 +39,8 @@ Atualizado: 14/10/2026 · Responsável interno: João Assad
 - Etapa 7: faixa de logos feita estática, sem o `logos-carousel` da Spell UI (loop contínuo contraria o DESIGN.md).
 
 ## Pendências
-3. Dados de entidade: razão social, CNPJ, endereço, WhatsApp institucional, URLs do LinkedIn (página e Luis). E-mail institucional resolvido em 14/10/2026: contato@blackriverconsultoria.com.br (já no rodapé e no Contato).
+3. Dados de entidade: razão social, CNPJ, endereço, URLs do LinkedIn (página e Luis). E-mail institucional resolvido em 14/10/2026: contato@blackriverconsultoria.com.br (já no rodapé e no Contato).
+10. WhatsApp institucional: número virtual móvel da Salvy, a contratar pelo João. O código já está pronto: basta preencher o número em `lib/site.ts`.
 4. Revisar com Luis Ricardo as perguntas reais do público (FAQ/AEO), prazos típicos por módulo e prova para verbas logísticas.
 5. Formatar o e-mail de confirmação ao lead com case/conteúdo útil.
 1. Pedir à WZ que remova Luis Ricardo Pedro da lista de sócios em wzconsultoria.com.br (as IAs atribuem à WZ o currículo dele).

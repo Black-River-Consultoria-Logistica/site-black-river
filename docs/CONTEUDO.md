@@ -529,7 +529,7 @@ Estas páginas fecham o fluxo de conversão: o formulário, a confirmação e a 
 
 **Falha no envio (versão curta, João, 14/10/2026):** Não conseguimos enviar. Tente de novo ou escreva para contato@blackriverconsultoria.com.br. · Quando o WhatsApp entrar: Não conseguimos enviar. Tente de novo, escreva para contato@blackriverconsultoria.com.br ou chame no WhatsApp. (A frase se ajusta sozinha ao preencher o número em `lib/site.ts`.) Abaixo, o link "Tentar de novo".
 
-**Canais secundários (abaixo de "O que esperar"):** E-mail: contato@blackriverconsultoria.com.br (informado pelo João, 14/10/2026) · WhatsApp **\[A CONFIRMAR\]**. Sem a barra fixa de CTA nesta página.
+**Canais secundários (abaixo de "O que esperar"):** E-mail: contato@blackriverconsultoria.com.br (informado pelo João, 14/10/2026) · WhatsApp **\[PENDÊNCIA #10: número virtual da Salvy\]**. Sem a barra fixa de CTA nesta página.
 
 **Grafia:** "Política de Privacidade" e "Termos de Uso", com maiúsculas, no formulário e no rodapé (João, 14/10/2026). Os títulos das duas páginas seguem a mesma grafia na Etapa 11.
 
