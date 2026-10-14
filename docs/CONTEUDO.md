@@ -551,6 +551,8 @@ Estas páginas fecham o fluxo de conversão: o formulário, a confirmação e a 
 
 **\[CONSTRUIR COM LUIS: seção inteira\]** Temas, primeiras frases e roteiros abaixo são ponto de partida para definir os artigos junto com o Luis.
 
+*(Etapa 8, 14/10/2026: textos completos redigidos em `content/insights/*.mdx`; revisão no Claude Doc https://claude.ai/code/artifact/9942ed95-f2c5-4e8b-b143-6270c47ed3d3.)*
+
 Os três artigos respondem perguntas que o público faz a buscadores e IAs, um por lacuna da análise de concorrentes. Todos assinados por Luis Ricardo Pedro, abrindo com a resposta na primeira frase e terminando com o CTA e links para a frente de trabalho relacionada e para os outros dois artigos. A redação completa entra na Etapa 8.
 
 ### Artigo 1. Como escolher uma consultoria de logística para o varejo

@@ -1,4 +1,5 @@
 import { cardDoCase } from "@/lib/content/cases";
+import { artigos, hrefDoArtigo } from "@/lib/content/insights";
 
 // Textos da Home — fonte: docs/CONTEUDO.md (aprovado pelo João em 14/10/2026).
 // Estrutura aprovada no esboço da Etapa 4: Dor e Transformação unificadas em "Antes × Depois".
@@ -92,12 +93,8 @@ export const cases = {
 
 export const insights = {
   titulo: "O que aprendemos dentro das operações, por escrito.",
-  // Pautas a construir com o Luis (pendência #4); títulos provisórios do esboço.
-  itens: [
-    { titulo: "Como escolher uma consultoria de logística para o varejo", href: "/insights/como-escolher-consultoria-de-logistica-para-varejo" },
-    { titulo: "O que são verbas logísticas e como negociar com fornecedores", href: "/insights/verbas-logisticas" },
-    { titulo: "Como funciona um diagnóstico logístico, etapa por etapa", href: "/insights/como-funciona-um-diagnostico-logistico" },
-  ],
+  // Títulos e endereços vêm de lib/content/insights.ts (Etapa 8).
+  itens: artigos.map((a) => ({ titulo: a.titulo, href: hrefDoArtigo(a) })),
   autor: "Luis Ricardo Pedro",
   link: { rotulo: "Ler os artigos", href: "/insights" },
 };

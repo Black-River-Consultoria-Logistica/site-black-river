@@ -35,16 +35,17 @@ export const navegacaoPrincipal: ItemDeNavegacao[] = [
 // As 7 frentes de trabalho (nomenclatura da apresentação institucional, com "Centro de Distribuição"
 // no lugar de "Centrais" — decisão do João para o site, 13/10/2026). `codigo` é o valor de
 // `modulo_interesse` no SCHEMA.md e vai no link do formulário (/contato?modulo=...).
-export type Frente = ItemDeNavegacao & { codigo: string };
+// `curto`: nome curto para filtros e rótulos estreitos (Etapa 8).
+export type Frente = ItemDeNavegacao & { codigo: string; curto: string };
 
 export const modulos: Frente[] = [
-  { rotulo: "Análise e Diagnóstico de Operações Logísticas", href: "/solucoes/diagnostico-logistico", codigo: "diagnostico" },
-  { rotulo: "Projeto de Centro de Distribuição", href: "/solucoes/projeto-de-centro-de-distribuicao", codigo: "projeto_cd" },
-  { rotulo: "Eficiência Operacional em Centro de Distribuição", href: "/solucoes/eficiencia-operacional-em-centro-de-distribuicao", codigo: "eficiencia_cd" },
-  { rotulo: "Gestão de Abastecimento e Estoques", href: "/solucoes/gestao-de-abastecimento-e-estoques", codigo: "abastecimento_estoques" },
-  { rotulo: "Negociação de Verbas Logísticas com Fornecedores", href: "/solucoes/negociacao-de-verbas-logisticas", codigo: "verbas_logisticas" },
-  { rotulo: "Tecnologia da Informação aplicada a Supply Chain", href: "/solucoes/tecnologia-aplicada-a-supply-chain", codigo: "tecnologia" },
-  { rotulo: "Transporte e Malha Logística", href: "/solucoes/transporte-e-malha-logistica", codigo: "transporte_malha" },
+  { rotulo: "Análise e Diagnóstico de Operações Logísticas", href: "/solucoes/diagnostico-logistico", codigo: "diagnostico", curto: "Diagnóstico" },
+  { rotulo: "Projeto de Centro de Distribuição", href: "/solucoes/projeto-de-centro-de-distribuicao", codigo: "projeto_cd", curto: "Projeto de Centro de Distribuição" },
+  { rotulo: "Eficiência Operacional em Centro de Distribuição", href: "/solucoes/eficiencia-operacional-em-centro-de-distribuicao", codigo: "eficiencia_cd", curto: "Eficiência operacional" },
+  { rotulo: "Gestão de Abastecimento e Estoques", href: "/solucoes/gestao-de-abastecimento-e-estoques", codigo: "abastecimento_estoques", curto: "Abastecimento e estoques" },
+  { rotulo: "Negociação de Verbas Logísticas com Fornecedores", href: "/solucoes/negociacao-de-verbas-logisticas", codigo: "verbas_logisticas", curto: "Verbas logísticas" },
+  { rotulo: "Tecnologia da Informação aplicada a Supply Chain", href: "/solucoes/tecnologia-aplicada-a-supply-chain", codigo: "tecnologia", curto: "Tecnologia" },
+  { rotulo: "Transporte e Malha Logística", href: "/solucoes/transporte-e-malha-logistica", codigo: "transporte_malha", curto: "Transporte e malha" },
 ];
 
 /** Link do formulário com a frente de trabalho já marcada. */

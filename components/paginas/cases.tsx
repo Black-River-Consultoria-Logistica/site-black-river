@@ -9,7 +9,7 @@ import {
   linkTexto,
   overline,
   secao,
-  Seta,
+  LinhaDeLink,
   TextoComSeta,
 } from "@/components/site/blocos";
 import { CardDeCase } from "@/components/site/cards";
@@ -387,22 +387,5 @@ function TabelaDeMeta({ meta }: { meta: NonNullable<Case["meta"]> }) {
       </table>
       {meta.nota && <p className="max-w-[60ch] text-small text-ink-60">{meta.nota}</p>}
     </div>
-  );
-}
-
-function LinhaDeLink({ href, rotulo, sobre }: { href: string; rotulo: string; sobre?: string }) {
-  return (
-    <Link
-      href={href}
-      className="group flex min-h-14 items-start justify-between gap-4 py-4 font-medium text-ink transition-colors duration-150 hover:text-primary active:text-primary"
-    >
-      <span className="flex flex-col gap-1">
-        {sobre && (
-          <span className="text-overline font-bold tracking-[0.12em] text-ink-60 uppercase">{sobre}</span>
-        )}
-        <span className="underline decoration-ink-20 underline-offset-4 group-hover:decoration-current">{rotulo}</span>
-      </span>
-      <Seta className="mt-1 ml-0 shrink-0" />
-    </Link>
   );
 }

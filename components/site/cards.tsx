@@ -87,3 +87,42 @@ export function CardDeCase({
     </Link>
   );
 }
+
+// Card de artigo (lista de Insights e "Leia também"). DESIGN.md prevê imagem 16:9 ou diagrama no topo:
+// no lançamento não há imagens, então o card abre pelo rótulo da frente (o campo `imagem` entra quando houver).
+export function CardDeArtigo({
+  href,
+  titulo,
+  resumo,
+  rotulo,
+  autor,
+  data,
+  dataIso,
+  className,
+}: {
+  href: string;
+  titulo: string;
+  resumo: string;
+  /** Rótulo da frente de trabalho, ex.: "Frente 01 · Diagnóstico". */
+  rotulo: string;
+  autor: string;
+  data: string;
+  dataIso: string;
+  className?: string;
+}) {
+  return (
+    <Link href={href} className={cn(cardLink, "gap-4 bg-paper p-6 lg:p-8", className)}>
+      <span className={cn(overline, "text-primary")}>{rotulo}</span>
+      <h3 className="text-h4 font-semibold text-balance">{titulo}</h3>
+      <p className="max-w-[52ch] text-ink-80">{resumo}</p>
+      <div className="mt-auto flex flex-col gap-4 pt-2">
+        <p className="text-small text-ink-60">
+          {autor} · <time dateTime={dataIso}>{data}</time>
+        </p>
+        <span className={rotuloCard}>
+          <TextoComSeta>Ler o artigo</TextoComSeta>
+        </span>
+      </div>
+    </Link>
+  );
+}
