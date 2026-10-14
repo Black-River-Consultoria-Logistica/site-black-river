@@ -85,13 +85,14 @@ Regra: executar uma etapa por vez, marcar [x], resumir e parar para aprovação.
 - Pronto quando: os 3 artigos abrem com a resposta na primeira frase, sem becos sem saída, e o texto aparece no HTML do servidor (Ctrl+U)
 
 ## Etapa 9 — Banco de dados
-- [ ] Projeto Supabase na conta da Black River; tabela `leads` conforme SCHEMA.md, RLS ativo sem políticas para visitantes; gatilho de `atualizado_em`; rotina de retenção (pg_cron)
+- [ ] Projeto Supabase na conta da Black River (plano Free, região São Paulo, tabelas não expostas automaticamente, RLS automático); tabela `leads` conforme SCHEMA.md, RLS ativo sem políticas para visitantes; gatilho de `atualizado_em`; rotina de retenção (pg_cron). Script pronto e testado localmente: `supabase/migrations/20261014000000_leads.sql`
+- [ ] Sinal diário contra a pausa do plano Free: função `public.ping()` + Worker `workers/manter-ativo` (código pronto; deploy com a conta Cloudflare)
 - [ ] Security Advisor do Supabase sem alertas
 - Pronto quando: gravação com a chave de serviço funciona; leitura e gravação com a chave anônima são bloqueadas
 
 ## Etapa 10 — Formulário e envio
 - [ ] Formulário em `/contato` conforme APP_FLOW: obrigatórios, opcionais, consentimento desmarcado, erros por campo sem perder o que foi digitado, estado de carregamento
-- [ ] Função da Cloudflare `/api/agendamento`: Turnstile, honeypot, rate limit, validação com Zod, gravação no Supabase, e-mail de aviso e e-mail de confirmação ao visitante (formato provisório até resolver a pendência #5)
+- [ ] Função da Cloudflare `/api/agendamento`: Turnstile, honeypot, rate limit, validação com Zod, gravação no Supabase **e** e-mail de aviso em paralelo (o aviso não depende do banco; decisão de 14/10/2026), e-mail de confirmação ao visitante (formato provisório até resolver a pendência #5)
 - [ ] Falha de envio com "tentar de novo" + e-mail e WhatsApp como alternativa; sucesso redireciona a `/obrigado` (retorno em até 1 dia útil, convite para Insights)
 - Pronto quando: todos os caminhos do APP_FLOW testados (válido, inválido, falha simulada, robô bloqueado, envio repetido limitado) e os dois e-mails chegando
 

@@ -1,0 +1,16 @@
+# Sinal diário para o Supabase (plano Free pausa o projeto após 7 dias de pouca atividade).
+# Worker separado do site: Cloudflare Pages não tem tarefas agendadas. Deploy na Etapa 13:
+#   npx wrangler deploy        (a partir desta pasta)
+#   npx wrangler secret put SUPABASE_ANON_KEY
+name = "black-river-manter-ativo"
+main = "src/index.ts"
+compatibility_date = "2026-10-01"
+
+[vars]
+# Endereço público do projeto (não é segredo). Preencher quando o projeto existir.
+SUPABASE_URL = ""
+
+[triggers]
+# Todo dia às 9h UTC (6h em Brasília). A documentação do Supabase pede "algumas requisições
+# por dia ao longo da semana" para não pausar; uma por dia com folga já basta.
+crons = ["0 9 * * *"]

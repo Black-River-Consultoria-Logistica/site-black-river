@@ -11,18 +11,37 @@ Navegador (/contato, página estática)
         1. Confere Turnstile (antirrobô) e honeypot
         2. Limite de envios por IP (regra de rate limit da Cloudflare)
         3. Valida todos os campos no servidor (Zod)
-        4. Grava em Supabase com a chave de serviço (só no servidor)
-        5. Envia e-mail de aviso ao e-mail institucional (Resend)
-        6. Responde OK → navegador vai para /obrigado e dispara evento no GA4
+        4. Em paralelo, independentes um do outro (ajuste de 14/10/2026):
+           a. grava em Supabase com a chave de serviço (só no servidor)
+           b. envia o e-mail de aviso ao e-mail institucional (Resend), com todos os campos
+        5. Se pelo menos um dos dois deu certo → responde OK → /obrigado e evento no GA4
+           (e-mail ao visitante só depois disso). Se o banco falhou, o aviso sai marcado
+           "não gravado no banco" e a falha fica no log da Cloudflare.
+        6. Se os dois falharam → erro ao visitante, com "tentar de novo" e os contatos diretos
 ```
 
+**Por que gravar e avisar em paralelo (decisão do João, 14/10/2026):** no plano Free o projeto do Supabase pode pausar. Com o e-mail independente do banco, nenhum pedido se perde enquanto o banco estiver fora do ar.
+
 Por que assim: o site continua 100% estático (mais rápido e barato na Cloudflare), e o navegador **nunca** fala direto com o banco. Diferente do modelo do kit (inserção anônima com RLS), aqui a tabela não tem nenhuma política para visitantes: só a função, com a chave de serviço, grava.
+
+## Plano Free: pausa e backup (decisão do João, 14/10/2026)
+
+O projeto usa o plano **Free** do Supabase, na região **São Paulo** (sa-east-1). O volume do formulário (dezenas de pedidos por mês) cabe com folga nos 500 MB do plano. Ele tem duas limitações, tratadas assim:
+
+| Limitação do Free | Tratamento |
+| --- | --- |
+| Pausa após 7 dias de pouca atividade (o formulário pode passar uma semana sem pedidos) | **Sinal diário:** o Worker `workers/manter-ativo` (Cloudflare, tarefa agendada) chama `public.ping()` todo dia com a chave anônima. E a função do formulário avisa por e-mail mesmo com o banco fora do ar (Arquitetura, passo 4). |
+| Sem backup automático | **Exportação mensal obrigatória** da tabela `leads` (painel › Table Editor › Export CSV), guardada em pasta de acesso restrito da Black River e apagada junto com a retenção de 12 meses. Item fixo do plano de manutenção. |
+
+Configuração do projeto, na criação: Data API ligado; "Automatically expose new tables" **desligado** (cada acesso é liberado no script); "Enable automatic RLS" **ligado**; Postgres padrão (sem OrioleDB).
+
+Passar para o Pro (US$ 25/mês: nunca pausa, backup diário por 7 dias) quando o formulário virar canal comercial relevante.
 
 ## Entidades
 
 | Entidade | Campos | Regras de acesso | Integrações | Retenção (LGPD) |
 | --- | --- | --- | --- | --- |
-| `leads` | nome, email, empresa, cargo, telefone, preferencia_formato, modulo_interesse, mensagem, pagina_origem, utm_source, utm_medium, utm_campaign, consentimento_lgpd, versao_politica, status, criado_em, atualizado_em | RLS ativo, **nenhuma política** para `anon`/`authenticated`. Escrita só pela Função da Cloudflare (service role). Leitura só pelo painel do Supabase (João e quem ele autorizar). | E-mail de aviso (Resend) · CRM [A CONFIRMAR] | 12 meses sem relação comercial → exclusão automática *(proposta)*. Com proposta ou contrato, o contato passa para o controle comercial e sai desta tabela. |
+| `leads` | nome, email, empresa, cargo, telefone, preferencia_formato, modulo_interesse, mensagem, pagina_origem, utm_source, utm_medium, utm_campaign, consentimento_lgpd, versao_politica, status, criado_em, atualizado_em | RLS ativo, **nenhuma política** para `anon`/`authenticated`. Escrita só pela Função da Cloudflare (service role). Leitura só pelo painel do Supabase (João e quem ele autorizar). | E-mail de aviso (Resend) · CRM [A CONFIRMAR] | 12 meses sem relação comercial → exclusão automática (rotina semanal no pg_cron). Com proposta ou contrato, o contato passa para o controle comercial e sai desta tabela. |
 
 ### Campos
 
@@ -73,61 +92,17 @@ erDiagram
 
 ## SQL (Supabase)
 
-```sql
-create table public.leads (
-  id uuid primary key default gen_random_uuid(),
-  nome text not null check (char_length(nome) between 2 and 120),
-  email text not null check (email ~* '^[^@\s]+@[^@\s]+\.[^@\s]+$'),
-  empresa text not null check (char_length(empresa) between 2 and 160),
-  cargo text not null check (char_length(cargo) between 2 and 120),
-  telefone text check (telefone is null or char_length(telefone) <= 20),
-  preferencia_formato text check (preferencia_formato in ('online','presencial','tanto_faz')),
-  modulo_interesse text check (modulo_interesse in (
-    'diagnostico','projeto_cd','eficiencia_cd','abastecimento_estoques',
-    'verbas_logisticas','tecnologia','transporte_malha','nao_sei')),
-  mensagem text check (mensagem is null or char_length(mensagem) <= 1000),
-  pagina_origem text,
-  utm_source text,
-  utm_medium text,
-  utm_campaign text,
-  consentimento_lgpd boolean not null check (consentimento_lgpd = true),
-  versao_politica text not null,
-  status text not null default 'novo'
-    check (status in ('novo','contatado','agendado','realizado','descartado')),
-  criado_em timestamptz not null default now(),
-  atualizado_em timestamptz not null default now()
-);
+O script fica em [`supabase/migrations/20261014000000_leads.sql`](../supabase/migrations/20261014000000_leads.sql) e foi testado num Postgres local em 14/10/2026: gravação pela service role, bloqueio de leitura e gravação pelas chaves públicas, regras de cada campo, gatilho de `atualizado_em` e retenção. Em relação ao rascunho aprovado em 13/10/2026, ele acrescenta:
 
-alter table public.leads enable row level security;
--- Nenhuma política para anon/authenticated: visitantes não leem nem gravam.
--- A Função da Cloudflare grava com a service role (que ignora RLS) e a chave
--- fica só nas variáveis de ambiente da Cloudflare.
-
-create index leads_criado_em_idx on public.leads (criado_em);
-create index leads_status_idx on public.leads (status);
-
--- Atualiza atualizado_em quando o status muda no painel
-create or replace function public.tocar_atualizado_em()
-returns trigger language plpgsql as $$
-begin new.atualizado_em := now(); return new; end $$;
-
-create trigger leads_atualizado_em
-  before update on public.leads
-  for each row execute function public.tocar_atualizado_em();
-
--- Retenção LGPD (proposta): excluir leads sem avanço após 12 meses
--- (requer a extensão pg_cron habilitada no projeto Supabase)
-select cron.schedule(
-  'leads-retencao-12-meses', '0 3 * * 1',
-  $$ delete from public.leads
-     where status in ('novo','contatado','descartado')
-       and atualizado_em < now() - interval '12 months' $$
-);
-```
+- **Acessos explícitos:** `revoke` para `anon`/`authenticated` e `grant` só para `service_role`, porque o projeto não expõe tabelas novas automaticamente.
+- **`search_path` fixo** na função do gatilho (o Security Advisor do Supabase alerta sem isso).
+- **Limites de tamanho** em `pagina_origem` e nas UTMs (até 300 e 120 caracteres).
+- **`public.ping()`**, que só devolve 1, para o sinal diário do plano Free.
+- Retenção às segundas às 6h UTC (3h em Brasília).
 
 ## Variáveis de ambiente (Cloudflare, nunca no código)
 
-`SUPABASE_URL` · `SUPABASE_SERVICE_ROLE_KEY` · `RESEND_API_KEY` · `LEAD_NOTIFY_TO` (e-mail institucional) · `TURNSTILE_SECRET_KEY` · `NEXT_PUBLIC_TURNSTILE_SITE_KEY` (pública por natureza) · `NEXT_PUBLIC_GA_ID` (pública por natureza). Nenhuma chave secreta com prefixo `NEXT_PUBLIC_`.
+`SUPABASE_URL` · `SUPABASE_SERVICE_ROLE_KEY` · `SUPABASE_ANON_KEY` (só no Worker `manter-ativo`; pública por natureza) · `RESEND_API_KEY` · `LEAD_NOTIFY_TO` (e-mail institucional) · `TURNSTILE_SECRET_KEY` · `NEXT_PUBLIC_TURNSTILE_SITE_KEY` (pública por natureza) · `NEXT_PUBLIC_GA_ID` (pública por natureza). Nenhuma chave secreta com prefixo `NEXT_PUBLIC_`.
 
 ## E-mails
 
@@ -138,4 +113,4 @@ select cron.schedule(
 - A chave service role nunca vai para o navegador nem para o repositório.
 - Mensagens de erro ao visitante são genéricas; detalhes só nos logs da Cloudflare.
 - Encarregado de dados (DPO) citado na Política de Privacidade: Luis Ricardo Pedro (decisão do João, 13/10/2026). Canal de contato do encarregado: e-mail institucional [A CONFIRMAR].
-- Exportar a tabela mensalmente como backup (plano de manutenção do kit).
+- **Exportar a tabela todo mês** como backup (obrigatório no plano Free, que não tem backup automático); o arquivo tem dados pessoais e fica em pasta de acesso restrito.

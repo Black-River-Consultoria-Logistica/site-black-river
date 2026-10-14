@@ -43,7 +43,7 @@ Prefira a exportação estática sempre que o site não precisar de servidor. Ge
 | Busca | Search Console e Bing Webmaster Tools | Verificar pelo DNS, enviar o sitemap, vincular o Search Console ao GA4 |
 | Site fora do ar | Monitor de disponibilidade gratuito (ex.: UptimeRobot, Better Stack) | Checagem a cada 5 minutos, alerta para você |
 | Erros | Monitor de erros gratuito (ex.: Sentry) ou logs da Cloudflare | Alerta em erro de formulário ou de página |
-| Backup | Repositório Git + exportação do banco | Exportar a tabela de leads todo mês no plano de manutenção |
+| Backup | Repositório Git + exportação do banco | Exportar a tabela de leads todo mês no plano de manutenção (obrigatório no plano Free do Supabase, que não tem backup automático; ver SCHEMA.md) |
 
 ## Cuidados
 
