@@ -7,7 +7,10 @@ import {
   container,
   FaixaCtaFinal,
   linkInline,
+  linkTexto,
+  overline,
   secao,
+  TextoComSeta,
 } from "@/components/site/blocos";
 import { CardDeArtigo, CardDeFrente } from "@/components/site/cards";
 import {
@@ -16,11 +19,12 @@ import {
   frenteDoArtigo,
   hrefDoArtigo,
   outrosArtigos,
+  secoesDoArtigo,
   paginaInsights,
   type Artigo,
 } from "@/lib/content/insights";
 import { hrefContatoComFrente, modulos } from "@/lib/site";
-import { cn } from "@/lib/utils";
+import { ancora, cn } from "@/lib/utils";
 
 // Insights (Etapa 8): lista com filtro por frente e modelo único de artigo
 // (autor, data, corpo em MDX com caixa "O que é…", frente relacionada, 2 outros artigos e CTA).
@@ -92,6 +96,7 @@ export function PaginaListaDeInsights() {
 export function PaginaArtigo({ a }: { a: Artigo }) {
   const frente = frenteDoArtigo(a);
   const outros = outrosArtigos(a);
+  const secoes = secoesDoArtigo(a);
   const { Corpo } = a;
   return (
     <>
@@ -151,13 +156,47 @@ export function PaginaArtigo({ a }: { a: Artigo }) {
         </div>
       </AberturaDePagina>
 
-      <article className="pt-4 pb-16 lg:pb-24">
-        <div className={container}>
-          <div className="flex flex-col gap-5 lg:w-8/12 [&>h2:first-child]:pt-0">
+      <div className="pt-4 pb-16 lg:pb-24">
+        <div className={cn(container, "lg:grid lg:grid-cols-12 lg:gap-6")}>
+          <article className="flex flex-col gap-5 lg:col-span-7 [&>h2:first-child]:pt-0">
             <Corpo />
-          </div>
+          </article>
+          {/* A partir de 1024px: índice que acompanha a rolagem, no espaço que a medida de leitura deixa livre. */}
+          <aside aria-label="Neste artigo" className="hidden lg:col-span-4 lg:col-start-9 lg:block">
+            <div className="sticky top-28 flex flex-col gap-6 border-t-2 border-ink pt-6">
+              <nav aria-labelledby="indice-titulo" className="flex flex-col gap-3">
+                <p id="indice-titulo" className={cn(overline, "text-ink-60")}>
+                  Neste artigo
+                </p>
+                <ol className="flex flex-col">
+                  {secoes.map((s) => (
+                    <li key={s}>
+                      <a
+                        href={`#${ancora(s)}`}
+                        className="flex min-h-10 items-center border-b border-ink-10 py-2 text-small text-ink-80 transition-colors duration-150 hover:text-primary active:text-primary"
+                      >
+                        {s}
+                      </a>
+                    </li>
+                  ))}
+                </ol>
+              </nav>
+              <div className="flex flex-col gap-3">
+                <p className="text-small text-ink-80">
+                  Artigo de{" "}
+                  <Link href={a.autor.href} className={linkInline}>
+                    {a.autor.nome}
+                  </Link>
+                  , {a.autor.credencial.charAt(0).toLowerCase() + a.autor.credencial.slice(1)}.
+                </p>
+                <Link href={hrefContatoComFrente(frente)} className={cn(linkTexto, "self-start text-small")}>
+                  <TextoComSeta>Agendar conversa de diagnóstico</TextoComSeta>
+                </Link>
+              </div>
+            </div>
+          </aside>
         </div>
-      </article>
+      </div>
 
       <section aria-labelledby="relacionados-titulo" className={cn("bg-ink-05", secao)}>
         <div className={cn(container, "flex flex-col gap-12")}>

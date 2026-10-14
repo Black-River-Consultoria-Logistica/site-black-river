@@ -4,6 +4,8 @@
 // na Home (Etapa 4). Primeira frase de cada artigo: a aprovada nas pautas (abre com a resposta).
 // ATENÇÃO: rascunhos. Os artigos só vão ao ar depois da revisão do João e do Luis (docs/STATUS.md).
 
+import { readFileSync } from "node:fs";
+import path from "node:path";
 import type { MDXContent } from "mdx/types";
 import ComoEscolher from "@/content/insights/como-escolher-consultoria-de-logistica-para-varejo.mdx";
 import Diagnostico from "@/content/insights/como-funciona-um-diagnostico-logistico.mdx";
@@ -102,6 +104,12 @@ export const artigos: Artigo[] = [
     Corpo: Diagnostico,
   },
 ];
+
+/** Títulos das seções (## do MDX), lidos do próprio arquivo no build: o índice nunca diverge do texto. */
+export function secoesDoArtigo(a: Pick<Artigo, "slug">) {
+  const fonte = readFileSync(path.join(process.cwd(), "content/insights", `${a.slug}.mdx`), "utf8");
+  return [...fonte.matchAll(/^## (.+)$/gm)].map((m) => m[1].trim());
+}
 
 export function artigoPorSlug(slug: string) {
   return artigos.find((a) => a.slug === slug);

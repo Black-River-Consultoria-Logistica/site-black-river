@@ -2,7 +2,7 @@ import type { MDXComponents } from "mdx/types";
 import Link from "next/link";
 import { DiagramaCriterios, DiagramaEntregas, DiagramaEtapas } from "@/components/insights/diagramas";
 import { linkInline } from "@/components/site/blocos";
-import { cn } from "@/lib/utils";
+import { ancora, cn } from "@/lib/utils";
 
 // Tipografia dos artigos de Insights (Etapa 8). DESIGN.md: corpo de artigo 18px, medida de ~70 caracteres,
 // alinhado à esquerda, no máximo 2 níveis de título. Os títulos do MDX (##) viram h2 da página.
@@ -36,7 +36,15 @@ function A({ href = "", children }: React.ComponentProps<"a">) {
 const corpo = "max-w-[34rem] text-body text-ink-80 md:text-[1.125rem] md:leading-[1.65]";
 
 const componentes: MDXComponents = {
-  h2: ({ children }) => <h2 className="pt-6 max-w-[34ch] text-h4 text-balance text-ink md:text-h3">{children}</h2>,
+  // Cada h2 ganha âncora (índice "Neste artigo"); o scroll-padding global já desconta o cabeçalho fixo.
+  h2: ({ children }) => (
+    <h2
+      id={typeof children === "string" ? ancora(children) : undefined}
+      className="max-w-[34ch] pt-6 text-h4 text-balance text-ink md:text-h3"
+    >
+      {children}
+    </h2>
+  ),
   h3: ({ children }) => <h3 className="pt-2 text-h5 text-ink">{children}</h3>,
   p: ({ children }) => <p className={corpo}>{children}</p>,
   ul: ({ children }) => (
