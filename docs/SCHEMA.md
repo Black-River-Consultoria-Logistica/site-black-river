@@ -100,6 +100,12 @@ O script fica em [`supabase/migrations/20261014000000_leads.sql`](../supabase/mi
 - **`public.ping()`**, que só devolve 1, para o sinal diário do plano Free.
 - Retenção às segundas às 6h UTC (3h em Brasília).
 
+Segundo script, [`20261014010000_ajustes_advisor.sql`](../supabase/migrations/20261014010000_ajustes_advisor.sql), com os ajustes pedidos pelo Security Advisor depois da primeira execução (14/10/2026):
+
+- Tira o EXECUTE de `anon`/`authenticated` na função `rls_auto_enable()`, que o próprio Supabase cria quando o RLS automático está ligado.
+- Cria a política restritiva "Visitantes não leem nem gravam" (nega tudo a `anon`/`authenticated`). O efeito é o mesmo de "nenhuma política", agora explícito no banco.
+- Remove os dois índices: nesse volume eles não fazem diferença, e o Advisor os apontava como sem uso.
+
 ## Variáveis de ambiente (Cloudflare, nunca no código)
 
 `SUPABASE_URL` · `SUPABASE_SERVICE_ROLE_KEY` · `SUPABASE_ANON_KEY` (só no Worker `manter-ativo`; pública por natureza) · `RESEND_API_KEY` · `LEAD_NOTIFY_TO` (e-mail institucional) · `TURNSTILE_SECRET_KEY` · `NEXT_PUBLIC_TURNSTILE_SITE_KEY` (pública por natureza) · `NEXT_PUBLIC_GA_ID` (pública por natureza). Nenhuma chave secreta com prefixo `NEXT_PUBLIC_`.
