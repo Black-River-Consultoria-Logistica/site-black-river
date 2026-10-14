@@ -4,7 +4,7 @@ import { DiagramaCriterios, DiagramaEntregas, DiagramaEtapas } from "@/component
 import { linkInline } from "@/components/site/blocos";
 import { cn } from "@/lib/utils";
 
-// Tipografia dos artigos de Insights (Etapa 8). DESIGN.md: corpo de artigo 18px, medida de 68ch,
+// Tipografia dos artigos de Insights (Etapa 8). DESIGN.md: corpo de artigo 18px, medida de ~70 caracteres,
 // alinhado à esquerda, no máximo 2 níveis de título. Os títulos do MDX (##) viram h2 da página.
 
 function CaixaOQueE({ titulo, children }: { titulo: string; children: React.ReactNode }) {

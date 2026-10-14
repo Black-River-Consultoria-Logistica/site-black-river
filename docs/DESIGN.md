@@ -55,7 +55,7 @@ Contraste mínimo AA (4,5:1 para texto normal). `#669933` **nunca** em texto peq
 | caption | 12px | 1,45 | 300 itálico | Legenda, fonte |
 | overline | 12px | 1,20 | 700 | Rótulo em caixa-alta, `letter-spacing: 0.12em`, cor `#527F29` |
 
-Regras: corpo nunca abaixo de 16px; medida de leitura `max-width: 68ch`; parágrafos alinhados à esquerda (nunca centralizados nem justificados no site); `text-wrap: pretty`; no máximo 2 níveis de título por seção.
+Regras: corpo nunca abaixo de 16px; medida de leitura de cerca de 70 caracteres por linha (`max-width: 34rem` no corpo de artigo a 18px em Archivo; o `68ch` original dava 82–91 caracteres, porque o `ch` é mais estreito que a letra média — ajuste aprovado pelo João em 14/10/2026); parágrafos alinhados à esquerda (nunca centralizados nem justificados no site); `text-wrap: pretty`; no máximo 2 níveis de título por seção.
 
 ## Espaçamento e forma
 - Escala (4px): 4 · 8 · 12 · 16 · 24 · 32 · 48 · 64 · 96 · 128. Sempre via `gap`, nunca margens avulsas entre irmãos.
