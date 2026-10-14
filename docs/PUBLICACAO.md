@@ -37,7 +37,7 @@ Prefira a exportação estática sempre que o site não precisar de servidor. Ge
 
 O e-mail da empresa e o DNS **continuam no UOL Host**, sem troca de nameservers. Só o site sai do UOL para a Cloudflare Pages. No painel do UOL, a única entrada **alterada** é a do `www`; as outras são **novas** e não tocam no e-mail.
 
-1. **Fotografar a zona de DNS atual** (UOL Host › Administrar › menu "≡" do domínio › Alterar Zona de DNS › Gerenciar), todas as entradas de cada tipo. Serve de registro para desfazer qualquer passo; nenhum registro de e-mail será mexido.
+1. **Zona de DNS atual registrada** em `docs/pesquisa/dns-uol.md` (PDF do cPanel enviado pelo João em 14/10/2026). Falta conferir 1 registro que ficou escondido no PDF. Um dia antes do passo 8, baixar o TTL do `www` para 300 s.
 2. **Unir o trabalho na branch principal:** PR de `etapa-1-setup` para `main` e merge depois da revisão.
 3. **Projeto na Cloudflare Pages** ligado ao repositório: comando `npm run build`, pasta de saída `out`, Node 22. A pasta `functions/` vira a Função `/api/agendamento` sozinha.
 4. **Variáveis e ligações** (painel, nunca no código): `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `RESEND_API_KEY`, `LEAD_NOTIFY_TO`, `EMAIL_FROM`, `ALLOWED_ORIGINS`, `TURNSTILE_SECRET_KEY` e a ligação de KV **`LIMITE_ENVIOS`** (limite de 5 envios por IP a cada 10 minutos). Na prévia (`*.pages.dev`), a chave secreta **de teste** do Turnstile.
