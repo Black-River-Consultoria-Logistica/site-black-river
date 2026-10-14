@@ -15,3 +15,11 @@ dist/
 # Sistema
 .DS_Store
 *.log
+
+# Next.js
+next-env.d.ts
+*.tsbuildinfo
+
+# Skills de design de terceiros (reinstalar com scripts/setup-design.sh)
+.claude/skills/*
+!.claude/skills/construir-site/

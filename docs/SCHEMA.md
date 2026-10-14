@@ -1,13 +1,49 @@
-# SCHEMA.md — [Nome do cliente]
+# SCHEMA.md — Black River Consultoria
 
-> Derivado do APP_FLOW.md: cada ponto em que o site recebe ou mostra dados vira uma entidade.
-> Sites sem formulário nem login: registre só para onde vão os contatos (e-mail, CRM).
+> Derivado do APP_FLOW.md (aprovado em 13/10/2026). O único ponto em que o site recebe dados pessoais é o **formulário de agendamento** (`/contato`). Não há login, área de cliente, upload nem comentários.
+> Este arquivo descreve a estrutura de dados da Black River: tratar como confidencial.
+
+## Arquitetura do envio (aprovada em 13/10/2026: Supabase + e-mail)
+
+```
+Navegador (/contato, página estática)
+  └─ POST → Função da Cloudflare (/api/agendamento)
+        1. Confere Turnstile (antirrobô) e honeypot
+        2. Limite de envios por IP (regra de rate limit da Cloudflare)
+        3. Valida todos os campos no servidor (Zod)
+        4. Grava em Supabase com a chave de serviço (só no servidor)
+        5. Envia e-mail de aviso ao e-mail institucional (Resend)
+        6. Responde OK → navegador vai para /obrigado e dispara evento no GA4
+```
+
+Por que assim: o site continua 100% estático (mais rápido e barato na Cloudflare), e o navegador **nunca** fala direto com o banco. Diferente do modelo do kit (inserção anônima com RLS), aqui a tabela não tem nenhuma política para visitantes: só a função, com a chave de serviço, grava.
 
 ## Entidades
 
 | Entidade | Campos | Regras de acesso | Integrações | Retenção (LGPD) |
 | --- | --- | --- | --- | --- |
-| leads | nome, email, telefone, empresa, mensagem, origem, consentimento_lgpd, criado_em | Visitante só insere, com consentimento; ninguém lê pelo site | E-mail de aviso, [CRM] | [12 meses sem contato] |
+| `leads` | nome, email, empresa, cargo, telefone, preferencia_formato, modulo_interesse, mensagem, pagina_origem, utm_source, utm_medium, utm_campaign, consentimento_lgpd, versao_politica, status, criado_em, atualizado_em | RLS ativo, **nenhuma política** para `anon`/`authenticated`. Escrita só pela Função da Cloudflare (service role). Leitura só pelo painel do Supabase (João e quem ele autorizar). | E-mail de aviso (Resend) · CRM [A CONFIRMAR] | 12 meses sem relação comercial → exclusão automática *(proposta)*. Com proposta ou contrato, o contato passa para o controle comercial e sai desta tabela. |
+
+### Campos
+
+| Campo | Tipo | Obrigatório | Origem | Por que existe |
+| --- | --- | --- | --- | --- |
+| `nome` | texto (2–120) | sim | formulário | Contato |
+| `email` | texto, formato e-mail | sim | formulário | Contato; e-mail corporativo pedido no rótulo, sem bloquear domínios gratuitos |
+| `empresa` | texto (2–160) | sim | formulário | Qualificação |
+| `cargo` | texto (2–120) | sim | formulário | Qualificação (público é C-level e diretoria) |
+| `telefone` | texto (até 20) | não | formulário | Retorno por WhatsApp/telefone, se a pessoa quiser |
+| `preferencia_formato` | `online` · `presencial` · `tanto_faz` | não | formulário | A conversa de 1 hora pode ser online ou presencial |
+| `modulo_interesse` | um dos 7 módulos ou `nao_sei` | não | formulário (pré-selecionado se veio de uma página de módulo) | Preparar a conversa |
+| `mensagem` | texto (até 1.000) | não | formulário | Contexto livre |
+| `pagina_origem` | texto | automático | página onde o CTA foi clicado | Saber se módulos, Insights ou cases geram conversas |
+| `utm_source/medium/campaign` | texto | automático | URL | Medir LinkedIn e e-mail (não é dado pessoal) |
+| `consentimento_lgpd` | booleano | sim (`true`) | caixa de seleção, **desmarcada por padrão** | Base legal |
+| `versao_politica` | texto (ex.: `2026-10`) | automático | constante no código | Prova de qual política foi aceita |
+| `status` | `novo` · `contatado` · `agendado` · `realizado` · `descartado` | automático (`novo`); atualizado no painel | — | **Medir a meta de 90 dias** (conversas agendadas e realizadas) |
+| `criado_em` / `atualizado_em` | data e hora | automático | banco | Prazo de retorno de 1 dia útil e retenção |
+
+Não coletamos: CPF, endereço, faturamento da empresa, IP gravado em tabela (o rate limit usa o IP só na Cloudflare, sem armazenar).
 
 ## Diagrama
 
@@ -17,12 +53,21 @@ erDiagram
         uuid id PK
         text nome
         text email
-        text telefone
         text empresa
+        text cargo
+        text telefone
+        text preferencia_formato
+        text modulo_interesse
         text mensagem
-        text origem
+        text pagina_origem
+        text utm_source
+        text utm_medium
+        text utm_campaign
         boolean consentimento_lgpd
+        text versao_politica
+        text status
         timestamptz criado_em
+        timestamptz atualizado_em
     }
 ```
 
@@ -31,26 +76,66 @@ erDiagram
 ```sql
 create table public.leads (
   id uuid primary key default gen_random_uuid(),
-  nome text not null,
-  email text not null,
-  telefone text,
-  empresa text,
-  mensagem text,
-  origem text,
-  consentimento_lgpd boolean not null default false,
-  criado_em timestamptz not null default now()
+  nome text not null check (char_length(nome) between 2 and 120),
+  email text not null check (email ~* '^[^@\s]+@[^@\s]+\.[^@\s]+$'),
+  empresa text not null check (char_length(empresa) between 2 and 160),
+  cargo text not null check (char_length(cargo) between 2 and 120),
+  telefone text check (telefone is null or char_length(telefone) <= 20),
+  preferencia_formato text check (preferencia_formato in ('online','presencial','tanto_faz')),
+  modulo_interesse text check (modulo_interesse in (
+    'diagnostico','projeto_cd','eficiencia_cd','abastecimento_estoques',
+    'verbas_logisticas','tecnologia','transporte_malha','nao_sei')),
+  mensagem text check (mensagem is null or char_length(mensagem) <= 1000),
+  pagina_origem text,
+  utm_source text,
+  utm_medium text,
+  utm_campaign text,
+  consentimento_lgpd boolean not null check (consentimento_lgpd = true),
+  versao_politica text not null,
+  status text not null default 'novo'
+    check (status in ('novo','contatado','agendado','realizado','descartado')),
+  criado_em timestamptz not null default now(),
+  atualizado_em timestamptz not null default now()
 );
 
 alter table public.leads enable row level security;
+-- Nenhuma política para anon/authenticated: visitantes não leem nem gravam.
+-- A Função da Cloudflare grava com a service role (que ignora RLS) e a chave
+-- fica só nas variáveis de ambiente da Cloudflare.
 
-create policy "visitante envia lead com consentimento"
-  on public.leads for insert to anon
-  with check (consentimento_lgpd = true);
+create index leads_criado_em_idx on public.leads (criado_em);
+create index leads_status_idx on public.leads (status);
 
--- Sem política de leitura para visitantes:
--- os leads só são lidos pelo painel ou pelo servidor.
+-- Atualiza atualizado_em quando o status muda no painel
+create or replace function public.tocar_atualizado_em()
+returns trigger language plpgsql as $$
+begin new.atualizado_em := now(); return new; end $$;
+
+create trigger leads_atualizado_em
+  before update on public.leads
+  for each row execute function public.tocar_atualizado_em();
+
+-- Retenção LGPD (proposta): excluir leads sem avanço após 12 meses
+-- (requer a extensão pg_cron habilitada no projeto Supabase)
+select cron.schedule(
+  'leads-retencao-12-meses', '0 3 * * 1',
+  $$ delete from public.leads
+     where status in ('novo','contatado','descartado')
+       and atualizado_em < now() - interval '12 months' $$
+);
 ```
 
+## Variáveis de ambiente (Cloudflare, nunca no código)
+
+`SUPABASE_URL` · `SUPABASE_SERVICE_ROLE_KEY` · `RESEND_API_KEY` · `LEAD_NOTIFY_TO` (e-mail institucional) · `TURNSTILE_SECRET_KEY` · `NEXT_PUBLIC_TURNSTILE_SITE_KEY` (pública por natureza) · `NEXT_PUBLIC_GA_ID` (pública por natureza). Nenhuma chave secreta com prefixo `NEXT_PUBLIC_`.
+
+## E-mails
+
+- **Aviso interno** (sempre): para o e-mail institucional, com todos os campos e o link para o registro no painel. Assunto: "Novo pedido de diagnóstico — [empresa]".
+- **Confirmação ao visitante** (aprovado pelo João, 13/10/2026): "Recebemos seu pedido; retornamos em até 1 dia útil para agendar". Exige SPF, DKIM e DMARC no domínio. **Pendência:** formatar este e-mail com um case ou outro conteúdo que valorize a marca e seja útil ao lead (ver `docs/PENDENCIAS.md`).
+
 ## Cuidados
-- A chave service role nunca vai para o navegador.
-- Este arquivo descreve a estrutura de dados do cliente: tratar como confidencial.
+- A chave service role nunca vai para o navegador nem para o repositório.
+- Mensagens de erro ao visitante são genéricas; detalhes só nos logs da Cloudflare.
+- Encarregado de dados (DPO) citado na Política de Privacidade: Luis Ricardo Pedro (decisão do João, 13/10/2026). Canal de contato do encarregado: e-mail institucional [A CONFIRMAR].
+- Exportar a tabela mensalmente como backup (plano de manutenção do kit).

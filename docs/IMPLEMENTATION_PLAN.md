@@ -1,55 +1,119 @@
-# Plano de implementação — [Nome do cliente]
+# Plano de implementação — Black River Consultoria
 
-Fontes: BRIEF.md · APP_FLOW.md · DESIGN.md · SCHEMA.md
-Regra: executar uma etapa por vez, marcar [x], resumir e parar para aprovação. Commit ao fim de cada etapa aprovada.
+Fontes: BRIEF.md · APP_FLOW.md · DESIGN.md · SCHEMA.md (todos aprovados em 13/10/2026)
+Regra: executar uma etapa por vez, marcar [x], resumir e parar para aprovação. Commit ao fim de cada etapa aprovada (`etapa N: <resumo>`).
 
-> Modelo para landing page de leads. Para outros pacotes, a IA gera um plano novo na Fase 1, mantendo o formato.
+> Plano gerado para o pacote **institucional + conteúdo** (o modelo do kit era de landing page). Equivalência com a skill `construir-site`: "pré-publicação" = Etapas 1 a 12 marcadas; "publicado" = Etapa 13 marcada.
+> Prazo: o mais rápido possível. A redação (Etapa 3) pode correr em paralelo às Etapas 1 e 2.
+> Marcos do cliente: 1. brief ✓ · 2. layout (fim da Etapa 4) · 3. aprovado para publicação (fim da Etapa 12) · 4. entrega (fim da Etapa 13).
+
+## Insumos que o João precisa providenciar (e quando travam)
+
+| Insumo | Trava a etapa |
+| --- | --- |
+| Acesso ao GitHub da Black River (organização ou conta) para criar o repositório | 1 |
+| Arquivos oficiais do logo (SVG ou PNG em alta: horizontal site, vertical, versão para fundo preto) | 2 |
+| Dados de entidade: razão social, CNPJ, endereço, e-mail e WhatsApp institucionais, URLs do LinkedIn (pendência #3) | 2 (rodapé) — pode entrar até a 11 |
+| Revisão do Luis: perguntas reais, prazos por módulo, prova de verbas logísticas (pendência #4) | 3 |
+| Arquivos dos logos de clientes (os do slide "Alguns de nossos clientes") | 7 |
+| Contas em nome da Black River: Supabase, Resend, Cloudflare (Turnstile e hospedagem) | 9 e 10 |
+| Revisão jurídica dos textos legais | 11 |
+| Contas GA4, Search Console e Bing Webmaster; acesso ao DNS do domínio | 12 e 13 |
 
 ## Etapa 1 — Setup
-- [ ] Next.js + TypeScript + Tailwind + shadcn/ui; `components.json` com os registros de `config/components.json`
-- [ ] Tokens do DESIGN.md no `globals.css`
-- [ ] Decidir caminho de publicação: exportação estática ou `npx vinext check` (reportar resultado)
-- [ ] Rodar `scripts/setup-design.sh`; confirmar Playwright MCP ativo (`/mcp`); `/impeccable init` apontando para `docs/`
-- Pronto quando: página em branco roda local com as fontes e cores da marca
+- [ ] Repositório no GitHub da Black River a partir do template kit-sites-ia; `docs/` deste planejamento copiado para lá
+- [ ] Next.js (App Router) + TypeScript + Tailwind + shadcn/ui; `components.json` com os registros de `config/components.json`; Spell UI como biblioteca principal
+- [x] Exportação estática (`output: "export"`) confirmada como caminho de publicação (a única parte de servidor é a Função da Cloudflare do formulário)
+- [x] Tokens do DESIGN.md no `globals.css` (cores, `--radius: 0`, escala tipográfica, espaçamento de 4px); Archivo variável auto-hospedada (`@fontsource-variable/archivo`)
+- [ ] `scripts/setup-design.sh`; Playwright MCP ativo; `/impeccable init` apontando para `docs/BRIEF.md` e `docs/DESIGN.md` (um único DESIGN.md)
+- [ ] Valores da Taste Skill propostos e aprovados (variação de layout baixa, movimento baixo, densidade média)
+- Pronto quando: página em branco roda local com Archivo e as cores da marca; `npm run build` gera a pasta estática sem erro
 
 ## Etapa 2 — Layout base
-- [ ] Cabeçalho, rodapé (links de privacidade e termos), página 404 personalizada
-- [ ] `lang="pt-BR"`, HTML semântico
-- Pronto quando: navegação funciona e URL inexistente mostra a 404
+- [ ] Cabeçalho (logo "Horizontal — Site", navegação, botão do CTA) e menu do celular
+- [ ] Rodapé preto com logo todo verde, links, contatos institucionais, LinkedIn, Privacidade e Termos
+- [ ] Barra fixa de CTA no celular (some em /contato e /obrigado)
+- [ ] Página 404 personalizada (volta à Home e ao Contato)
+- [ ] `lang="pt-BR"`, HTML semântico (header, nav, main, footer), link "pular para o conteúdo", foco visível
+- [ ] Prints com Playwright em 375, 768 e 1280px; `/impeccable critique`
+- Pronto quando: navegação funciona em todas as larguras, URL inexistente mostra a 404, sem rolagem horizontal
 
-## Etapa 3 — Home
-- [ ] Hero com proposta de valor e CTA único acima da dobra
-- [ ] Seções de prova social, benefícios, objeções e FAQ (textos do BRIEF.md, abrindo cada seção com a resposta)
-- [ ] CTA fixo no celular
-- [ ] `/impeccable critique` na home e `review-animations` nas animações; corrigir o que contrariar o DESIGN.md
+## Etapa 3 — Conteúdo (redação, sem código)
+- [ ] `docs/CONTEUDO.md` com os textos de Home, Sobre, Como trabalhamos, Soluções, 7 módulos, Contato, Obrigado e 404, escritos a partir do BRIEF.md (abrindo cada seção com a resposta, sem prometer número não confirmado, "Centro de Distribuição" por extenso, siglas definidas)
+- [ ] Cada módulo com: o que é, para quem, sinais de que você precisa, como a Black River conduz, perguntas frequentes (2–4)
+- [ ] Palavra-chave de cada página confirmada (title, H1 e primeiro parágrafo)
+- [ ] Pautas e roteiro dos 3 artigos de lançamento (um por lacuna: experiência do lado do varejo, verbas logísticas, jornada com prazos)
+- Pronto quando: João aprova os textos; perguntas reais e prazos revisados com o Luis (ou marcados para depois do lançamento, sem texto provisório no site)
+
+## Etapa 4 — Home (marco 2: layout)
+- [ ] Hero com proposta de valor, CTA único acima da dobra e faixas a 22° num canto (ocultas no celular)
+- [ ] Dor → jornada → transformação; números de prova (30+ cases, 15 anos, 30 anos do Luis); destaque dos 7 módulos; prévia de cases e Insights; objeções respondidas; faixa de CTA final
+- [ ] `/impeccable critique` e `review-animations`; corrigir o que contrariar o DESIGN.md
 - [ ] Prints com Playwright em 375, 768 e 1280px
-- Pronto quando: home completa no desktop e no celular, sem texto de exemplo, prints conferidos (base do marco 2)
+- Pronto quando: Home completa no desktop e no celular com os textos aprovados, prints conferidos pelo João (aprovação do layout)
 
-## Etapa 4 — Banco de dados
-- [ ] Tabela `leads` conforme SCHEMA.md, com RLS ativo
-- Pronto quando: inserção anônima funciona e leitura anônima é bloqueada
+## Etapa 5 — Sobre e Como trabalhamos
+- [ ] Sobre: história, 30+ cases em 15 anos, currículo verificável do Luis Ricardo com foto; estrutura pronta para receber fotos futuras sem refazer layout
+- [ ] Como trabalhamos: diagnóstico validado → cronograma e entregas → execução conjunta; prazos típicos se confirmados; caixa "O que é um diagnóstico logístico"
+- [ ] Prints em 3 larguras; critique
+- Pronto quando: as duas páginas passam na verificação visual e cada uma tem um H1 com a palavra-chave aprovada
 
-## Etapa 5 — Formulário
-- [ ] Validação no servidor, erros por campo, estado de carregamento, erro de envio, consentimento LGPD
-- [ ] Proteção contra spam (honeypot ou Turnstile) e limite de envios
-- [ ] E-mail de aviso; redireciona para /obrigado
-- Pronto quando: todos os caminhos do APP_FLOW.md foram testados
+## Etapa 6 — Soluções e páginas de módulo
+- [ ] `/solucoes` com os 7 módulos
+- [ ] Modelo único de página de módulo e as 7 páginas preenchidas com o conteúdo da Etapa 3
+- [ ] CTA com o módulo pré-selecionado no formulário (`?modulo=`)
+- [ ] Prints em 3 larguras de `/solucoes` e de 2 módulos; critique
+- Pronto quando: as 8 rotas existem, sem texto de exemplo, e os links entre módulos funcionam
 
-## Etapa 6 — Páginas legais e cookies
-- [ ] Privacidade, termos e banner de cookies que bloqueia scripts antes do aceite
-- Pronto quando: textos revisados juridicamente pelo cliente
+## Etapa 7 — Cases e faixa de logos
+- [ ] `/cases` e modelo de case (contexto → desafio → solução → "meta traçada")
+- [ ] Os 4 cases aprovados (WMS, cross docking, estrutura do Centro de Distribuição, separação), adaptados para a web a partir dos one-pagers, mantendo o anonimato e as regras editoriais do João
+- [ ] Faixa de logos autorizados (monocromáticos), sem ligar logo a case
+- [ ] `break-ui` com textos longos e curtos; prints em 3 larguras
+- Pronto quando: os 4 cases publicados localmente, revisados contra as regras de confidencialidade, e nenhum cliente identificável
 
-## Etapa 7 — SEO, IA e analytics
-- [ ] Meta title e description por página, Open Graph, favicons, sitemap.xml, alt text, canonical
-- [ ] JSON-LD da empresa (`config/schema-org.json.example`)
-- [ ] Verificar nomes dos robôs de IA (prompt em PROMPTS.md), aprovar tabela, gerar robots.txt e llms.txt
-- [ ] GA4 após consentimento, eventos de conversão, canal de tráfego de IA
-- Pronto quando: Lighthouse acima de 90 em SEO e acessibilidade; PageSpeed acima de 90 no celular
+## Etapa 8 — Insights
+- [ ] Artigos em MDX no repositório (sem CMS); lista com filtro por módulo; modelo de artigo com autor (Luis), data, caixa "O que é…" e CTA no fim
+- [ ] 3 artigos de lançamento redigidos e aprovados
+- [ ] Links de cada artigo para o módulo relacionado e para 2 outros artigos
+- Pronto quando: os 3 artigos abrem com a resposta na primeira frase, sem becos sem saída, e o texto aparece no HTML do servidor (Ctrl+U)
 
-## Etapa 8 — Publicação
-- [ ] `/impeccable polish` e `/impeccable audit`; `npx impeccable detect` sem achados críticos; `break-ui` com dados extremos
-- [ ] Auditoria contra `checklists/producao.md`, `checklists/seguranca.md` e `checklists/seo-ia.md`
+## Etapa 9 — Banco de dados
+- [ ] Projeto Supabase na conta da Black River; tabela `leads` conforme SCHEMA.md, RLS ativo sem políticas para visitantes; gatilho de `atualizado_em`; rotina de retenção (pg_cron)
+- [ ] Security Advisor do Supabase sem alertas
+- Pronto quando: gravação com a chave de serviço funciona; leitura e gravação com a chave anônima são bloqueadas
+
+## Etapa 10 — Formulário e envio
+- [ ] Formulário em `/contato` conforme APP_FLOW: obrigatórios, opcionais, consentimento desmarcado, erros por campo sem perder o que foi digitado, estado de carregamento
+- [ ] Função da Cloudflare `/api/agendamento`: Turnstile, honeypot, rate limit, validação com Zod, gravação no Supabase, e-mail de aviso e e-mail de confirmação ao visitante (formato provisório até resolver a pendência #5)
+- [ ] Falha de envio com "tentar de novo" + e-mail e WhatsApp como alternativa; sucesso redireciona a `/obrigado` (retorno em até 1 dia útil, convite para Insights)
+- Pronto quando: todos os caminhos do APP_FLOW testados (válido, inválido, falha simulada, robô bloqueado, envio repetido limitado) e os dois e-mails chegando
+
+## Etapa 11 — Páginas legais e cookies
+- [ ] Política de privacidade (dados do formulário, finalidade, retenção de 12 meses, Luis Ricardo como encarregado, contato) e Termos de uso
+- [ ] Banner de cookies com "Aceitar" e "Recusar" de mesmo peso e "Preferências"; nada de GA4 antes do aceite
+- Pronto quando: textos revisados juridicamente pela Black River e nenhum script de analytics carregado antes do aceite (conferido na aba de rede)
+
+## Etapa 12 — SEO, IA e analytics (marco 3)
+- [ ] Title e description únicos por página, Open Graph (1200×630), favicons, `sitemap.xml`, canonical, texto alternativo
+- [ ] Imagens em WebP/AVIF no tamanho exibido, carregamento sob demanda, nenhuma acima de ~200 KB sem motivo
+- [ ] JSON-LD: ProfessionalService em todas as páginas (com `sameAs` e dados de entidade), Person (Luis Ricardo), Service nos módulos, Article nos artigos, FAQPage e BreadcrumbList onde couber
+- [ ] Tabela dos robôs de IA verificada na documentação oficial (prompt do PROMPTS.md) e aprovada; `robots.txt` liberando busca e treino; `llms.txt`
+- [ ] GA4 após consentimento; eventos de conversão (envio, clique no WhatsApp, visita ao Obrigado); grupo de canais para tráfego de IA
+- Pronto quando: Lighthouse acima de 90 em SEO e acessibilidade e PageSpeed acima de 90 no celular, nas páginas principais; aprovação para publicar
+
+## Etapa 13 — Publicação
+- [ ] `/impeccable polish` e `/impeccable audit`; `npx impeccable detect` sem achados críticos; `break-ui`
+- [ ] Auditoria contra `checklists/producao.md`, `checklists/seguranca.md` e `checklists/seo-ia.md` (item 19 de segurança feito pessoalmente pelo João)
 - [ ] `docs/LICENCAS.md` completo
-- [ ] Deploy na Cloudflare, domínio, HTTPS forçado, configuração de robôs de IA conferida
-- [ ] Search Console e Bing Webmaster com sitemap enviado
+- [ ] Headers de segurança (`_headers` da Cloudflare: CSP, HSTS, X-Content-Type-Options, Referrer-Policy) com nota A em securityheaders.com; Gitleaks no histórico sem achados
+- [ ] Deploy na Cloudflare; domínio blackriverconsultoria.com.br apontado; HTTPS forçado; www e sem www numa única versão; redirecionamentos 301 de endereços do site antigo que existirem
+- [ ] Configuração de robôs de IA da Cloudflare conferida (sem bloqueio padrão); teste pós-deploy dos robôs com resposta 200
+- [ ] SPF, DKIM e DMARC do e-mail; Search Console e Bing Webmaster com sitemap; Perfil da Empresa no Google igual ao site
 - Pronto quando: todos os itens aplicáveis dos três checklists estão OK no site publicado
+
+## Depois do lançamento (plano de manutenção)
+- Repetir o teste de citação por IA (mesma pergunta da Etapa 0) em 30, 60 e 90 dias e comparar com 0/3.
+- Definir a meta numérica de conversas com base nos primeiros 30 dias.
+- Publicar Insights no ritmo da linha editorial do LinkedIn; acrescentar fotos reais quando existirem.
+- Exportar a tabela `leads` mensalmente.
