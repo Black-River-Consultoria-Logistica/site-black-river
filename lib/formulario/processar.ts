@@ -10,7 +10,7 @@ export type Ambiente = {
   RESEND_API_KEY?: string;
   /** E-mail institucional que recebe o aviso de cada pedido. */
   LEAD_NOTIFY_TO?: string;
-  /** Remetente dos e-mails, ex.: "Black River Consultoria <site@blackriverconsultoria.com.br>". */
+  /** Remetente dos e-mails: "Black River Consultoria <contato@blackriverconsultoria.com.br>" (docs/SCHEMA.md). */
   EMAIL_FROM?: string;
   TURNSTILE_SECRET_KEY?: string;
   /** Origens aceitas, separadas por vírgula (ex.: "https://www.blackriverconsultoria.com.br"). */
