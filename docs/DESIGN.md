@@ -67,7 +67,7 @@ Regras: corpo nunca abaixo de 16px; medida de leitura `max-width: 68ch`; parágr
 
 ## Componentes
 - Biblioteca principal: **Spell UI** (indicada pelo kit para site sóbrio e institucional). Outras bibliotecas só para lacunas, com registro em `docs/LICENCAS.md`.
-- **Cabeçalho:** fundo branco, borda inferior 1px `#E6E6E6`; logo "Horizontal — Site" colorido à esquerda (≥76px de largura, área de proteção respeitada); links em 14–16px peso 500 preto; à direita, botão do CTA. No celular: logo + menu, e o CTA vai para a barra fixa inferior.
+- **Cabeçalho:** fixo no topo a partir de 1024px (decisão do João, 13/10/2026); fundo branco, borda inferior 1px `#E6E6E6`; logo "Horizontal — Site" colorido à esquerda (≥76px de largura, área de proteção respeitada); links em 14–16px peso 500 preto; à direita, botão do CTA. No celular: logo + menu, e o CTA vai para a barra fixa inferior.
 - **Botão primário (CTA):** fundo `#527F29`, texto branco 16px peso 600, padding 12px × 24px, raio 0. Hover: fundo `#000000`. Foco: contorno 2px `#527F29` com afastamento de 2px. Um único botão primário por região da página.
 - **Link/ação secundária:** texto preto 16px peso 500 com sublinhado; hover `#527F29`. Nunca outro botão cheio competindo com o CTA.
 - **Card de módulo:** fundo branco, borda 1px `#E6E6E6`, padding 32px; overline "MÓDULO 0X" em `#527F29`; título h4 preto; 2 linhas de texto `#333333`; link "Conhecer o módulo". Hover: borda `#000000` (sem sombra, sem animação de escala).

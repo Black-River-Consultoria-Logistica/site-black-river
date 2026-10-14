@@ -95,6 +95,7 @@
 
 @layer base {
   html { -webkit-text-size-adjust: 100%; }
+  @media (min-width: 64rem) { html { scroll-padding-top: 6rem; } } /* âncoras não ficam sob o cabeçalho fixo */
   body {
     background: var(--background);
     color: var(--br-ink-80);

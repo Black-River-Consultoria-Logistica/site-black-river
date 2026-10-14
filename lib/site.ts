@@ -32,11 +32,12 @@ export const navegacaoPrincipal: ItemDeNavegacao[] = [
   { rotulo: "Sobre", href: "/sobre" },
 ];
 
-// Os 7 módulos oficiais (nomenclatura da apresentação institucional).
+// Os 7 módulos (nomenclatura da apresentação institucional, com "Centro de Distribuição"
+// no lugar de "Centrais" — decisão do João para o site, 13/10/2026).
 export const modulos: ItemDeNavegacao[] = [
   { rotulo: "Análise e Diagnóstico de Operações Logísticas", href: "/solucoes/diagnostico-logistico" },
-  { rotulo: "Projeto de Centrais de Distribuição", href: "/solucoes/projeto-de-centro-de-distribuicao" },
-  { rotulo: "Eficiência Operacional em Centrais de Distribuição", href: "/solucoes/eficiencia-operacional-em-centro-de-distribuicao" },
+  { rotulo: "Projeto de Centro de Distribuição", href: "/solucoes/projeto-de-centro-de-distribuicao" },
+  { rotulo: "Eficiência Operacional em Centro de Distribuição", href: "/solucoes/eficiencia-operacional-em-centro-de-distribuicao" },
   { rotulo: "Gestão de Abastecimento e Estoques", href: "/solucoes/gestao-de-abastecimento-e-estoques" },
   { rotulo: "Negociação de Verbas Logísticas com Fornecedores", href: "/solucoes/negociacao-de-verbas-logisticas" },
   { rotulo: "Tecnologia da Informação aplicada a Supply Chain", href: "/solucoes/tecnologia-aplicada-a-supply-chain" },
