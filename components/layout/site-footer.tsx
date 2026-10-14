@@ -57,8 +57,7 @@ export function SiteFooter() {
           <div className="flex flex-col gap-3 lg:col-span-3">
             <h2 className={tituloColuna}>Contato</h2>
             <p className="max-w-[32ch] text-small">
-              Conversa de diagnóstico de 1 hora, sem custo, online ou presencial. Atendemos no Brasil e na América
-              Latina.
+              Conversa de diagnóstico sem custo, online ou presencial. Atendemos no Brasil e na América Latina.
             </p>
             <ul className="flex flex-col gap-1">
               <li>

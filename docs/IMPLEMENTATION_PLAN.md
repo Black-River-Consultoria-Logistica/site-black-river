@@ -41,11 +41,12 @@ Regra: executar uma etapa por vez, marcar [x], resumir e parar para aprovação.
 - **Aprovada pelo João em 13/10/2026.** Ajustes decididos na aprovação: cabeçalho fixo no computador; "Centro de Distribuição" também nos nomes dos módulos.
 
 ## Etapa 3 — Conteúdo (redação, sem código)
-- [ ] `docs/CONTEUDO.md` com os textos de Home, Sobre, Como trabalhamos, Soluções, 7 módulos, Contato, Obrigado e 404, escritos a partir do BRIEF.md (abrindo cada seção com a resposta, sem prometer número não confirmado, "Centro de Distribuição" por extenso, siglas definidas)
-- [ ] Cada módulo com: o que é, para quem, sinais de que você precisa, como a Black River conduz, perguntas frequentes (2–4)
-- [ ] Palavra-chave de cada página confirmada (title, H1 e primeiro parágrafo)
-- [ ] Pautas e roteiro dos 3 artigos de lançamento (um por lacuna: experiência do lado do varejo, verbas logísticas, jornada com prazos)
+- [x] `docs/CONTEUDO.md` com os textos de Home, Sobre, Como trabalhamos, Soluções, 7 módulos, Contato, Obrigado e 404, escritos a partir do BRIEF.md (abrindo cada seção com a resposta, sem prometer número não confirmado, "Centro de Distribuição" por extenso, siglas definidas)
+- [x] Cada módulo com: o que é, para quem, sinais de que você precisa, como a Black River conduz, perguntas frequentes (2–4)
+- [x] Palavra-chave de cada página confirmada (title, H1 e primeiro parágrafo)
+- [x] Pautas e roteiro dos 3 artigos de lançamento (um por lacuna: experiência do lado do varejo, verbas logísticas, jornada com prazos)
 - Pronto quando: João aprova os textos; perguntas reais e prazos revisados com o Luis (ou marcados para depois do lançamento, sem texto provisório no site)
+- **Aprovada pelo João em 14/10/2026** (revisão por comentários no Claude Doc). Decisões: no site, "módulo" vira "frente de trabalho"; a duração da conversa de diagnóstico não aparece (só "sem custo, online ou presencial"); H1 da Home provisório, a revisitar. Itens marcados [VALIDAR/REVISAR/CONSTRUIR COM LUIS] e [A CONFIRMAR] só vão ao ar confirmados (lista no fim de `docs/CONTEUDO.md`; pendência #4).
 
 ## Etapa 4 — Home (marco 2: layout)
 - [ ] Hero com proposta de valor, CTA único acima da dobra e faixas a 22° num canto (ocultas no celular)
