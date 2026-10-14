@@ -38,6 +38,7 @@ Regra: executar uma etapa por vez, marcar [x], resumir e parar para aprovação.
 - [x] `lang="pt-BR"`, HTML semântico (header, nav, main, footer), link "pular para o conteúdo", foco visível
 - [x] Prints com Playwright em 375, 768 e 1280px (e 1024); `/impeccable critique` com as duas avaliações isoladas; detector sem achados no código e nas URLs
 - Pronto quando: navegação funciona em todas as larguras, URL inexistente mostra a 404, sem rolagem horizontal
+- **Aprovada pelo João em 13/10/2026.** Ajustes decididos na aprovação: cabeçalho fixo no computador; "Centro de Distribuição" também nos nomes dos módulos.
 
 ## Etapa 3 — Conteúdo (redação, sem código)
 - [ ] `docs/CONTEUDO.md` com os textos de Home, Sobre, Como trabalhamos, Soluções, 7 módulos, Contato, Obrigado e 404, escritos a partir do BRIEF.md (abrindo cada seção com a resposta, sem prometer número não confirmado, "Centro de Distribuição" por extenso, siglas definidas)

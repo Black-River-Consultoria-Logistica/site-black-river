@@ -22,7 +22,9 @@ Atualizado: 13/10/2026 · Responsável interno: João Assad
 
 ## Fase 2 — Construção
 - Etapa 1 — Setup: **aprovada em 13/10/2026** (ressalva: envio ao GitHub pendente, #7; o trabalho circula por git bundle e o GitHub só é indispensável na Etapa 13).
-- Etapa 2 — Layout base: concluída em 13/10/2026, aguardando aprovação do João. Logos oficiais recebidos (PNG), limpos da moldura de exportação e exportados em 2x; rodapé com o logo oficial em uma cor no verde exato #669933.
+- Etapa 2 — Layout base: **aprovada em 13/10/2026**.
+- Etapa 3 — Conteúdo (redação): próxima.
+- (histórico) Etapa 2: Logos oficiais recebidos (PNG), limpos da moldura de exportação e exportados em 2x; rodapé com o logo oficial em uma cor no verde exato #669933.
 - Decisões da Etapa 2 (13/10/2026): no site, "Centro de Distribuição" também nos nomes dos módulos ("Projeto de Centro de Distribuição", "Eficiência Operacional em Centro de Distribuição"), nunca "Centrais"; cabeçalho fixo no topo no computador.
 - Decisões: domínios dos componentes liberados (exceto componentry.dev); Impeccable instalado e `/impeccable critique` volta a rodar ao fim de cada etapa visual (João, 13/10/2026); Taste Skill variação/movimento/densidade médios.
 - Alerta para a Etapa 7: o `logos-carousel` da Spell UI roda em loop contínuo, o que contraria o DESIGN.md (nada em loop). Usar faixa estática ou adaptar com pausa e prefers-reduced-motion.
