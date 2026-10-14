@@ -23,3 +23,8 @@ next-env.d.ts
 # Skills de design de terceiros (reinstalar com scripts/setup-design.sh)
 .claude/skills/*
 !.claude/skills/construir-site/
+
+# Instalado por scripts/setup-design.sh (Impeccable): agentes, hooks locais e artefatos
+.claude/agents/
+.claude/settings.local.json
+.impeccable/

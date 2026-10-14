@@ -7,6 +7,6 @@
 | 3 | Dados de entidade: razão social, CNPJ, endereço completo, e-mail e WhatsApp institucionais, URLs do LinkedIn (página e Luis). | Etapa 1 — brief | João | Aberta |
 | 4 | Revisar com Luis Ricardo: perguntas reais do público (FAQ/AEO), prazos típicos por módulo, prova para verbas logísticas. | Etapa 1 — brief | João + Luis | Aberta |
 | 5 | Formatar o e-mail de confirmação ao lead com um case ou conteúdo útil que valorize a marca. | Etapa 4 — schema | Claude (propor) + João | Aberta |
-| 6 | Liberar na rede da organização (Claude, configurações de admin) os domínios ui.shadcn.com e spell.sh (opcionais: www.cult-ui.com, componentry.dev, impeccable.style). Trava a instalação dos componentes da Etapa 1. | Etapa 1 — setup | Admin da organização | Aberta |
+| 6 | Liberar na rede da organização (Claude, configurações de admin) os domínios ui.shadcn.com e spell.sh (opcionais: www.cult-ui.com, componentry.dev, impeccable.style). Trava a instalação dos componentes da Etapa 1. | Etapa 1 — setup | Admin da organização | Resolvida em 13/10/2026 para ui.shadcn.com, spell.sh, www.cult-ui.com e impeccable.style. componentry.dev segue bloqueado (opcional; só se a Etapa 7 precisar). |
 | 7 | Adicionar o repositório Black-River-Consultoria-Logistica/site-black-river às fontes da sessão do Claude, para permitir o envio dos commits. | Etapa 1 — setup | João | Aberta |
 | 8 | Revogar o token do GitHub colado na conversa em 13/10/2026 (não é mais necessário). | Etapa 1 — setup | João | Aberta |

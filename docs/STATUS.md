@@ -21,8 +21,9 @@ Atualizado: 13/10/2026 · Responsável interno: João Assad
 - [x] Etapa 5 — IMPLEMENTATION_PLAN.md (13 etapas de construção) — aprovada 13/10/2026
 
 ## Fase 2 — Construção
-- Etapa 1 — Setup: em andamento. Feito: Next.js + Tailwind + build estático, tokens, Archivo, skills de design, commit da Fase 1 sobre o template. Bloqueado: componentes shadcn/Spell UI (pendência #6) e envio ao GitHub (pendência #7).
-- Decisões: liberar domínios dos componentes; Impeccable substituído até a Etapa 13; Taste Skill variação/movimento/densidade médios.
+- Etapa 1 — Setup: concluída, aguardando aprovação do João. Feito: Next.js + Tailwind + build estático, tokens, Archivo, skills de design (incluindo Impeccable), primitivas shadcn adaptadas ao DESIGN.md, registro @spell validado. Único item aberto: envio ao GitHub (pendência #7); até lá, o trabalho circula por git bundle.
+- Decisões: liberar domínios dos componentes (feito, exceto componentry.dev); Impeccable instalado em 13/10/2026 — proposta de voltar ao `critique` por etapa visual, aguardando o João; Taste Skill variação/movimento/densidade médios.
+- Alerta para a Etapa 7: o `logos-carousel` da Spell UI roda em loop contínuo, o que contraria o DESIGN.md (nada em loop). Usar faixa estática ou adaptar com pausa e prefers-reduced-motion.
 
 ## Pendências
 3. Dados de entidade: razão social, CNPJ, endereço, e-mail e WhatsApp institucionais, URLs do LinkedIn (página e Luis).

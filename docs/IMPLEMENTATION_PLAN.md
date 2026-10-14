@@ -21,11 +21,11 @@ Regra: executar uma etapa por vez, marcar [x], resumir e parar para aprovação.
 | Contas GA4, Search Console e Bing Webmaster; acesso ao DNS do domínio | 12 e 13 |
 
 ## Etapa 1 — Setup
-- [ ] Repositório no GitHub da Black River a partir do template kit-sites-ia; `docs/` deste planejamento copiado para lá
-- [ ] Next.js (App Router) + TypeScript + Tailwind + shadcn/ui; `components.json` com os registros de `config/components.json`; Spell UI como biblioteca principal
+- [ ] Repositório no GitHub da Black River a partir do template kit-sites-ia; `docs/` deste planejamento copiado para lá (repositório criado; envio dos commits aguarda a pendência #7 — até lá o trabalho circula por git bundle)
+- [x] Next.js (App Router) + TypeScript + Tailwind + shadcn/ui; `components.json` com os registros de `config/components.json`; Spell UI como biblioteca principal (13/10/2026: primitivas button, input, label, textarea, checkbox, select e sheet adaptadas ao DESIGN.md; registro `@spell` respondendo; componentes da Spell entram por etapa, conforme a seção pedir)
 - [x] Exportação estática (`output: "export"`) confirmada como caminho de publicação (a única parte de servidor é a Função da Cloudflare do formulário)
 - [x] Tokens do DESIGN.md no `globals.css` (cores, `--radius: 0`, escala tipográfica, espaçamento de 4px); Archivo variável auto-hospedada (`@fontsource-variable/archivo`)
-- [x] `scripts/setup-design.sh`: skills de Emil Kowalski e Taste Skill instaladas. Impeccable: pacote de skills bloqueado pela rede da sessão; decisão do João (13/10/2026): a cada etapa visual usar `npx impeccable detect` + Taste Skill + revisão contra o DESIGN.md + prints em 3 larguras (Playwright direto, sem MCP); critique/audit completos na Etapa 13
+- [x] `scripts/setup-design.sh`: skills de Emil Kowalski e Taste Skill instaladas. Impeccable: pacote de skills bloqueado pela rede da sessão; decisão do João (13/10/2026): a cada etapa visual usar `npx impeccable detect` + Taste Skill + revisão contra o DESIGN.md + prints em 3 larguras (Playwright direto, sem MCP); critique/audit completos na Etapa 13. Atualização 13/10/2026: Impeccable v0.1.14 instalado (rede liberada); `impeccable detect` no código sem achados. A varredura por URL falha no ambiente de nuvem (navegador sem sandbox como root) — usar a varredura de arquivos + prints do Playwright
 - [x] Valores da Taste Skill aprovados pelo João: variação de layout **média**, movimento **médio**, densidade **média** (sempre dentro do DESIGN.md: animações curtas, só transform/opacity, nada em loop, prefers-reduced-motion)
 - Pronto quando: página em branco roda local com Archivo e as cores da marca; `npm run build` gera a pasta estática sem erro
 

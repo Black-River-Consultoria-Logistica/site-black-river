@@ -1,4 +1,11 @@
-// Etapa 1 — página de verificação de tokens (substituída pela Home na Etapa 4).
+// Etapa 1 — página de verificação de tokens e primitivas (substituída pela Home na Etapa 4).
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+
 const cores = [
   ["ink", "#000000"], ["ink-80", "#333333"], ["ink-60", "#666666"], ["ink-40", "#999999"],
   ["ink-20", "#CCCCCC"], ["ink-10", "#E6E6E6"], ["ink-05", "#F2F2F2"], ["paper", "#FFFFFF"],
@@ -27,8 +34,33 @@ export default function Page() {
         <p className="text-h2">h2 39px</p>
         <p className="text-h3">h3 31px</p>
         <p className="text-h4">h4 25px</p>
-        <p className="text-body">body 16px · <a className="text-brand-deep underline" href="#">link</a></p>
-        <button className="w-fit bg-primary px-6 py-3 font-semibold text-primary-foreground hover:bg-ink">Botão primário</button>
+        <p className="text-body">body 16px · <Link className="text-brand-deep underline" href="/">link</Link></p>
+      </section>
+      <section className="flex flex-col gap-6 border-t border-ink-10 pt-12">
+        <h2 className="text-h4">Primitivas shadcn/ui no padrão do DESIGN.md</h2>
+        <div className="flex flex-wrap items-center gap-6">
+          <Button>Agendar conversa</Button>
+          <Button variant="link">Ver os módulos</Button>
+        </div>
+        <form className="grid max-w-xl gap-5" aria-label="Exemplo de campos">
+          <div className="grid gap-2">
+            <Label htmlFor="nome">Nome</Label>
+            <Input id="nome" name="nome" autoComplete="name" />
+          </div>
+          <div className="grid gap-2">
+            <Label htmlFor="email">E-mail corporativo</Label>
+            <Input id="email" name="email" type="email" aria-invalid="true" aria-describedby="email-erro" />
+            <p id="email-erro" className="text-small text-destructive">Informe um e-mail válido.</p>
+          </div>
+          <div className="grid gap-2">
+            <Label htmlFor="mensagem">Mensagem</Label>
+            <Textarea id="mensagem" name="mensagem" />
+          </div>
+          <div className="flex items-start gap-3">
+            <Checkbox id="consentimento" />
+            <Label htmlFor="consentimento" className="leading-snug font-normal text-ink-80">Concordo com o uso dos meus dados para retorno do contato.</Label>
+          </div>
+        </form>
       </section>
     </main>
   );
