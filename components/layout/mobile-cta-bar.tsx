@@ -29,7 +29,7 @@ export function MobileCtaBar() {
       <div aria-hidden className="h-[calc(4.5rem+env(safe-area-inset-bottom))] bg-ink lg:hidden" />
       <div
         className={cn(
-          "fixed inset-x-0 bottom-0 z-40 border-t border-ink-10 bg-paper px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] transition-transform duration-200 ease-[cubic-bezier(0.32,0.72,0,1)] md:px-6 lg:hidden",
+          "fixed inset-x-0 bottom-0 z-40 border-t border-ink-10 bg-paper px-safe pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] transition-transform duration-200 ease-[cubic-bezier(0.32,0.72,0,1)] lg:hidden",
           recolhida && "pointer-events-none translate-y-full"
         )}
         aria-hidden={recolhida || undefined}

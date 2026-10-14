@@ -2,17 +2,24 @@
 // Estrutura aprovada no esboço da Etapa 4: Dor e Transformação unificadas em "Antes × Depois".
 
 export const hero = {
-  // H1 provisório (pendência #9: revisitar).
-  titulo: "Consultoria em logística para varejo e atacado que executa junto até o resultado ficar com o seu time.",
-  subtitulo:
+  // H1 só com a palavra-chave; a promessa de execução abre o subtítulo (pacote 3, aprovado pelo João em 14/10/2026).
+  titulo: "Consultoria em logística para varejo e atacado",
+  subtitulo: [
+    "Executamos junto até o resultado ficar com o seu time.",
     "A Black River leva para dentro da sua logística a bagagem de quem dirigiu grandes operações e conhece os desafios do varejo brasileiro.",
+  ],
   apoio: "Sem custo, online ou presencial.",
 };
 
-export const provas = [
+export const provas: { numero: string; legenda: string; destaque?: { texto: string; href: string } }[] = [
   { numero: "30+", legenda: "cases de sucesso" },
   { numero: "15 anos", legenda: "de atuação da Black River" },
-  { numero: "30 anos", legenda: "do sócio-diretor à frente de Supply Chain em grandes empresas" },
+  {
+    numero: "30 anos",
+    // Nome do Luis junto à prova (decisão do João, 14/10/2026); link para a página Sobre.
+    legenda: "de Luis Ricardo Pedro, sócio-diretor, no Supply Chain do Grupo Pão de Açúcar, Carrefour, Martins Atacadista, Bertin/JBS e Ultragaz",
+    destaque: { texto: "Luis Ricardo Pedro", href: "/sobre" },
+  },
 ];
 
 export const antesDepois = {
@@ -85,10 +92,11 @@ export const cases = {
   titulo: "Diagnósticos reais: a experiência da Black River na prática.",
   texto: "Cada case mostra o problema encontrado, a causa raiz e a meta traçada com o cliente.",
   // Textos completos na Etapa 7; aqui só o que já foi aprovado (tema e título).
+  // O primeiro item é o destaque da Home (o único título com número).
   itens: [
+    { tema: "Separação", titulo: "60 caixas por hora: quase 50% abaixo do mercado", href: "/cases/separacao" },
     { tema: "Cross docking", titulo: "Produto parado não é cross docking", href: "/cases/cross-docking" },
     { tema: "Estrutura do Centro de Distribuição", titulo: "Quase metade do quadro fora da operação", href: "/cases/estrutura-do-centro-de-distribuicao" },
-    { tema: "Separação", titulo: "60 caixas por hora: quase 50% abaixo do mercado", href: "/cases/separacao" },
   ],
   link: { rotulo: "Ver todos os cases", href: "/cases" },
 };

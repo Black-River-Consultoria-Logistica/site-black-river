@@ -94,6 +94,28 @@
   --container-site: 75rem; /* 1200px */
 }
 
+/* Margem lateral que respeita a área segura do iPhone (entalhe na horizontal). */
+@utility px-safe {
+  padding-inline: max(1rem, env(safe-area-inset-left)) max(1rem, env(safe-area-inset-right));
+  @media (width >= 48rem) {
+    padding-inline: max(1.5rem, env(safe-area-inset-left)) max(1.5rem, env(safe-area-inset-right));
+  }
+}
+
+/* Entrada única das faixas da marca no hero (250ms, só transform/opacity; nada com movimento reduzido). */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes br-faixa-entra {
+    from { opacity: 0; transform: translateX(-24px); }
+    to { opacity: 1; transform: none; }
+  }
+  .br-faixas-animadas polygon {
+    animation: br-faixa-entra 250ms cubic-bezier(0.23, 1, 0.32, 1) both;
+  }
+  .br-faixas-animadas polygon:nth-child(1) { animation-delay: 100ms; }
+  .br-faixas-animadas polygon:nth-child(2) { animation-delay: 160ms; }
+  .br-faixas-animadas polygon:nth-child(3) { animation-delay: 220ms; }
+}
+
 @layer base {
   html { -webkit-text-size-adjust: 100%; }
   @media (min-width: 64rem) { html { scroll-padding-top: 6rem; } } /* âncoras não ficam sob o cabeçalho fixo */

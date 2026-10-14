@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 // No celular o CTA fica só na barra fixa (um botão primário por região).
 export default function NotFound() {
   return (
-    <section className="mx-auto grid max-w-site gap-12 px-4 py-16 md:px-6 md:py-24 lg:grid-cols-12 lg:gap-6 lg:py-32">
+    <section className="mx-auto grid max-w-site gap-12 px-safe py-16 md:py-24 lg:grid-cols-12 lg:gap-6 lg:py-32">
       <div className="flex flex-col gap-8 lg:col-span-7">
         <div className="flex flex-col gap-6">
           <h1 className="max-w-[16ch] text-h3 md:text-h1">Esta página não existe.</h1>

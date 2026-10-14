@@ -89,6 +89,8 @@ Regras: corpo nunca abaixo de 16px; medida de leitura `max-width: 68ch`; parágr
 - Imagens em WebP/AVIF, no tamanho exibido, carregamento sob demanda.
 
 ## Movimento
+- Movimento autorizado na Etapa 4 (14/10/2026): entrada única das faixas do hero ao carregar (250ms, translateX + opacidade, atrasos de 60ms); seta dos links desliza 4px no hover/foco (200ms); botões encolhem para 98% ao toque (150ms). Nada de animação em texto, números ou rolagem.
+- Toque: cards, links e botões têm estado `:active` (o hover não existe no celular). Área segura do iPhone ligada (`viewport-fit=cover` + utilitário `px-safe`).
 - Animações curtas (150–250ms), só `transform` e `opacity`, revisadas com `review-animations`. Nada de animação em loop.
 - `prefers-reduced-motion`: desliga tudo que não for troca de estado essencial.
 - Nenhum efeito pesado (WebGL, shader). A marca é plana e de cantos retos.

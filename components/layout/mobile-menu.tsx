@@ -28,7 +28,7 @@ export function MobileMenu() {
       </SheetTrigger>
       <SheetContent
         side="right"
-        className="w-full gap-0 border-ink-10 data-[state=open]:ease-[cubic-bezier(0.32,0.72,0,1)] sm:max-w-sm"
+        className="w-full gap-0 border-ink-10 sm:max-w-sm"
       >
         <div className="flex h-16 items-center border-b border-ink-10 px-4 sm:px-6">
           <SheetClose asChild>
@@ -37,7 +37,7 @@ export function MobileMenu() {
           <SheetTitle className="sr-only">Menu</SheetTitle>
           <SheetDescription className="sr-only">Navegação principal do site</SheetDescription>
         </div>
-        <nav aria-label="Principal" className="flex flex-1 flex-col overflow-y-auto px-4 sm:px-6">
+        <nav aria-label="Principal" className="flex flex-1 flex-col overflow-y-auto overscroll-contain px-4 sm:px-6">
           <ul className="flex flex-col">
             {navegacaoPrincipal.map((item) => {
               const ativo = rotaAtiva(pathname, item.href);

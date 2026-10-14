@@ -48,9 +48,9 @@ A Home responde em uma tela quem é a Black River e para quem ela trabalha, e le
 
 ### Hero
 
-**H1:** Consultoria em logística para varejo e atacado que executa junto até o resultado ficar com o seu time.
+**H1:** Consultoria em logística para varejo e atacado
 
-**Subtítulo:** A Black River leva para dentro da sua logística a bagagem de quem dirigiu grandes operações e conhece os desafios do varejo brasileiro.
+**Subtítulo:** Executamos junto até o resultado ficar com o seu time. A Black River leva para dentro da sua logística a bagagem de quem dirigiu grandes operações e conhece os desafios do varejo brasileiro. *(reordenado na Etapa 4, aprovado pelo João em 14/10/2026)*
 
 **Botão:** Agendar conversa de diagnóstico
 
@@ -60,7 +60,7 @@ A Home responde em uma tela quem é a Black River e para quem ela trabalha, e le
 
 - **30+** cases de sucesso
 - **15 anos** de atuação da Black River
-- **30 anos** do sócio-diretor à frente de Supply Chain em grandes empresas
+- **30 anos** de Luis Ricardo Pedro, sócio-diretor, no Supply Chain do Grupo Pão de Açúcar, Carrefour, Martins Atacadista, Bertin/JBS e Ultragaz (nome com link para Sobre; decisão do João, 14/10/2026)
 
 ### A dor
 

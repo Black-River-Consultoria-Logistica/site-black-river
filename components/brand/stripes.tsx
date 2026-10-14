@@ -12,9 +12,12 @@ function faixa(x: number, y: number, largura: number) {
 
 export function Stripes({
   variante = "claro",
+  animar = false,
   className,
 }: {
   variante?: "claro" | "escuro";
+  /** Entrada única de 250ms ao carregar (só no hero). Ver globals.css. */
+  animar?: boolean;
   className?: string;
 }) {
   // Sobre fundo claro: verde, preto, verde. Sobre preto: tudo verde (regra preto → verde).
@@ -24,7 +27,7 @@ export function Stripes({
       viewBox="0 0 460 150"
       aria-hidden="true"
       focusable="false"
-      className={cn("pointer-events-none select-none", className)}
+      className={cn("pointer-events-none select-none", animar && "br-faixas-animadas", className)}
     >
       <polygon points={faixa(40, 8, 420)} fill="var(--br-green)" />
       <polygon points={faixa(120, 62, 340)} fill={meio} />

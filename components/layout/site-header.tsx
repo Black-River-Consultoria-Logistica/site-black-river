@@ -10,7 +10,7 @@ import { NavLinks } from "./nav-links";
 export function SiteHeader() {
   return (
     <header className="border-b border-ink-10 bg-paper lg:sticky lg:top-0 lg:z-40">
-      <div className="mx-auto flex h-16 max-w-site items-center justify-between gap-6 px-4 md:px-6 lg:h-20">
+      <div className="mx-auto flex h-16 max-w-site items-center justify-between gap-6 px-safe lg:h-20">
         <Logo variante="cabecalho" prioridade className="h-8 xl:h-10" />
         <nav aria-label="Principal" className="hidden lg:block">
           <NavLinks />

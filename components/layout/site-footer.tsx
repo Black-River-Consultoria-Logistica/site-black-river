@@ -4,7 +4,7 @@ import { Logo } from "./logo";
 
 // Alvo de toque confortável (py-2) sem mudar o ritmo visual da lista.
 const linkRodape =
-  "inline-block py-2 text-small text-ink-20 underline-offset-4 transition-[color,text-decoration-color] duration-150 hover:text-paper hover:underline";
+  "inline-block py-2 text-small text-ink-20 underline-offset-4 transition-[color,text-decoration-color] duration-150 hover:text-paper hover:underline active:text-paper";
 const tituloColuna = "text-overline font-bold tracking-[0.12em] text-brand uppercase";
 
 // Rodapé preto com logo todo verde (DESIGN.md › Componentes › Rodapé).
@@ -15,7 +15,7 @@ export function SiteFooter() {
 
   return (
     <footer className="border-t border-ink-80 bg-ink text-ink-20">
-      <div className="mx-auto flex max-w-site flex-col gap-12 px-4 py-16 md:px-6 lg:py-24">
+      <div className="mx-auto flex max-w-site flex-col gap-12 px-safe py-16 lg:py-24">
         <div className="grid gap-12 md:grid-cols-2 md:gap-x-6 lg:grid-cols-12">
           <div className="flex flex-col gap-6 lg:col-span-3">
             <Logo variante="rodape" className="h-16 w-fit lg:h-[4.5rem]" />
