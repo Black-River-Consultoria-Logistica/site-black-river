@@ -21,7 +21,8 @@ Atualizado: 13/10/2026 · Responsável interno: João Assad
 - [x] Etapa 5 — IMPLEMENTATION_PLAN.md (13 etapas de construção) — aprovada 13/10/2026
 
 ## Fase 2 — Construção
-- Próximo: Etapa 1 — Setup (precisa do acesso ao GitHub da Black River)
+- Etapa 1 — Setup: em andamento. Feito: Next.js + Tailwind + build estático, tokens, Archivo, skills de design, commit da Fase 1 sobre o template. Bloqueado: componentes shadcn/Spell UI (pendência #6) e envio ao GitHub (pendência #7).
+- Decisões: liberar domínios dos componentes; Impeccable substituído até a Etapa 13; Taste Skill variação/movimento/densidade médios.
 
 ## Pendências
 3. Dados de entidade: razão social, CNPJ, endereço, e-mail e WhatsApp institucionais, URLs do LinkedIn (página e Luis).

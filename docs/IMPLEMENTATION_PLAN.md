@@ -25,8 +25,8 @@ Regra: executar uma etapa por vez, marcar [x], resumir e parar para aprovação.
 - [ ] Next.js (App Router) + TypeScript + Tailwind + shadcn/ui; `components.json` com os registros de `config/components.json`; Spell UI como biblioteca principal
 - [x] Exportação estática (`output: "export"`) confirmada como caminho de publicação (a única parte de servidor é a Função da Cloudflare do formulário)
 - [x] Tokens do DESIGN.md no `globals.css` (cores, `--radius: 0`, escala tipográfica, espaçamento de 4px); Archivo variável auto-hospedada (`@fontsource-variable/archivo`)
-- [ ] `scripts/setup-design.sh`; Playwright MCP ativo; `/impeccable init` apontando para `docs/BRIEF.md` e `docs/DESIGN.md` (um único DESIGN.md)
-- [ ] Valores da Taste Skill propostos e aprovados (variação de layout baixa, movimento baixo, densidade média)
+- [x] `scripts/setup-design.sh`: skills de Emil Kowalski e Taste Skill instaladas. Impeccable: pacote de skills bloqueado pela rede da sessão; decisão do João (13/10/2026): a cada etapa visual usar `npx impeccable detect` + Taste Skill + revisão contra o DESIGN.md + prints em 3 larguras (Playwright direto, sem MCP); critique/audit completos na Etapa 13
+- [x] Valores da Taste Skill aprovados pelo João: variação de layout **média**, movimento **médio**, densidade **média** (sempre dentro do DESIGN.md: animações curtas, só transform/opacity, nada em loop, prefers-reduced-motion)
 - Pronto quando: página em branco roda local com Archivo e as cores da marca; `npm run build` gera a pasta estática sem erro
 
 ## Etapa 2 — Layout base

@@ -1,0 +1,116 @@
+@import "tailwindcss";
+@import "@fontsource-variable/archivo/wdth.css";
+@import "@fontsource-variable/archivo/wdth-italic.css";
+
+/* Tokens — docs/DESIGN.md (design system Black River v2.0). Só tema claro. */
+:root {
+  --br-ink: #000000;
+  --br-ink-80: #333333;
+  --br-ink-60: #666666;
+  --br-ink-40: #999999;
+  --br-ink-20: #cccccc;
+  --br-ink-10: #e6e6e6;
+  --br-ink-05: #f2f2f2;
+  --br-paper: #ffffff;
+  --br-green: #669933;      /* marca: títulos ≥24px bold, gráficos, verde sobre preto */
+  --br-green-deep: #527f29; /* ação: botão, link, texto verde pequeno sobre branco */
+  --br-green-tint-20: #e0ebd6;
+  --br-green-tint-10: #f0f5eb;
+  --br-error: #b42318;
+
+  /* Tema shadcn */
+  --background: var(--br-paper);
+  --foreground: var(--br-ink);
+  --muted: var(--br-ink-05);
+  --muted-foreground: var(--br-ink-60);
+  --primary: var(--br-green-deep);
+  --primary-foreground: var(--br-paper);
+  --secondary: var(--br-ink-05);
+  --secondary-foreground: var(--br-ink);
+  --accent: var(--br-green-tint-20);
+  --accent-foreground: var(--br-ink);
+  --border: var(--br-ink-10);
+  --input: var(--br-ink-20);
+  --ring: var(--br-green-deep);
+  --destructive: var(--br-error);
+  --radius: 0px;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-destructive: var(--destructive);
+
+  --color-ink: var(--br-ink);
+  --color-ink-80: var(--br-ink-80);
+  --color-ink-60: var(--br-ink-60);
+  --color-ink-40: var(--br-ink-40);
+  --color-ink-20: var(--br-ink-20);
+  --color-ink-10: var(--br-ink-10);
+  --color-ink-05: var(--br-ink-05);
+  --color-paper: var(--br-paper);
+  --color-brand: var(--br-green);
+  --color-brand-deep: var(--br-green-deep);
+  --color-brand-tint: var(--br-green-tint-20);
+  --color-brand-tint-soft: var(--br-green-tint-10);
+
+  --font-sans: "Bliss Pro", "Archivo Variable", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  /* Escala tipográfica (modular 1,25, base 16px) */
+  --text-display: 3.8125rem;  --text-display--line-height: 1;
+  --text-h1: 3.0625rem;       --text-h1--line-height: 1.05;
+  --text-h2: 2.4375rem;       --text-h2--line-height: 1.1;
+  --text-h3: 1.9375rem;       --text-h3--line-height: 1.2;
+  --text-h4: 1.5625rem;       --text-h4--line-height: 1.25;
+  --text-lead: 1.25rem;       --text-lead--line-height: 1.5;
+  --text-body: 1rem;          --text-body--line-height: 1.6;
+  --text-small: 0.875rem;     --text-small--line-height: 1.55;
+  --text-caption: 0.75rem;    --text-caption--line-height: 1.45;
+
+  /* Raio 0 em tudo */
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+
+  --container-site: 75rem; /* 1200px */
+}
+
+@layer base {
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    background: var(--background);
+    color: var(--br-ink-80);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4 {
+    color: var(--br-ink);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+  p { text-wrap: pretty; }
+  :focus-visible { outline: 2px solid var(--br-green-deep); outline-offset: 2px; }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
