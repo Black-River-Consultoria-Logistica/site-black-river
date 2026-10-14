@@ -85,10 +85,10 @@ Regra: executar uma etapa por vez, marcar [x], resumir e parar para aprovação.
 - Pronto quando: os 3 artigos abrem com a resposta na primeira frase, sem becos sem saída, e o texto aparece no HTML do servidor (Ctrl+U)
 
 ## Etapa 9 — Banco de dados
-- [ ] Projeto Supabase na conta da Black River (plano Free, região São Paulo, tabelas não expostas automaticamente, RLS automático); tabela `leads` conforme SCHEMA.md, RLS ativo sem políticas para visitantes; gatilho de `atualizado_em`; rotina de retenção (pg_cron). Script pronto e testado localmente: `supabase/migrations/20261014000000_leads.sql`
-- [ ] Sinal diário contra a pausa do plano Free: função `public.ping()` + Worker `workers/manter-ativo` (código pronto; deploy com a conta Cloudflare)
-- [ ] Security Advisor do Supabase sem alertas
-- Pronto quando: gravação com a chave de serviço funciona; leitura e gravação com a chave anônima são bloqueadas
+- [x] Projeto Supabase na conta da Black River (plano Free, região São Paulo, tabelas não expostas automaticamente, RLS automático); tabela `leads` conforme SCHEMA.md, RLS ativo sem políticas para visitantes; gatilho de `atualizado_em`; rotina de retenção (pg_cron). Scripts `supabase/migrations/20261014000000_leads.sql` e `20261014010000_ajustes_advisor.sql` rodados pelo João em 14/10/2026; conferência `supabase/verificacoes/etapa-9.sql` com as 9 verificações em ok
+- [ ] Sinal diário contra a pausa do plano Free: função `public.ping()` no banco (feito, liberada para a chave anônima) + Worker `workers/manter-ativo` (código pronto; o deploy depende da conta Cloudflare e entra na Etapa 13)
+- [x] Security Advisor do Supabase sem alertas ("No issues detected", 14/10/2026, depois dos ajustes do segundo script)
+- Pronto quando: gravação com a chave de serviço funciona; leitura e gravação com a chave anônima são bloqueadas (conferido pelos privilégios no banco em 14/10/2026; o teste de ponta a ponta pela API entra na Etapa 10, com a função do formulário)
 
 ## Etapa 10 — Formulário e envio
 - [ ] Formulário em `/contato` conforme APP_FLOW: obrigatórios, opcionais, consentimento desmarcado, erros por campo sem perder o que foi digitado, estado de carregamento
