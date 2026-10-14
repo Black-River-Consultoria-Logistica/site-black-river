@@ -32,7 +32,7 @@ const rotuloCard =
   "text-small font-medium text-ink underline underline-offset-4 group-hover:text-primary group-active:text-primary";
 
 // Headshot P&B do Luis (4:5). Enquanto o arquivo não chega, a seção Insights mostra só o bloco de autoria.
-const FOTO_LUIS: string | null = null; // ex.: "/fotos/luis-ricardo-pedro.webp"
+const FOTO_LUIS: string | null = "/fotos/luis-ricardo-pedro.webp";
 
 function Seta({ className }: { className?: string }) {
   return (
@@ -281,9 +281,10 @@ export function Insights() {
               <Image
                 src={FOTO_LUIS}
                 alt="Luis Ricardo Pedro, sócio-diretor da Black River"
-                width={480}
-                height={600}
-                className="aspect-[4/5] w-full max-w-[320px] object-cover grayscale"
+                width={640}
+                height={800}
+                sizes="(min-width: 1024px) 320px, 60vw"
+                className="aspect-[4/5] w-full max-w-[320px] object-cover"
               />
             )}
             <figcaption className="text-small text-ink-80">

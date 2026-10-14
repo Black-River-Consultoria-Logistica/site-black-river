@@ -54,6 +54,7 @@ Regra: executar uma etapa por vez, marcar [x], resumir e parar para aprovação.
 - [x] `/impeccable critique` (avaliações A e B isoladas) e `review-animations`; 5 pontos prioritários corrigidos; detector sem achados no código e nas URLs
 - [x] Prints com Playwright em 375, 768 e 1280px (e 1024)
 - Pronto quando: Home completa no desktop e no celular com os textos aprovados, prints conferidos pelo João (aprovação do layout)
+- **Aprovada pelo João em 14/10/2026 (marco 2: layout).** Inclui os 4 pacotes de melhoria da revisão de design e a foto P&B do Luis na seção Insights.
 
 ## Etapa 5 — Sobre e Como trabalhamos
 - [ ] Sobre: história, 30+ cases em 15 anos, currículo verificável do Luis Ricardo com foto; estrutura pronta para receber fotos futuras sem refazer layout
