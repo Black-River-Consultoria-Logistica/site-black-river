@@ -1,0 +1,7 @@
+# Hospedagem do UOL Host (Etapa 13, caminho "só o site", decisão do João em 14/10/2026).
+# O site novo está na Cloudflare Pages, no www. O DNS e o e-mail continuam no UOL.
+# Este arquivo vai na pasta pública da hospedagem do UOL (substituindo o site antigo) e manda
+# quem digitar o endereço sem www, ou qualquer página antiga, para o mesmo caminho no www.
+# Antes: ligar o certificado SSL do domínio sem www no painel do UOL, para https://blackriverconsultoria.com.br funcionar.
+RewriteEngine On
+RewriteRule ^(.*)$ https://www.blackriverconsultoria.com.br/$1 [R=301,L]

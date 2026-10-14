@@ -1,5 +1,5 @@
 // Processamento do pedido de agendamento (Etapa 10). Roda na Função da Cloudflare (functions/api/agendamento.ts).
-// Fluxo aprovado (docs/SCHEMA.md, 14/10/2026): antirrobô → validação → banco E aviso por e-mail em paralelo →
+// Fluxo aprovado (docs/SCHEMA.md, 14/10/2026): armadilha → validação → limite por IP → Turnstile → banco E aviso por e-mail em paralelo →
 // sucesso se pelo menos um deu certo → confirmação ao visitante. Nunca devolve detalhe técnico ao navegador.
 
 import { pedido as esquemaDoPedido, digitosDoTelefone, errosPorCampo, VERSAO_POLITICA, type Pedido } from "./esquema";
@@ -18,7 +18,19 @@ export type Ambiente = {
   /** Só para testes locais: endereços falsos dos serviços externos. */
   TURNSTILE_VERIFY_URL?: string;
   RESEND_API_URL?: string;
+  /** Armazenamento KV da Cloudflare (ligação "LIMITE_ENVIOS" no painel). Sem ele, o limite fica desligado. */
+  LIMITE_ENVIOS?: ArmazenamentoKV;
 };
+
+/** O pedaço da API do Workers KV que o limite de envios usa. */
+export type ArmazenamentoKV = {
+  get(chave: string): Promise<string | null>;
+  put(chave: string, valor: string, opcoes?: { expirationTtl?: number }): Promise<void>;
+};
+
+// Limite de envios (decisão do João, 14/10/2026): até 5 pedidos por IP a cada 10 minutos.
+// O IP não é guardado: só um resumo criptográfico (SHA-256), que expira junto com a janela.
+export const LIMITE = { pedidos: 5, janelaSegundos: 600 };
 
 export type Resposta = { status: number; corpo: Record<string, unknown> };
 
@@ -62,13 +74,19 @@ export async function processarPedido(corpoBruto: unknown, env: Ambiente, deps: 
   }
   const p = resultado.data;
 
-  // 4. Turnstile (antirrobô da Cloudflare).
+  // 4. Limite de envios por IP (só pedidos com campos válidos contam).
+  if (await limiteEstourado(env, deps)) {
+    log("limite de envios atingido");
+    return { status: 429, corpo: { ok: false, erro: "limite" } };
+  }
+
+  // 5. Turnstile (antirrobô da Cloudflare).
   if (!(await turnstileValido(p.turnstile, env, deps))) {
     log("turnstile recusado");
     return { status: 403, corpo: { ok: false, erro: "robo" } };
   }
 
-  // 5. Banco e aviso por e-mail em paralelo, um independente do outro.
+  // 6. Banco e aviso por e-mail em paralelo, um independente do outro.
   const [banco, aviso] = await Promise.allSettled([gravarNoBanco(p, env, deps), enviarAviso(p, env, deps, null)]);
   const gravou = banco.status === "fulfilled";
   const avisou = aviso.status === "fulfilled";
@@ -84,10 +102,25 @@ export async function processarPedido(corpoBruto: unknown, env: Ambiente, deps: 
     );
   }
 
-  // 6. Confirmação ao visitante (não muda a resposta se falhar).
+  // 7. Confirmação ao visitante (não muda a resposta se falhar).
   await enviarConfirmacao(p, env, deps).catch((e) => log(`confirmação ao visitante falhou: ${String(e)}`));
 
   return { status: 200, corpo: { ok: true } };
+}
+
+/** Conta o pedido e diz se o IP já passou do limite. Qualquer falha do armazenamento libera o envio. */
+async function limiteEstourado(env: Ambiente, deps: Dependencias) {
+  if (!env.LIMITE_ENVIOS || !deps.ip) return false;
+  try {
+    const resumo = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(`black-river:${deps.ip}`));
+    const chave = `envios:${[...new Uint8Array(resumo)].map((b) => b.toString(16).padStart(2, "0")).join("")}`;
+    const atual = Number((await env.LIMITE_ENVIOS.get(chave)) ?? "0");
+    if (atual >= LIMITE.pedidos) return true;
+    await env.LIMITE_ENVIOS.put(chave, String(atual + 1), { expirationTtl: LIMITE.janelaSegundos });
+    return false;
+  } catch {
+    return false;
+  }
 }
 
 function motivo(r: PromiseSettledResult<unknown>) {

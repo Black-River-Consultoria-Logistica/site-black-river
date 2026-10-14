@@ -184,3 +184,48 @@ test("telefone: formatos brasileiros aceitos e recusados", () => {
     assert.ok(!telefoneValido(ruim), ruim);
   }
 });
+
+function kvFalso() {
+  const dados = new Map<string, string>();
+  const ttls: number[] = [];
+  return {
+    dados,
+    ttls,
+    kv: {
+      async get(k: string) {
+        return dados.get(k) ?? null;
+      },
+      async put(k: string, v: string, o?: { expirationTtl?: number }) {
+        dados.set(k, v);
+        if (o?.expirationTtl) ttls.push(o.expirationTtl);
+      },
+    },
+  };
+}
+
+test("limite: o 6º pedido do mesmo IP em 10 minutos recebe 429; outro IP segue", async () => {
+  const { kv, dados, ttls } = kvFalso();
+  const env = { ...ENV, LIMITE_ENVIOS: kv };
+  for (let i = 1; i <= 5; i++) {
+    const r = await processarPedido(VALIDO, env, simular().deps);
+    assert.equal(r.status, 200, `pedido ${i}`);
+  }
+  const sexto = await processarPedido(VALIDO, env, simular().deps);
+  assert.equal(sexto.status, 429);
+  assert.deepEqual(sexto.corpo, { ok: false, erro: "limite" });
+  const outroIp = simular();
+  const r = await processarPedido(VALIDO, env, { ...outroIp.deps, ip: "198.51.100.9" });
+  assert.equal(r.status, 200);
+  assert.ok([...dados.keys()].every((k) => !k.includes("203.0.113.7")), "IP nunca guardado em texto");
+  assert.ok(ttls.every((t) => t === 600), "janela de 10 minutos");
+});
+
+test("limite: campos inválidos e armadilha não gastam a cota; KV com falha não bloqueia", async () => {
+  const { kv, dados } = kvFalso();
+  await processarPedido({ ...VALIDO, nome: "" }, { ...ENV, LIMITE_ENVIOS: kv }, simular().deps);
+  await processarPedido({ ...VALIDO, site: "x" }, { ...ENV, LIMITE_ENVIOS: kv }, simular().deps);
+  assert.equal(dados.size, 0);
+  const quebrado = { get: async () => { throw new Error("KV fora"); }, put: async () => {} };
+  const r = await processarPedido(VALIDO, { ...ENV, LIMITE_ENVIOS: quebrado }, simular().deps);
+  assert.equal(r.status, 200);
+});

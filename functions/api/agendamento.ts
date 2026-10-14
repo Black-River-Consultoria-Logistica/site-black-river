@@ -1,7 +1,7 @@
 // Função da Cloudflare Pages: POST /api/agendamento (Etapa 10).
 // Toda a regra fica em lib/formulario/processar.ts (testável sem a Cloudflare); aqui só o envelope HTTP.
 // Variáveis de ambiente (painel da Cloudflare, nunca no código): ver docs/SCHEMA.md.
-// Limite de envios por IP: regra de rate limiting no painel da Cloudflare (WAF), configurada na Etapa 13.
+// Limite de envios por IP: dentro da própria função, com o KV "LIMITE_ENVIOS" (lib/formulario/processar.ts).
 
 import { processarPedido, type Ambiente } from "../../lib/formulario/processar";
 

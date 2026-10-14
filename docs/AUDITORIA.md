@@ -8,7 +8,7 @@ Resumo: **nenhuma falha no código.** O que falta depende de contas, dados da em
 
 | Verificação | Resultado |
 | --- | --- |
-| Testes da Função do formulário (`npm test`) | 13/13 |
+| Testes da Função do formulário (`npm test`) | 15/15 |
 | Testes no navegador (formulário, cookies, SEO/GA4) | 23 + 22 + 34 conferências, todas OK |
 | CSP em 26 páginas (com GA4 aceito e formulário) | 0 violações, 0 erros no console |
 | Links internos (30 destinos) e âncoras de índice | 0 quebrados |
@@ -43,12 +43,12 @@ Correções feitas nesta auditoria: descriptions acima de ~160 caracteres encurt
 | 17 | Banner de cookies | OK (nada do Google antes do aceite) | `components/layout/aviso-de-cookies.tsx`, `lib/consentimento.ts` |
 | 18 | Analytics instalado | OK no código · conferir no Tempo real do GA4 no deploy | `components/layout/analytics.tsx`, `lib/analytics.ts` |
 | 19 | Endereço de contato real | **Pendente:** e-mail OK; endereço (#3) e WhatsApp (#10) | `lib/site.ts` |
-| 20 | HTTPS forçado | **Pendente (deploy)** | Cloudflare: Always Use HTTPS + redirecionamento sem www → www |
+| 20 | HTTPS forçado | **Pendente (deploy)** | `www` com HTTPS da Cloudflare Pages; endereço sem www redirecionado pelo `config/uol/.htaccess` (com SSL ligado no UOL) |
 | 21 | Imagens comprimidas | OK (WebP, maior arquivo 34 KB, logos em 2× do exibido) | `public/` |
 | 22 | Velocidade medida | **Pendente (deploy):** local 95–99 no celular | PageSpeed Insights no endereço final |
 | 23 | Contraste | OK (AA; só tema claro) | `app/globals.css`, Lighthouse |
 | 24 | Nenhum link quebrado | OK | varredura de links e âncoras |
-| 25 | Proteção contra spam | OK (Turnstile + armadilha) · limite de envios é regra da Cloudflare no deploy | `lib/formulario/processar.ts` |
+| 25 | Proteção contra spam | OK (Turnstile + armadilha + limite de 5 envios por IP a cada 10 minutos) | `lib/formulario/processar.ts` |
 | 26 | Sem cara de site gerado por IA | OK (`impeccable detect` sem achados; auditoria abaixo) | — |
 | 27 | Verificação visual registrada | OK pelo Claude (prints de todas as páginas) · **conferência por uma pessoa:** João | prints enviados a cada etapa |
 
@@ -69,7 +69,7 @@ Correções feitas nesta auditoria: descriptions acima de ~160 caracteres encurt
 | 13 | Conteúdo do usuário sem XSS | OK (nada do visitante vira HTML; e-mails em texto puro; JSON-LD escapado) | `components/seo/json-ld.tsx` |
 | 14 | Upload | Não se aplica | — |
 | 15 | Injeção de SQL | OK (API REST do Supabase com JSON) | `lib/formulario/processar.ts` |
-| 16 | Limite de tentativas | Parcial: Turnstile + armadilha OK · regra de rate limiting na Cloudflare no deploy | `docs/SCHEMA.md` |
+| 16 | Limite de tentativas | OK (Turnstile + armadilha + limite por IP no KV, testado) | `lib/formulario/processar.ts`, `tests/agendamento.test.ts` |
 | 17 | Histórico do Git sem segredos | OK (Gitleaks 8.28.0). Revogar o token do GitHub colado na conversa em 13/10 (#8) | — |
 | 18 | Headers de segurança e CORS | OK no código (CSP, HSTS, nosniff, X-Frame-Options, Referrer-Policy, Permissions-Policy; sem CORS aberto; Função confere a origem) · nota A no securityheaders.com no deploy | `public/_headers` |
 | 19 | Testar como um estranho | **Pendente: João, no deploy** (janela anônima: tentar o /api/agendamento de fora, ler o banco com a chave pública) | — |
@@ -90,7 +90,7 @@ Correções feitas nesta auditoria: descriptions acima de ~160 caracteres encurt
 | 10 | Conteúdo em formato de resposta | OK (artigos e frentes abrem com a resposta; perguntas frequentes nas frentes) | `content/insights`, `lib/content/solucoes.ts` |
 | 11 | Fatos verificáveis | OK (30+ cases, 15 anos, 30 anos do Luis, retorno em 1 dia útil, área de atendimento, datas) | Home, Sobre, artigos |
 | 12 | Entidade consistente | **Pendente:** CNPJ, endereço e LinkedIn da empresa (#3) | `lib/site.ts` |
-| 13 | Política para robôs de IA | OK no código (nomes verificados em 14/10) · conferir o bloqueio de IA da Cloudflare e testar os robôs no deploy | `app/robots.ts`, `docs/pesquisa/robos-ia.md` |
+| 13 | Política para robôs de IA | OK no código (nomes verificados em 14/10) · testar os robôs no deploy (sem DNS na Cloudflare, o painel de robôs dela não se aplica) | `app/robots.ts`, `docs/pesquisa/robos-ia.md` |
 | 14 | Autoria e credenciais | OK (Sobre com Luis, trajetória, formação, clientes) | `app/sobre` |
 | 15 | Tráfego vindo de IA | **Pendente: João** (grupo de canais "IA" no GA4) | `docs/PUBLICACAO.md` |
 | 16 | llms.txt | OK | `app/llms.txt/route.ts` |

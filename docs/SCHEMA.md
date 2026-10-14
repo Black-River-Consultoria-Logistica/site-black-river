@@ -9,7 +9,7 @@
 Navegador (/contato, página estática)
   └─ POST → Função da Cloudflare (/api/agendamento)
         1. Confere Turnstile (antirrobô) e honeypot
-        2. Limite de envios por IP (regra de rate limit da Cloudflare)
+        2. Limite de envios por IP (KV da Cloudflare, dentro da Função)
         3. Valida todos os campos no servidor (Zod)
         4. Em paralelo, independentes um do outro (ajuste de 14/10/2026):
            a. grava em Supabase com a chave de serviço (só no servidor)
@@ -62,7 +62,7 @@ Passar para o Pro (US$ 25/mês: nunca pausa, backup diário por 7 dias) quando o
 | `status` | `novo` · `contatado` · `agendado` · `realizado` · `descartado` | automático (`novo`); atualizado no painel | — | **Medir a meta de 90 dias** (conversas agendadas e realizadas) |
 | `criado_em` / `atualizado_em` | data e hora | automático | banco | Prazo de retorno de 1 dia útil e retenção |
 
-Não coletamos: CPF, endereço, faturamento da empresa, IP gravado em tabela (o rate limit usa o IP só na Cloudflare, sem armazenar).
+Não coletamos: CPF, endereço, faturamento da empresa, IP gravado em tabela. O limite de envios guarda só um resumo criptográfico (SHA-256) do IP no KV da Cloudflare, que expira em 10 minutos.
 
 ## Diagrama
 
@@ -112,7 +112,7 @@ Segundo script, [`20261014010000_ajustes_advisor.sql`](../supabase/migrations/20
 
 **Turnstile (Etapa 10):** a chave do site é pública e fica em `lib/site.ts` (`NEXT_PUBLIC_TURNSTILE_SITE_KEY` só se precisar trocá-la sem mexer no código). Ela vale apenas no domínio oficial; em qualquer outro endereço (máquina local, prévias `*.pages.dev`) o site usa a chave de teste oficial da Cloudflare, e a Função dessas prévias deve receber a chave secreta de teste correspondente. Widget no modo "só quando precisar": invisível para quase todo visitante.
 
-**Limite de envios por IP:** regra de rate limiting no painel da Cloudflare (Security › WAF › Rate limiting rules), criada na Etapa 13: caminho `/api/agendamento`, método POST, 5 pedidos por IP a cada 10 minutos → bloquear por 10 minutos. Fica fora do código porque a Função não guarda estado entre pedidos.
+**Limite de envios por IP** (decisão do João, 14/10/2026, caminho "só o site"): dentro da própria Função, até 5 pedidos por IP a cada 10 minutos, contados no KV da Cloudflare (ligação `LIMITE_ENVIOS`). Só pedidos com campos válidos contam; se o KV falhar, o envio segue. O 6º pedido recebe a mensagem de falha do formulário.
 
 ## E-mails
 

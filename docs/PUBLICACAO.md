@@ -27,28 +27,30 @@ Prefira a exportação estática sempre que o site não precisar de servidor. Ge
 
 ## 3. Passo a passo da publicação
 
-1. Apontar o domínio para os servidores DNS da Cloudflare (painel do Registro.br).
+1. Apontar o domínio para os servidores DNS da Cloudflare (painel do Registro.br). *(Black River: não se aplica; ver o roteiro abaixo.)*
 2. Fazer o deploy e ligar o domínio personalizado; HTTPS sempre e redirecionar www e sem www para uma única versão.
 3. Conferir a configuração de robôs de IA da Cloudflare: o bloqueio pode vir ativado por padrão e contrariar a política do BRIEF.md. Antes, rodar o prompt "Verificar robôs de IA" (`docs/PROMPTS.md`).
 4. Configurar o e-mail do formulário: registros SPF, DKIM e DMARC no DNS.
 5. Rodar os três checklists (`checklists/`) no endereço final e obter o aceite de publicação.
 
-### Roteiro da Black River (Etapa 13, preparado em 14/10/2026)
+### Roteiro da Black River (Etapa 13; caminho "só o site", decisão do João em 14/10/2026)
 
-O site atual e o e-mail da empresa dependem do DNS de hoje. A ordem abaixo existe para **nenhum e-mail se perder** na troca.
+O e-mail da empresa e o DNS **continuam no UOL Host**, sem troca de nameservers. Só o site sai do UOL para a Cloudflare Pages. No painel do UOL, a única entrada **alterada** é a do `www`; as outras são **novas** e não tocam no e-mail.
 
-1. **Inventário do DNS atual** (João + Claude). Hoje site **e** e-mail estão no **UOL Host** (informado pelo João, 14/10/2026). No painel do cliente UOL Host › Administrar › menu "≡" do domínio › **Alterar Zona de DNS** › Gerenciar, fotografar **todas** as entradas de cada tipo (A, CNAME, MX, TXT, SRV). Conferir também: (a) no Registro.br, quem tem o login do domínio e quais nameservers ele usa; (b) se o **DNSSEC** está ligado; (c) se o e-mail é o do próprio UOL Host ou Microsoft 365 contratado pelo UOL (muda os registros de autodiscover e DKIM). Nada muda ainda.
-2. **Unir o trabalho na branch principal:** abrir o PR de `etapa-1-setup` para `main` no GitHub e fazer o merge depois da revisão.
+1. **Fotografar a zona de DNS atual** (UOL Host › Administrar › menu "≡" do domínio › Alterar Zona de DNS › Gerenciar), todas as entradas de cada tipo. Serve de registro para desfazer qualquer passo; nenhum registro de e-mail será mexido.
+2. **Unir o trabalho na branch principal:** PR de `etapa-1-setup` para `main` e merge depois da revisão.
 3. **Projeto na Cloudflare Pages** ligado ao repositório: comando `npm run build`, pasta de saída `out`, Node 22. A pasta `functions/` vira a Função `/api/agendamento` sozinha.
-4. **Variáveis de ambiente** (painel, nunca no código): `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `RESEND_API_KEY`, `LEAD_NOTIFY_TO`, `EMAIL_FROM`, `ALLOWED_ORIGINS`, `TURNSTILE_SECRET_KEY`. Na prévia (`*.pages.dev`), a chave secreta **de teste** do Turnstile.
+4. **Variáveis e ligações** (painel, nunca no código): `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `RESEND_API_KEY`, `LEAD_NOTIFY_TO`, `EMAIL_FROM`, `ALLOWED_ORIGINS`, `TURNSTILE_SECRET_KEY` e a ligação de KV **`LIMITE_ENVIOS`** (limite de 5 envios por IP a cada 10 minutos). Na prévia (`*.pages.dev`), a chave secreta **de teste** do Turnstile.
 5. **Teste completo na prévia `*.pages.dev`:** envio real do formulário (banco + aviso + confirmação, pendência #13), aviso de cookies, GA4 no Tempo real, `curl` dos robôs.
-6. **Adicionar o domínio à Cloudflare** (plano Free) e conferir, um a um, que todos os registros do inventário foram copiados. Registros de e-mail (MX e afins) ficam com a nuvem **cinza** (só DNS). Incluir os 3 registros do Resend.
-7. **Antes da troca:** se o DNSSEC estiver ligado, desligá-lo no Registro.br e esperar o prazo indicado; manter a hospedagem de site do UOL Host ativa até o site novo estar estável (cerca de um mês) e confirmar com o UOL que cancelar o site **não** cancela o e-mail nem o domínio.
-8. **Trocar os nameservers** no Registro.br para os da Cloudflare, em horário de pouco movimento. Acompanhar a propagação e mandar um e-mail de teste para contato@ e para o João.
-9. **Domínio personalizado** no projeto Pages: `www.blackriverconsultoria.com.br` como principal e o domínio sem www redirecionando para ele (301); "Always Use HTTPS" ligado.
-10. **Segurança e robôs na Cloudflare:** bloqueio de robôs de IA e robots.txt gerenciado **desligados**; "Bot Fight Mode" desligado (bloqueia robôs de IA); regra de rate limiting em `/api/agendamento` (5 POST por IP a cada 10 minutos); Turnstile de produção com os hostnames do domínio; trocar a chave secreta de teste pela de produção.
+6. **Resend no DNS do UOL:** criar as 3 entradas novas (MX e TXT em `send`, TXT em `resend._domainkey`). Não alteram o MX nem o SPF do domínio principal.
+7. **Domínio personalizado no Pages:** adicionar `www.blackriverconsultoria.com.br`. A Cloudflare mostra o destino (`<projeto>.pages.dev`).
+8. **Trocar a entrada `www` no UOL** para um CNAME apontando para esse destino, em horário de pouco movimento. Só o site muda; o e-mail não depende dessa entrada. Para desfazer, basta voltar a entrada antiga (foto do passo 1).
+9. **Endereço sem www:** no painel do UOL, ligar o SSL do domínio sem www e trocar o conteúdo da hospedagem pelo arquivo `config/uol/.htaccess`, que redireciona tudo para o `www` (301). O plano do UOL continua por causa do e-mail; sem custo extra.
+10. **Turnstile de produção** com os hostnames do domínio; trocar a chave secreta de teste pela de produção.
 11. **Worker `manter-ativo`** (sinal diário do Supabase Free) publicado com a `SUPABASE_ANON_KEY`.
-12. **Conferências no endereço final:** os três checklists de novo (`docs/AUDITORIA.md`), PageSpeed no celular, securityheaders.com (nota A), Teste de pesquisa aprimorada, Search Console e Bing Webmaster com o sitemap, evento `generate_lead` como evento-chave no GA4, "testar como um estranho" (João).
+12. **Conferências no endereço final:** os três checklists de novo (`docs/AUDITORIA.md`), PageSpeed no celular, securityheaders.com (nota A), Teste de pesquisa aprimorada, Search Console e Bing Webmaster com o sitemap, evento `generate_lead` como evento-chave no GA4, "testar como um estranho" (João), e um e-mail de teste para contato@ e para o João.
+
+**O que fica de fora por não migrar o DNS (dá para fazer depois):** regras de firewall da Cloudflare (o limite de envios foi para dentro da função) e o painel de robôs de IA (o `robots.txt` do site já define a política). Uma migração completa futura segue o roteiro de inventário e cópia de todos os registros, com o DNSSEC conferido antes.
 
 ## 4. Analytics e operação
 
