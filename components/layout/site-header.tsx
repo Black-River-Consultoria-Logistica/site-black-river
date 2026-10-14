@@ -9,7 +9,8 @@ export function SiteHeader() {
   return (
     <header className="border-b border-ink-10 bg-paper lg:sticky lg:top-0 lg:z-40">
       <div className="mx-auto flex h-16 max-w-site items-center justify-between gap-6 px-safe lg:h-20">
-        <Logo variante="cabecalho" prioridade className="h-8 xl:h-10" />
+        {/* Área de toque de 44px em volta do logo (o desenho segue com 32/40px). */}
+        <Logo variante="cabecalho" prioridade className="box-content h-8 py-1.5 xl:h-10 xl:py-0.5" />
         <nav aria-label="Principal" className="hidden lg:block">
           <NavLinks />
         </nav>

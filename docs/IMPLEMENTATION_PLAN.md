@@ -113,14 +113,15 @@ Regra: executar uma etapa por vez, marcar [x], resumir e parar para aprovação.
 - Situação (14/10/2026): 23 páginas no sitemap, title/description únicos, canônica e Open Graph em todas; JSON-LD conferido (ProfessionalService e WebSite em todas; Person no Sobre; Service, BreadcrumbList e FAQPage nas frentes; Article nos artigos; BreadcrumbList nos cases). Lighthouse no celular (local, com compressão como na Cloudflare): desempenho 95–99, acessibilidade 100, boas práticas 100 (96 no /contato só porque o Turnstile não abre no ambiente de teste), SEO 100, nas 10 páginas principais. Fonte Archivo trocada por arquivo só com o eixo de peso (88 → 35 KB) e pré-carregada; logos de clientes reduzidos para 2× o tamanho exibido. PageSpeed real no celular: medir depois do deploy (Etapa 13). Robôs de IA: política "liberar tudo" e `/llms.txt` aprovados pelo João (tabela em `docs/pesquisa/robos-ia.md`). GA4 `G-LFYPZHSP9X` atrás do consentimento, com eventos `generate_lead`, `visita_obrigado`, `contato_email` e `contato_whatsapp`.
 
 ## Etapa 13 — Publicação
-- [ ] `/impeccable polish` e `/impeccable audit`; `npx impeccable detect` sem achados críticos; `break-ui`
+- [ ] `/impeccable polish` e `/impeccable audit`; `npx impeccable detect` sem achados críticos; `break-ui` (audit e detect feitos em 14/10; polish e break-ui na passada final, depois da revisão de conteúdo do Luis)
 - [ ] Auditoria contra `checklists/producao.md`, `checklists/seguranca.md` e `checklists/seo-ia.md` (item 19 de segurança feito pessoalmente pelo João)
-- [ ] `docs/LICENCAS.md` completo
+- [x] `docs/LICENCAS.md` completo
 - [ ] Headers de segurança (`_headers` da Cloudflare: CSP liberando `challenges.cloudflare.com` em script e frame para o Turnstile, HSTS, X-Content-Type-Options, Referrer-Policy) com nota A em securityheaders.com; Gitleaks no histórico sem achados
 - [ ] Deploy na Cloudflare; domínio blackriverconsultoria.com.br apontado; HTTPS forçado; www e sem www numa única versão; redirecionamentos 301 de endereços do site antigo que existirem
 - [ ] Configuração de robôs de IA da Cloudflare conferida (sem bloqueio padrão); teste pós-deploy dos robôs com resposta 200
 - [ ] SPF, DKIM e DMARC do e-mail; Search Console e Bing Webmaster com sitemap; Perfil da Empresa no Google igual ao site
 - Pronto quando: todos os itens aplicáveis dos três checklists estão OK no site publicado
+- Situação (14/10/2026): parte local feita. Auditoria dos três checklists em `docs/AUDITORIA.md` (nenhuma falha no código; pendências dependem de contas, dados da empresa ou do deploy), headers em `public/_headers` testados sem violação de CSP, Gitleaks sem achados, `/impeccable audit` 19/20. Roteiro de publicação em `docs/PUBLICACAO.md` › Roteiro da Black River. Falta a parte que depende da Cloudflare, do Resend e das pendências #3, #4 e #15.
 
 ## Depois do lançamento (plano de manutenção)
 - Repetir o teste de citação por IA (mesma pergunta da Etapa 0) em 30, 60 e 90 dias e comparar com 0/3.

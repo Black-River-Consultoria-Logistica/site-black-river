@@ -6,7 +6,7 @@ import { AberturaSolucoes, CtaSolucoes, FrentesAgrupadas, ParaQuem } from "@/com
 export const metadata: Metadata = metadados({
   title: "Consultoria em logística e supply chain | Black River",
   description:
-    "Sete frentes de trabalho, do diagnóstico da operação à malha de transporte. Todo projeto começa pelo diagnóstico, que define quais frentes a sua operação precisa.",
+    "Sete frentes de trabalho, do diagnóstico da operação à malha de transporte. Todo projeto começa pelo diagnóstico, que define as frentes certas.",
   caminho: "/solucoes",
 });
 

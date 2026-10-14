@@ -24,7 +24,7 @@ export const politicaDePrivacidade: DocumentoLegal = {
   titulo: "Política de Privacidade",
   title: "Política de Privacidade | Black River",
   description:
-    "Como a Black River Consultoria trata os dados pessoais do site: o que coleta, para que usa, com quem compartilha, por quanto tempo guarda e como exercer os seus direitos.",
+    "Como a Black River trata os dados pessoais do site: o que coleta, para que usa, com quem compartilha, por quanto tempo guarda e como exercer os seus direitos.",
   abertura:
     "Esta política explica, em linguagem direta, quais dados pessoais o site da Black River coleta, para que usa, com quem compartilha, por quanto tempo guarda e como você exerce os seus direitos.",
   atualizado: "2026-10-14",

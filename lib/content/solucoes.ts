@@ -237,7 +237,7 @@ const dados: Omit<PaginaDeFrente, "frente" | "numero">[] = [
   {
     title: "Negociação de verbas logísticas com fornecedores | Black River",
     description:
-      "Verbas logísticas são o que o fornecedor paga ao varejista pelos serviços logísticos que ele assume. Bem negociadas, transformam parte do custo logístico em receita.",
+      "Verbas logísticas são o que o fornecedor paga ao varejista pelos serviços logísticos que ele assume. Bem negociadas, viram receita no lugar de custo.",
     h1: "Negociação de verbas logísticas com fornecedores",
     abertura:
       "Verbas logísticas são os valores que o fornecedor paga ao varejista pelos serviços logísticos que o varejista assume, como receber no Centro de Distribuição e distribuir às lojas. Bem negociadas, transformam parte do custo logístico em receita. A Black River estrutura essa negociação com base no custo real de cada serviço.",

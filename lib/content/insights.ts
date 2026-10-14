@@ -45,7 +45,7 @@ const LUIS = {
 export const paginaInsights = {
   title: "Insights",
   description:
-    "Artigos de Luis Ricardo Pedro, sócio-diretor da Black River, sobre logística e supply chain no varejo: diagnóstico, verbas logísticas e como escolher uma consultoria.",
+    "Artigos de Luis Ricardo Pedro sobre logística e supply chain no varejo: diagnóstico, verbas logísticas e como escolher uma consultoria.",
   titulo: "Insights sobre logística no varejo",
   // Título da seção na Home (aprovado na Etapa 3), reaproveitado como abertura.
   abertura:
@@ -61,9 +61,9 @@ export const artigos: Artigo[] = [
   {
     slug: "como-escolher-consultoria-de-logistica-para-varejo",
     titulo: "Como escolher uma consultoria de logística para o varejo",
-    title: "Como escolher uma consultoria de logística para o varejo | Black River",
+    title: "Como escolher uma consultoria de logística para o varejo",
     description:
-      "Escolha pelo que o time já fez do lado de dentro, pelo que ele faz depois do diagnóstico e pelo que fica com a sua equipe. Cinco perguntas e os sinais de alerta.",
+      "Escolha pelo que o time já fez do lado de dentro, pelo que faz depois do diagnóstico e pelo que fica com a sua equipe. Cinco perguntas e os sinais de alerta.",
     abertura:
       "Escolha uma consultoria de logística para o varejo pelo que o time já fez do lado de dentro, pelo que ele faz depois do diagnóstico e pelo que fica com a sua equipe quando o projeto termina.",
     resumo: "Cinco perguntas para fazer antes de contratar e os sinais de alerta de uma consultoria que entrega o relatório e vai embora.",
@@ -93,7 +93,7 @@ export const artigos: Artigo[] = [
     titulo: "Como funciona um diagnóstico logístico, etapa por etapa",
     title: "Como funciona um diagnóstico logístico | Black River",
     description:
-      "Um diagnóstico logístico mapeia processos, pessoas, estrutura, sistemas e indicadores para achar a causa raiz das perdas e termina com metas aprovadas pelo cliente.",
+      "Um diagnóstico logístico mapeia processos, pessoas, estrutura, sistemas e indicadores, acha a causa raiz das perdas e termina com metas aprovadas pelo cliente.",
     abertura:
       "Um diagnóstico logístico mapeia processos, pessoas, estrutura, sistemas e indicadores para encontrar a causa raiz das perdas da operação e termina com metas aprovadas pelo cliente.",
     resumo: "O que é avaliado, as etapas do campo às metas, o que você recebe no final e um exemplo real de cross docking.",

@@ -16,7 +16,7 @@ import { FaixaDeLogos } from "@/components/paginas/cases";
 export const metadata: Metadata = metadados({
   title: "Consultoria em logística para varejo e atacado | Black River",
   description:
-    "Consultoria em logística e supply chain para varejo e atacado. A Black River executa junto com o seu time, com a bagagem de quem dirigiu grandes operações do varejo. Agende uma conversa de diagnóstico.",
+    "Consultoria em logística para varejo e atacado. Executamos junto com o seu time, com a bagagem de quem dirigiu grandes operações do varejo.",
   caminho: "/",
 });
 

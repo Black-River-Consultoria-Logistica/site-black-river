@@ -9,7 +9,7 @@ import { AberturaSobre, CtaSobre, Diferenciais, Equipe, Historia, OndeAtendemos 
 export const metadata: Metadata = metadados({
   title: "Sobre a Black River e Luis Ricardo Pedro",
   description:
-    "Consultoria em logística e supply chain para o varejo: mais de 30 cases em 15 anos, conduzidos por Luis Ricardo Pedro, ex-diretor de Supply Chain do Grupo Pão de Açúcar e do Carrefour.",
+    "Consultoria em logística para o varejo: mais de 30 cases em 15 anos, com Luis Ricardo Pedro, ex-diretor de Supply Chain do Pão de Açúcar e do Carrefour.",
   caminho: "/sobre",
 });
 

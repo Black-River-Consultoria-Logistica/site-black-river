@@ -36,8 +36,8 @@ Contraste mínimo AA (4,5:1 para texto normal). `#669933` **nunca** em texto peq
 `--background #FFFFFF` · `--foreground #000000` · `--muted #F2F2F2` · `--muted-foreground #666666` · `--primary #527F29` · `--primary-foreground #FFFFFF` · `--secondary #F2F2F2` · `--secondary-foreground #000000` · `--accent #E0EBD6` · `--accent-foreground #000000` · `--border #E6E6E6` · `--input #CCCCCC` · `--ring #527F29` · `--radius 0px`
 
 ## Tipografia
-- Família: `"Bliss Pro", Archivo, "Helvetica Neue", Helvetica, Arial, sans-serif`. **Archivo é substituta da Bliss Pro** (fonte comercial, sem licença web conhecida). Carregar Archivo variável auto-hospedada (`@fontsource-variable/archivo`), sem CDN. Licença web da Bliss Pro desconhecida: seguir com Archivo (decisão do João, 13/10/2026). Se a licença aparecer, trocar é uma linha de CSS.
-- Títulos: Archivo 700, `letter-spacing: -0.02em`. Hero pode usar largura expandida (eixo `wdth` ~112) com moderação.
+- Família: `"Bliss Pro", Archivo, "Helvetica Neue", Helvetica, Arial, sans-serif`. **Archivo é substituta da Bliss Pro** (fonte comercial, sem licença web conhecida). Carregar Archivo variável auto-hospedada (arquivo do `@fontsource-variable/archivo`, servido por `next/font/local`, pré-carregado), sem CDN. Desde a Etapa 12, só o eixo de peso (35 KB): o eixo de largura não é usado no site. Licença web da Bliss Pro desconhecida: seguir com Archivo (decisão do João, 13/10/2026). Se a licença aparecer, trocar é uma linha de CSS.
+- Títulos: Archivo 700, `letter-spacing: -0.02em`. Largura expandida (eixo `wdth`) não é usada: o arquivo carregado só tem o eixo de peso (Etapa 12).
 - Corpo: Archivo 400; ênfase 600. Legenda: 300 itálico.
 - Escala (modular 1,25, base 16px):
 

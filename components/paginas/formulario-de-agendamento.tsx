@@ -407,7 +407,7 @@ export function CanaisDiretos({ className }: { className?: string }) {
         <div className="flex flex-col gap-1">
           <dt className="text-ink-60">E-mail</dt>
           <dd>
-            <a href={`mailto:${email}`} className={linkInline}>
+            <a href={`mailto:${email}`} className={cn(linkInline, "inline-flex min-h-11 items-center")}>
               <EmailQuebravel email={email} />
             </a>
           </dd>
@@ -417,7 +417,12 @@ export function CanaisDiretos({ className }: { className?: string }) {
         <div className="flex flex-col gap-1">
           <dt className="text-ink-60">WhatsApp</dt>
           <dd>
-            <a href={`https://wa.me/${whatsapp}`} className={linkInline} target="_blank" rel="noopener noreferrer">
+            <a
+              href={`https://wa.me/${whatsapp}`}
+              className={cn(linkInline, "inline-flex min-h-11 items-center")}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               {whatsappExibicao ?? "Conversar pelo WhatsApp"}
             </a>
           </dd>

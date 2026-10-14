@@ -42,7 +42,7 @@ Cada página tem uma palavra-chave principal, que aparece no title (aba do naveg
 
 Cases, Insights, Obrigado, Privacidade, Termos e 404 usam o nome da página como title. Cada case e cada artigo recebem a palavra-chave do próprio tema nas Etapas 7 e 8.
 
-**Description da Home (Etapa 12, proposta):** Consultoria em logística e supply chain para varejo e atacado. A Black River executa junto com o seu time, com a bagagem de quem dirigiu grandes operações do varejo. Agende uma conversa de diagnóstico. · O resumo do `/llms.txt` reaproveita a proposta de valor e os dados aprovados da Home e do Sobre.
+**Description da Home (Etapa 12, encurtada na auditoria da Etapa 13):** Consultoria em logística para varejo e atacado. Executamos junto com o seu time, com a bagagem de quem dirigiu grandes operações do varejo. · O resumo do `/llms.txt` reaproveita a proposta de valor e os dados aprovados da Home e do Sobre.
 
 ## Home
 

@@ -1,0 +1,15 @@
+# Headers de segurança da Cloudflare Pages (Etapa 13; checklists/seguranca.md, item 18).
+# CSP: só o próprio site, o GA4 (depois do aceite de cookies) e o Turnstile da Cloudflare.
+# 'unsafe-inline' em script-src: o Next.js exportado usa scripts inline para hidratar as páginas.
+/*
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://*.googletagmanager.com https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com; font-src 'self'; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://challenges.cloudflare.com; frame-src https://challenges.cloudflare.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests
+  Strict-Transport-Security: max-age=31536000
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), browsing-topics=()
+  Cross-Origin-Opener-Policy: same-origin
+
+# Arquivos com hash no nome: cache longo.
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable
