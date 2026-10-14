@@ -21,8 +21,9 @@ Atualizado: 13/10/2026 · Responsável interno: João Assad
 - [x] Etapa 5 — IMPLEMENTATION_PLAN.md (13 etapas de construção) — aprovada 13/10/2026
 
 ## Fase 2 — Construção
-- Etapa 1 — Setup: concluída, aguardando aprovação do João. Feito: Next.js + Tailwind + build estático, tokens, Archivo, skills de design (incluindo Impeccable), primitivas shadcn adaptadas ao DESIGN.md, registro @spell validado. Único item aberto: envio ao GitHub (pendência #7); até lá, o trabalho circula por git bundle.
-- Decisões: liberar domínios dos componentes (feito, exceto componentry.dev); Impeccable instalado em 13/10/2026 — proposta de voltar ao `critique` por etapa visual, aguardando o João; Taste Skill variação/movimento/densidade médios.
+- Etapa 1 — Setup: **aprovada em 13/10/2026** (ressalva: envio ao GitHub pendente, #7; o trabalho circula por git bundle e o GitHub só é indispensável na Etapa 13).
+- Etapa 2 — Layout base: próxima. Depende dos arquivos oficiais do logo.
+- Decisões: domínios dos componentes liberados (exceto componentry.dev); Impeccable instalado e `/impeccable critique` volta a rodar ao fim de cada etapa visual (João, 13/10/2026); Taste Skill variação/movimento/densidade médios.
 - Alerta para a Etapa 7: o `logos-carousel` da Spell UI roda em loop contínuo, o que contraria o DESIGN.md (nada em loop). Usar faixa estática ou adaptar com pausa e prefers-reduced-motion.
 
 ## Pendências

@@ -28,6 +28,7 @@ Regra: executar uma etapa por vez, marcar [x], resumir e parar para aprovação.
 - [x] `scripts/setup-design.sh`: skills de Emil Kowalski e Taste Skill instaladas. Impeccable: pacote de skills bloqueado pela rede da sessão; decisão do João (13/10/2026): a cada etapa visual usar `npx impeccable detect` + Taste Skill + revisão contra o DESIGN.md + prints em 3 larguras (Playwright direto, sem MCP); critique/audit completos na Etapa 13. Atualização 13/10/2026: Impeccable v0.1.14 instalado (rede liberada); `impeccable detect` no código sem achados. A varredura por URL falha no ambiente de nuvem (navegador sem sandbox como root) — usar a varredura de arquivos + prints do Playwright
 - [x] Valores da Taste Skill aprovados pelo João: variação de layout **média**, movimento **médio**, densidade **média** (sempre dentro do DESIGN.md: animações curtas, só transform/opacity, nada em loop, prefers-reduced-motion)
 - Pronto quando: página em branco roda local com Archivo e as cores da marca; `npm run build` gera a pasta estática sem erro
+- **Aprovada pelo João em 13/10/2026**, com ressalva: o envio ao GitHub fica para quando houver sessão com o repositório (até lá, git bundle). Decisão no mesmo dia: voltar ao `/impeccable critique` ao fim de cada etapa visual, como no processo original do kit.
 
 ## Etapa 2 — Layout base
 - [ ] Cabeçalho (logo "Horizontal — Site", navegação, botão do CTA) e menu do celular
