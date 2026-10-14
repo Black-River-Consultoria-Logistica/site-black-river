@@ -1,3 +1,4 @@
+# PLANO B. O caminho preferido é a ferramenta Redireciona do cPanel (docs/PUBLICACAO.md, passo 9).
 # Hospedagem do UOL Host (Etapa 13, caminho "só o site", decisão do João em 14/10/2026).
 # O site novo está na Cloudflare Pages, no www. O DNS e o e-mail continuam no UOL.
 # Este arquivo vai na pasta pública da hospedagem do UOL (substituindo o site antigo) e manda

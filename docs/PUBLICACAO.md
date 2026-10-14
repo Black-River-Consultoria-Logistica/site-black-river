@@ -45,7 +45,13 @@ O e-mail da empresa e o DNS **continuam no UOL Host**, sem troca de nameservers.
 6. **Resend no DNS do UOL:** criar as 3 entradas novas (MX e TXT em `send`, TXT em `resend._domainkey`). Não alteram o MX nem o SPF do domínio principal.
 7. **Domínio personalizado no Pages:** adicionar `www.blackriverconsultoria.com.br`. A Cloudflare mostra o destino (`<projeto>.pages.dev`).
 8. **Trocar a entrada `www` no UOL** para um CNAME apontando para esse destino, em horário de pouco movimento. Só o site muda; o e-mail não depende dessa entrada. Para desfazer, basta voltar a entrada antiga (foto do passo 1).
-9. **Endereço sem www:** no painel do UOL, ligar o SSL do domínio sem www e trocar o conteúdo da hospedagem pelo arquivo `config/uol/.htaccess`, que redireciona tudo para o `www` (301). O plano do UOL continua por causa do e-mail; sem custo extra.
+9. **Endereço sem www** (depois do passo 8 conferido): no cPanel do UOL, ferramenta **Redireciona**, com:
+   - Digitar: **Permanente (301)**
+   - Domínio: **blackriverconsultoria.com.br** (não "Todos Domínios Públicos"), caminho `/` vazio
+   - Redireciona para: `https://www.blackriverconsultoria.com.br/`
+   - www. redirecionamento: **Não Redirecionar www.** (com outra opção, o `www` redirecionaria para ele mesmo enquanto ainda aponta para o UOL)
+   - **Redirecionamento Curinga marcado** (leva cada caminho antigo para o mesmo caminho no `www`, onde o `public/_redirects` assume)
+   O cPanel grava a regra sozinho; os arquivos do site antigo ficam na hospedagem como cópia, sem ser exibidos. Conferir antes que o SSL automático cobre o domínio sem www. Plano B: o arquivo `config/uol/.htaccess`. O plano do UOL continua por causa do e-mail; sem custo extra.
 10. **Turnstile de produção** com os hostnames do domínio; trocar a chave secreta de teste pela de produção.
 11. **Worker `manter-ativo`** (sinal diário do Supabase Free) publicado com a `SUPABASE_ANON_KEY`.
 12. **Conferências no endereço final:** os três checklists de novo (`docs/AUDITORIA.md`), PageSpeed no celular, securityheaders.com (nota A), Teste de pesquisa aprimorada, Search Console e Bing Webmaster com o sitemap, evento `generate_lead` como evento-chave no GA4, "testar como um estranho" (João), e um e-mail de teste para contato@ e para o João.
