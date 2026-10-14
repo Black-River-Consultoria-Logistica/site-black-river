@@ -79,7 +79,7 @@ Regra: executar uma etapa por vez, marcar [x], resumir e parar para aprovação.
 - Pronto quando: os 4 cases publicados localmente, revisados contra as regras de confidencialidade, e nenhum cliente identificável
 
 ## Etapa 8 — Insights
-- [x] Artigos em MDX no repositório (sem CMS); lista com filtro por módulo; modelo de artigo com autor (Luis), data, caixa "O que é…" e CTA no fim (14/10/2026: `content/insights/*.mdx` + `lib/content/insights.ts`; filtro só com as frentes que têm artigo, escolha guardada em `?frente=`)
+- [x] Artigos em MDX no repositório (sem CMS); lista com filtro por módulo; modelo de artigo com autor (Luis), data, caixa "O que é…" e CTA no fim (14/10/2026: `content/insights/*.mdx` + `lib/content/insights.ts`; filtro só com as frentes que têm artigo, escolha guardada em `?frente=`; por decisão do João, o filtro só aparece com 6 artigos em 3 frentes ou mais; diagrama próprio por artigo no card e no texto)
 - [ ] 3 artigos de lançamento redigidos e aprovados (redigidos em 14/10/2026 a partir das pautas; revisão do João e do Luis no Claude Doc https://claude.ai/code/artifact/9942ed95-f2c5-4e8b-b143-6270c47ed3d3)
 - [x] Links de cada artigo para o módulo relacionado e para 2 outros artigos (sem becos sem saída; os únicos links sem página são Contato, Privacidade e Termos, das Etapas 10 e 11)
 - Pronto quando: os 3 artigos abrem com a resposta na primeira frase, sem becos sem saída, e o texto aparece no HTML do servidor (Ctrl+U)

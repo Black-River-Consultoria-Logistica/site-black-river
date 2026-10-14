@@ -8,6 +8,7 @@ import type { MDXContent } from "mdx/types";
 import ComoEscolher from "@/content/insights/como-escolher-consultoria-de-logistica-para-varejo.mdx";
 import Diagnostico from "@/content/insights/como-funciona-um-diagnostico-logistico.mdx";
 import Verbas from "@/content/insights/verbas-logisticas.mdx";
+import type { TipoDeDiagrama } from "@/components/insights/diagramas";
 import { modulos, type Frente } from "@/lib/site";
 
 export type Artigo = {
@@ -25,6 +26,8 @@ export type Artigo = {
   /** AAAA-MM-DD. Provisória: vira a data de publicação no lançamento. */
   data: string;
   autor: { nome: string; cargo: string; credencial: string; href: string; foto: string };
+  /** Diagrama do topo do card (versão sem texto do diagrama do artigo). */
+  diagrama: TipoDeDiagrama;
   Corpo: MDXContent;
 };
 
@@ -65,6 +68,7 @@ export const artigos: Artigo[] = [
     frente: 0,
     data: "2026-10-14",
     autor: LUIS,
+    diagrama: "criterios",
     Corpo: ComoEscolher,
   },
   {
@@ -79,6 +83,7 @@ export const artigos: Artigo[] = [
     frente: 4,
     data: "2026-10-14",
     autor: LUIS,
+    diagrama: "entregas",
     Corpo: Verbas,
   },
   {
@@ -93,6 +98,7 @@ export const artigos: Artigo[] = [
     frente: 0,
     data: "2026-10-14",
     autor: LUIS,
+    diagrama: "etapas",
     Corpo: Diagnostico,
   },
 ];

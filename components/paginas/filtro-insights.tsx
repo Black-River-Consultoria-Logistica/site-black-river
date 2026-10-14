@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 // Filtro da lista de Insights por frente de trabalho (Etapa 8). A lista inteira vem no HTML do servidor;
 // o filtro só esconde cards no navegador. A escolha fica no endereço (?frente=<código>) para poder ser compartilhada.
 
+// `diagrama` chega pronto do servidor (elemento React), como os demais dados.
 export type ItemDaLista = {
   href: string;
   titulo: string;
@@ -16,6 +17,7 @@ export type ItemDaLista = {
   data: string;
   dataIso: string;
   codigo: string;
+  diagrama?: React.ReactNode;
 };
 
 export function ListaFiltravel({

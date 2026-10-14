@@ -89,7 +89,7 @@ export function CardDeCase({
 }
 
 // Card de artigo (lista de Insights e "Leia também"). DESIGN.md prevê imagem 16:9 ou diagrama no topo:
-// no lançamento não há imagens, então o card abre pelo rótulo da frente (o campo `imagem` entra quando houver).
+// no lançamento, o topo é o diagrama do artigo em versão sem texto (components/insights/diagramas.tsx).
 export function CardDeArtigo({
   href,
   titulo,
@@ -98,8 +98,10 @@ export function CardDeArtigo({
   autor,
   data,
   dataIso,
+  diagrama,
   className,
 }: {
+  diagrama?: React.ReactNode;
   href: string;
   titulo: string;
   resumo: string;
@@ -111,17 +113,20 @@ export function CardDeArtigo({
   className?: string;
 }) {
   return (
-    <Link href={href} className={cn(cardLink, "gap-4 bg-paper p-6 lg:p-8", className)}>
-      <span className={cn(overline, "text-primary")}>{rotulo}</span>
-      <h3 className="text-h4 font-semibold text-balance">{titulo}</h3>
-      <p className="max-w-[52ch] text-ink-80">{resumo}</p>
-      <div className="mt-auto flex flex-col gap-4 pt-2">
-        <p className="text-small text-ink-60">
-          {autor} · <time dateTime={dataIso}>{data}</time>
-        </p>
-        <span className={rotuloCard}>
-          <TextoComSeta>Ler o artigo</TextoComSeta>
-        </span>
+    <Link href={href} className={cn(cardLink, "bg-paper", className)}>
+      {diagrama}
+      <div className="flex flex-1 flex-col gap-4 p-6 lg:p-8">
+        <span className={cn(overline, "text-primary")}>{rotulo}</span>
+        <h3 className="text-h4 font-semibold text-balance">{titulo}</h3>
+        <p className="max-w-[52ch] text-ink-80">{resumo}</p>
+        <div className="mt-auto flex flex-col gap-4 pt-2">
+          <p className="text-small text-ink-60">
+            {autor} · <time dateTime={dataIso}>{data}</time>
+          </p>
+          <span className={rotuloCard}>
+            <TextoComSeta>Ler o artigo</TextoComSeta>
+          </span>
+        </div>
       </div>
     </Link>
   );

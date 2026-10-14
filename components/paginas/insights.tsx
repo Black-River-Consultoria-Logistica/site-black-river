@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { DiagramaDoCard } from "@/components/insights/diagramas";
 import { ListaFiltravel, type ItemDaLista } from "@/components/paginas/filtro-insights";
 import {
   AberturaDePagina,
@@ -39,12 +40,20 @@ function itemDaLista(a: Artigo): ItemDaLista {
     data: dataPorExtenso(a.data),
     dataIso: a.data,
     codigo: frenteDoArtigo(a).codigo,
+    diagrama: <DiagramaDoCard tipo={a.diagrama} />,
   };
 }
 
 // ---------- Lista ----------
 
+// O filtro só aparece quando há o que filtrar (decisão do João, 14/10/2026): 6 artigos em 3 frentes ou mais.
+export const filtroVisivel = (() => {
+  const frentes = new Set(artigos.map((a) => a.frente));
+  return artigos.length >= 6 && frentes.size >= 3;
+})();
+
 export function PaginaListaDeInsights() {
+  const mostrarFiltro = filtroVisivel;
   // Só as frentes que têm artigo viram opção do filtro, na ordem das frentes.
   const opcoes = modulos
     .map((m, i) => ({ m, i }))
@@ -59,7 +68,17 @@ export function PaginaListaDeInsights() {
             <h2 id="lista-titulo" className="sr-only">
               Artigos
             </h2>
-            <ListaFiltravel itens={artigos.map(itemDaLista)} opcoes={opcoes} rotuloTodas={paginaInsights.filtroTodas} />
+            {mostrarFiltro ? (
+              <ListaFiltravel itens={artigos.map(itemDaLista)} opcoes={opcoes} rotuloTodas={paginaInsights.filtroTodas} />
+            ) : (
+              <ul className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                {artigos.map((a) => (
+                  <li key={a.slug}>
+                    <CardDeArtigo {...itemDaLista(a)} />
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
         </div>
       </section>
@@ -90,12 +109,17 @@ export function PaginaArtigo({ a }: { a: Artigo }) {
               </li>
               <li aria-hidden>/</li>
               <li>
-                <Link
-                  href={`/insights?frente=${frente.codigo}`}
-                  className={cn(linkInline, "-my-3 inline-flex min-h-11 items-center font-medium")}
-                >
-                  {frente.curto}
-                </Link>
+                {/* Com o filtro ativo, o rótulo leva à lista já filtrada; sem ele, é só o tema do artigo. */}
+                {filtroVisivel ? (
+                  <Link
+                    href={`/insights?frente=${frente.codigo}`}
+                    className={cn(linkInline, "-my-3 inline-flex min-h-11 items-center font-medium")}
+                  >
+                    {frente.curto}
+                  </Link>
+                ) : (
+                  frente.curto
+                )}
               </li>
             </ol>
           </nav>

@@ -1,5 +1,6 @@
 import type { MDXComponents } from "mdx/types";
 import Link from "next/link";
+import { DiagramaCriterios, DiagramaEntregas, DiagramaEtapas } from "@/components/insights/diagramas";
 import { linkInline } from "@/components/site/blocos";
 import { cn } from "@/lib/utils";
 
@@ -59,6 +60,9 @@ const componentes: MDXComponents = {
   strong: ({ children }) => <strong className="font-semibold text-ink">{children}</strong>,
   a: A,
   CaixaOQueE,
+  DiagramaCriterios,
+  DiagramaEntregas,
+  DiagramaEtapas,
 };
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
