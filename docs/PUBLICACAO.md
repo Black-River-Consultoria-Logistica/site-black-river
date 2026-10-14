@@ -37,17 +37,18 @@ Prefira a exportação estática sempre que o site não precisar de servidor. Ge
 
 O site atual e o e-mail da empresa dependem do DNS de hoje. A ordem abaixo existe para **nenhum e-mail se perder** na troca.
 
-1. **Inventário do DNS atual** (João + Claude): exportar ou fotografar **todos** os registros do domínio onde ele está hoje (MX, TXT de SPF/DKIM/DMARC, CNAMEs como autodiscover, A/AAAA do site atual). Nada muda ainda.
+1. **Inventário do DNS atual** (João + Claude). Hoje site **e** e-mail estão no **UOL Host** (informado pelo João, 14/10/2026). No painel do cliente UOL Host › Administrar › menu "≡" do domínio › **Alterar Zona de DNS** › Gerenciar, fotografar **todas** as entradas de cada tipo (A, CNAME, MX, TXT, SRV). Conferir também: (a) no Registro.br, quem tem o login do domínio e quais nameservers ele usa; (b) se o **DNSSEC** está ligado; (c) se o e-mail é o do próprio UOL Host ou Microsoft 365 contratado pelo UOL (muda os registros de autodiscover e DKIM). Nada muda ainda.
 2. **Unir o trabalho na branch principal:** abrir o PR de `etapa-1-setup` para `main` no GitHub e fazer o merge depois da revisão.
 3. **Projeto na Cloudflare Pages** ligado ao repositório: comando `npm run build`, pasta de saída `out`, Node 22. A pasta `functions/` vira a Função `/api/agendamento` sozinha.
 4. **Variáveis de ambiente** (painel, nunca no código): `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `RESEND_API_KEY`, `LEAD_NOTIFY_TO`, `EMAIL_FROM`, `ALLOWED_ORIGINS`, `TURNSTILE_SECRET_KEY`. Na prévia (`*.pages.dev`), a chave secreta **de teste** do Turnstile.
 5. **Teste completo na prévia `*.pages.dev`:** envio real do formulário (banco + aviso + confirmação, pendência #13), aviso de cookies, GA4 no Tempo real, `curl` dos robôs.
 6. **Adicionar o domínio à Cloudflare** (plano Free) e conferir, um a um, que todos os registros do inventário foram copiados. Registros de e-mail (MX e afins) ficam com a nuvem **cinza** (só DNS). Incluir os 3 registros do Resend.
-7. **Trocar os nameservers** no Registro.br para os da Cloudflare, em horário de pouco movimento. Acompanhar a propagação e mandar um e-mail de teste para contato@ e para o João.
-8. **Domínio personalizado** no projeto Pages: `www.blackriverconsultoria.com.br` como principal e o domínio sem www redirecionando para ele (301); "Always Use HTTPS" ligado.
-9. **Segurança e robôs na Cloudflare:** bloqueio de robôs de IA e robots.txt gerenciado **desligados**; "Bot Fight Mode" desligado (bloqueia robôs de IA); regra de rate limiting em `/api/agendamento` (5 POST por IP a cada 10 minutos); Turnstile de produção com os hostnames do domínio; trocar a chave secreta de teste pela de produção.
-10. **Worker `manter-ativo`** (sinal diário do Supabase Free) publicado com a `SUPABASE_ANON_KEY`.
-11. **Conferências no endereço final:** os três checklists de novo (`docs/AUDITORIA.md`), PageSpeed no celular, securityheaders.com (nota A), Teste de pesquisa aprimorada, Search Console e Bing Webmaster com o sitemap, evento `generate_lead` como evento-chave no GA4, "testar como um estranho" (João).
+7. **Antes da troca:** se o DNSSEC estiver ligado, desligá-lo no Registro.br e esperar o prazo indicado; manter a hospedagem de site do UOL Host ativa até o site novo estar estável (cerca de um mês) e confirmar com o UOL que cancelar o site **não** cancela o e-mail nem o domínio.
+8. **Trocar os nameservers** no Registro.br para os da Cloudflare, em horário de pouco movimento. Acompanhar a propagação e mandar um e-mail de teste para contato@ e para o João.
+9. **Domínio personalizado** no projeto Pages: `www.blackriverconsultoria.com.br` como principal e o domínio sem www redirecionando para ele (301); "Always Use HTTPS" ligado.
+10. **Segurança e robôs na Cloudflare:** bloqueio de robôs de IA e robots.txt gerenciado **desligados**; "Bot Fight Mode" desligado (bloqueia robôs de IA); regra de rate limiting em `/api/agendamento` (5 POST por IP a cada 10 minutos); Turnstile de produção com os hostnames do domínio; trocar a chave secreta de teste pela de produção.
+11. **Worker `manter-ativo`** (sinal diário do Supabase Free) publicado com a `SUPABASE_ANON_KEY`.
+12. **Conferências no endereço final:** os três checklists de novo (`docs/AUDITORIA.md`), PageSpeed no celular, securityheaders.com (nota A), Teste de pesquisa aprimorada, Search Console e Bing Webmaster com o sitemap, evento `generate_lead` como evento-chave no GA4, "testar como um estranho" (João).
 
 ## 4. Analytics e operação
 
