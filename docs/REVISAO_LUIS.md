@@ -1,6 +1,6 @@
 # Revisão do Luis — páginas das 7 frentes de trabalho
 
-Criado em 14/10/2026 (Etapa 6). As páginas `/solucoes/...` já estão montadas com os textos do `CONTEUDO.md`, mas **não vão ao ar antes desta revisão**. Fonte única dos textos no código: `lib/content/solucoes.ts`.
+Criado em 14/10/2026 (Etapa 6). Documento para os comentários do Luis: https://claude.ai/code/artifact/c5a2043e-66ae-46ab-bde0-2974113721bf As páginas `/solucoes/...` já estão montadas com os textos do `CONTEUDO.md`, mas **não vão ao ar antes desta revisão**. Fonte única dos textos no código: `lib/content/solucoes.ts`.
 
 ## O que o Luis precisa revisar em cada uma das 7 páginas
 
