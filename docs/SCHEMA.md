@@ -123,5 +123,5 @@ Segundo script, [`20261014010000_ajustes_advisor.sql`](../supabase/migrations/20
 - Código: regras dos campos em `lib/formulario/esquema.ts` (as mesmas no navegador e na Função); processamento em `lib/formulario/processar.ts`; envelope da Cloudflare em `functions/api/agendamento.ts`; testes em `tests/agendamento.test.ts` (`npm test`).
 - A chave service role nunca vai para o navegador nem para o repositório.
 - Mensagens de erro ao visitante são genéricas; detalhes só nos logs da Cloudflare.
-- Encarregado de dados (DPO) citado na Política de Privacidade: Luis Ricardo Pedro (decisão do João, 13/10/2026). Canal de contato do encarregado: e-mail institucional [A CONFIRMAR].
+- Encarregado de dados (DPO) citado na Política de Privacidade: Luis Ricardo Pedro (decisão do João, 13/10/2026). Canal de contato do encarregado: contato.site@blackriverconsultoria.com.br (decisão do João, 14/10/2026; caixa a criar, pendência #14).
 - **Exportar a tabela todo mês** como backup (obrigatório no plano Free, que não tem backup automático); o arquivo tem dados pessoais e fica em pasta de acesso restrito.

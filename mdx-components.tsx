@@ -1,6 +1,7 @@
 import type { MDXComponents } from "mdx/types";
 import Link from "next/link";
 import { DiagramaCriterios, DiagramaEntregas, DiagramaEtapas } from "@/components/insights/diagramas";
+import { Controlador, EmailDeContato, EmailDoEncarregado, Encarregado, Foro, Versao } from "@/components/legal/dados";
 import { linkInline } from "@/components/site/blocos";
 import { ancora, cn } from "@/lib/utils";
 
@@ -67,7 +68,16 @@ const componentes: MDXComponents = {
   li: ({ children }) => <li>{children}</li>,
   strong: ({ children }) => <strong className="font-semibold text-ink">{children}</strong>,
   a: A,
+  // Nomes técnicos curtos (cookies, por exemplo), sem caixa colorida.
+  code: ({ children }) => <code className="font-mono text-[0.9em] text-ink">{children}</code>,
   CaixaOQueE,
+  // Textos legais (Etapa 11): dados vindos de lib/site.ts.
+  Controlador,
+  EmailDeContato,
+  EmailDoEncarregado,
+  Encarregado,
+  Foro,
+  Versao,
   DiagramaCriterios,
   DiagramaEntregas,
   DiagramaEtapas,

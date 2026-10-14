@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { modulos, navegacaoPrincipal, site } from "@/lib/site";
+import { LinkPreferenciasDeCookies } from "./aviso-de-cookies";
 import { Logo } from "./logo";
 
 // Alvo de toque confortável (py-2) sem mudar o ritmo visual da lista.
@@ -94,7 +95,7 @@ export function SiteFooter() {
           <p>
             © {ano} {site.nome}
           </p>
-          <ul className="flex gap-6">
+          <ul className="flex flex-wrap gap-x-6">
             <li>
               <Link href="/privacidade" className={linkRodape}>
                 Política de Privacidade
@@ -104,6 +105,9 @@ export function SiteFooter() {
               <Link href="/termos" className={linkRodape}>
                 Termos de Uso
               </Link>
+            </li>
+            <li>
+              <LinkPreferenciasDeCookies className={`${linkRodape} cursor-pointer text-left`} />
             </li>
           </ul>
         </div>

@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { AvisoDeCookies } from "@/components/layout/aviso-de-cookies";
 import { MobileCtaBar } from "@/components/layout/mobile-cta-bar";
 import { RastreioDeOrigem } from "@/components/layout/rastreio-de-origem";
 import { SiteFooter } from "@/components/layout/site-footer";
@@ -37,6 +38,7 @@ export default function RootLayout({
         <SiteFooter />
         <MobileCtaBar />
         <RastreioDeOrigem />
+        <AvisoDeCookies />
       </body>
     </html>
   );

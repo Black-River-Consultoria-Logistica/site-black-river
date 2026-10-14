@@ -21,6 +21,18 @@ export const site = {
   linkedin: {
     pagina: null as string | null,
   },
+  // Identificação do controlador na Política de Privacidade (LGPD). null = não aparece (pendência #3).
+  entidade: {
+    razaoSocial: null as string | null,
+    cnpj: null as string | null,
+    endereco: null as string | null,
+    cidadeDoForo: "São Paulo/SP", // Termos de Uso (decisão do João, 14/10/2026)
+  },
+  // Canal do encarregado de dados (Luis Ricardo Pedro). Caixa a ser criada pelo João (pendência #14).
+  privacidade: {
+    encarregado: "Luis Ricardo Pedro",
+    email: "contato.site@blackriverconsultoria.com.br",
+  },
   // Turnstile (antirrobô da Cloudflare, Etapa 10). A chave do site é pública por natureza;
   // a chave secreta fica só no painel da Cloudflare. O widget de produção aceita apenas o domínio
   // oficial; em qualquer outro endereço (local, prévias) o site usa a chave de teste oficial da Cloudflare.

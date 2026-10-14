@@ -31,7 +31,7 @@ Atualizado: 14/10/2026 · Responsável interno: João Assad
 - Etapa 8 — Insights: **aprovada em 14/10/2026** (estrutura, diagramas e índice "Neste artigo"; os 3 artigos seguem em revisão do João e do Luis antes de irem ao ar). Lista `/insights` com filtro por frente, modelo de artigo e os 3 artigos de lançamento redigidos a partir das pautas da Etapa 3. Os artigos só vão ao ar depois da revisão do João e do Luis (Claude Doc: https://claude.ai/code/artifact/9942ed95-f2c5-4e8b-b143-6270c47ed3d3). Depende do Luis: modalidades e forma de pagamento das verbas logísticas (artigo 2), prova publicável para verbas, ok na assinatura dos 3 artigos. Data dos artigos provisória (14/10/2026), vira a data do lançamento. Decisões do João (14/10/2026): filtro escondido até haver 6 artigos em 3 frentes ou mais (o código fica pronto); um diagrama próprio por artigo (topo do card 16:9 e dentro do artigo, `components/insights/diagramas.tsx`); fim do artigo 1 encurtado para um parágrafo ("Na Black River"). Medida de leitura dos artigos: ~70 caracteres por linha (34rem), registrada no DESIGN.md (João, 14/10/2026).
 - Etapa 9 — Banco de dados: **aprovada em 14/10/2026**. Projeto Supabase Free da Black River (região São Paulo, RLS automático) criado pelo João; os dois scripts de `supabase/migrations/` rodados; conferência com 9/9 ok e Security Advisor sem avisos. Fica para a Etapa 13 só o deploy do sinal diário (`workers/manter-ativo`), que depende da conta Cloudflare. Decisões do plano Free (sinal diário, e-mail independente do banco, exportação mensal) no SCHEMA.md.
 - Etapa 10 — Formulário e envio: **aprovada em 14/10/2026**. `/contato` com formulário (5 campos obrigatórios + autorização; frente de trabalho, página de origem e UTMs vão escondidas), `/obrigado` e a Função `/api/agendamento` (Turnstile, armadilha para robôs, validação, banco e aviso por e-mail em paralelo, confirmação ao visitante). Testado com os serviços simulados. Para o envio real faltam: conta Resend + registros de DNS do domínio, cadastrar `LEAD_NOTIFY_TO` = contato@blackriverconsultoria.com.br (confirmado); conta Resend com o domínio principal verificado (3 registros de DNS no painel atual, sem trocar nameservers) e remetente "Black River Consultoria <contato@blackriverconsultoria.com.br>" e as variáveis na Cloudflare. Decisões do João (14/10/2026): telefone obrigatório; nenhum campo opcional visível; mensagem de falha curta com o e-mail contato@blackriverconsultoria.com.br (o WhatsApp entra sozinho na frase quando o número for cadastrado); "Política de Privacidade" e "Termos de Uso" com maiúsculas; avisos de pedido vão para contato@blackriverconsultoria.com.br. Turnstile criado pelo João (chave do site pública no código; chave secreta só no gerenciador de senhas → painel da Cloudflare).
-- Etapa 11 — Páginas legais e cookies: próxima (Política de Privacidade, Termos de Uso e banner de cookies; os textos passam por revisão jurídica da Black River).
+- Etapa 11 — Páginas legais e cookies: **em revisão (14/10/2026)**. `/privacidade` e `/termos` no modelo de leitura dos artigos, aviso de cookies com Aceitar/Recusar de mesmo peso e Preferências, link "Preferências de cookies" no rodapé. Textos em revisão jurídica no Claude Doc https://claude.ai/code/artifact/a48be641-0c25-436d-9548-fc1a4b4b4799. Decisões do João: encarregado pelo contato.site@ (a criar), revisão por Claude Doc, aviso empilhado acima da barra de CTA no celular, foro São Paulo/SP.
 - (histórico) Envio ao GitHub resolvido em 14/10/2026: branch `etapa-1-setup` em Black-River-Consultoria-Logistica/site-black-river (pendência #7).
 - Decisões da Etapa 3 (14/10/2026): "frente de trabalho" no lugar de "módulo" em todo o site; duração da conversa de diagnóstico fora do site (pode assustar o cliente); subtítulo da Home na redação do João.
 - (histórico) Etapa 2: Logos oficiais recebidos (PNG), limpos da moldura de exportação e exportados em 2x; rodapé com o logo oficial em uma cor no verde exato #669933.
@@ -40,12 +40,20 @@ Atualizado: 14/10/2026 · Responsável interno: João Assad
 - Etapa 7: faixa de logos feita estática, sem o `logos-carousel` da Spell UI (loop contínuo contraria o DESIGN.md).
 
 ## Pendências
-3. Dados de entidade: razão social, CNPJ, endereço, URLs do LinkedIn (página e Luis). E-mail institucional resolvido em 14/10/2026: contato@blackriverconsultoria.com.br (já no rodapé e no Contato).
-10. WhatsApp institucional: número virtual móvel da Salvy, a contratar pelo João. O código já está pronto: basta preencher o número em `lib/site.ts`.
-4. Revisar com Luis Ricardo as perguntas reais do público (FAQ/AEO), prazos típicos por módulo e prova para verbas logísticas.
-5. Formatar o e-mail de confirmação ao lead com case/conteúdo útil.
+Lista completa, com responsáveis e status: `docs/PENDENCIAS.md`.
+
 1. Pedir à WZ que remova Luis Ricardo Pedro da lista de sócios em wzconsultoria.com.br (as IAs atribuem à WZ o currículo dele).
 2. Verificar por que blackriverconsultoria.com.br recusa leitura por ferramentas automáticas (robots.txt/firewall).
+3. Dados de entidade (trava a publicação da Política de Privacidade): razão social, CNPJ, endereço, URLs do LinkedIn (página e Luis). E-mail institucional resolvido em 14/10/2026: contato@blackriverconsultoria.com.br (já no rodapé e no Contato).
+4. Revisar com Luis Ricardo os 3 artigos, as 7 páginas de frentes de trabalho, as perguntas reais do público (FAQ/AEO), prazos típicos por módulo e prova para verbas logísticas.
+5. Formatar o e-mail de confirmação ao lead com case/conteúdo útil.
+8. Revogar o token do GitHub colado na conversa em 13/10/2026.
+10. WhatsApp institucional: número virtual móvel da Salvy, a contratar pelo João. O código já está pronto: basta preencher o número em `lib/site.ts`.
+11. Resend: conta, domínio e chave de envio (João).
+12. Cloudflare: conta (João); variáveis e limite de envios na Etapa 13.
+13. Teste real de ponta a ponta do formulário, depois de #11 e #12.
+14. Criar a caixa contato.site@blackriverconsultoria.com.br (canal do encarregado).
+15. Revisão jurídica da Política de Privacidade, Termos de Uso e aviso de cookies.
 
 ## Achado principal da Etapa 0
 Black River citada por 0 de 3 IAs (ChatGPT, Gemini, Perplexity); WZ e Prosperity citadas por 3/3.

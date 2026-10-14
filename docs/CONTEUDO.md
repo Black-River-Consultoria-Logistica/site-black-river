@@ -541,6 +541,10 @@ Estas páginas fecham o fluxo de conversão: o formulário, a confirmação e a 
 
 **Enquanto isso:** Leia o que aprendemos dentro das operações. **Link:** Ir para Insights
 
+### Política de Privacidade, Termos de Uso e aviso de cookies (Etapa 11)
+
+Textos completos em `content/legal/privacidade.mdx`, `content/legal/termos.mdx` e `lib/content/cookies.ts`, **em revisão jurídica** no Claude Doc https://claude.ai/code/artifact/a48be641-0c25-436d-9548-fc1a4b4b4799 (pendência #15). Decisões do João (14/10/2026): encarregado Luis Ricardo Pedro pelo e-mail contato.site@blackriverconsultoria.com.br; foro da Comarca de São Paulo/SP; no celular, o aviso de cookies fica empilhado acima da barra fixa de CTA. Rodapé ganha o link "Preferências de cookies".
+
 ### 404 (já publicada na Etapa 2)
 
 **H1:** Esta página não existe.
