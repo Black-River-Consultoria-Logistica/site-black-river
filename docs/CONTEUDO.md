@@ -523,13 +523,15 @@ Estas páginas fecham o fluxo de conversão: o formulário, a confirmação e a 
 | Empresa | Empresa | Sim | Informe o nome da empresa. |
 | Cargo | Cargo | Sim | Informe o seu cargo. |
 | Telefone | Telefone ou WhatsApp | Sim | Confira o número, com DDD. |
-| Consentimento | Autorizo a Black River a usar estes dados para retornar o contato, conforme a Política de privacidade. | Sim | Para enviar, marque a autorização. |
+| Consentimento | Autorizo a Black River a usar estes dados para retornar o contato, conforme a Política de Privacidade. | Sim | Para enviar, marque a autorização. |
 
 **Botão:** Enviar e agendar · durante o envio: "Enviando..."
 
-**Falha no envio:** Não conseguimos enviar agora. Seus dados continuam no formulário: tente de novo ou, se preferir, fale com a gente por e-mail ou WhatsApp. **\[A CONFIRMAR: e-mail e WhatsApp institucionais\]**
+**Falha no envio (versão curta, João, 14/10/2026):** Não conseguimos enviar. Tente de novo ou escreva para contato@blackriverconsultoria.com.br. · Quando o WhatsApp entrar: Não conseguimos enviar. Tente de novo, escreva para contato@blackriverconsultoria.com.br ou chame no WhatsApp. (A frase se ajusta sozinha ao preencher o número em `lib/site.ts`.) Abaixo, o link "Tentar de novo".
 
-**Canais secundários (abaixo do formulário):** E-mail e WhatsApp institucionais **\[A CONFIRMAR\]**. Sem a barra fixa de CTA nesta página.
+**Canais secundários (abaixo de "O que esperar"):** E-mail: contato@blackriverconsultoria.com.br (informado pelo João, 14/10/2026) · WhatsApp **\[A CONFIRMAR\]**. Sem a barra fixa de CTA nesta página.
+
+**Grafia:** "Política de Privacidade", com maiúsculas, no formulário e no rodapé (João, 14/10/2026).
 
 ### Obrigado
 

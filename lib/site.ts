@@ -1,5 +1,5 @@
 // Dados globais do site. Fonte: BRIEF.md e APP_FLOW.md (aprovados em 13/10/2026).
-// Campos de contato ficam null até a pendência #3 (dados de entidade) ser resolvida:
+// Campos de contato ficam null até a pendência #3 (dados de entidade) ser resolvida (o e-mail já foi):
 // o que é null simplesmente não aparece no site — nunca texto provisório.
 
 export const site = {
@@ -12,7 +12,8 @@ export const site = {
     href: "/contato",
   },
   contato: {
-    email: null as string | null,
+    // E-mail institucional informado pelo João em 14/10/2026.
+    email: "contato@blackriverconsultoria.com.br" as string | null,
     // Somente dígitos com DDI, ex.: "5511900000000" (gera o link wa.me).
     whatsapp: null as string | null,
     whatsappExibicao: null as string | null,

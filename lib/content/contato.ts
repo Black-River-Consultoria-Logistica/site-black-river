@@ -21,15 +21,19 @@ export const contato = {
   },
   consentimento: {
     antes: "Autorizo a Black River a usar estes dados para retornar o contato, conforme a ",
-    link: "Política de privacidade",
+    link: "Política de Privacidade",
     depois: ".",
   },
   botao: "Enviar e agendar",
   botaoEnviando: "Enviando...",
+  // Versão curta (João, 14/10/2026). A frase se monta com os canais configurados em lib/site.ts:
+  // só e-mail → "Não conseguimos enviar. Tente de novo ou escreva para contato@…."
+  // e-mail + WhatsApp → "Não conseguimos enviar. Tente de novo, escreva para contato@… ou chame no WhatsApp."
   falha: {
-    inicio: "Não conseguimos enviar agora. Seus dados continuam no formulário: tente de novo",
-    // Só aparece quando o e-mail ou o WhatsApp institucional estiver configurado (pendência #3).
-    alternativa: " ou, se preferir, fale com a gente por e-mail ou WhatsApp.",
+    inicio: "Não conseguimos enviar.",
+    tenteDeNovo: "Tente de novo",
+    email: "escreva para",
+    whatsapp: "chame no WhatsApp",
     tentarDeNovo: "Tentar de novo",
   },
 } as const;

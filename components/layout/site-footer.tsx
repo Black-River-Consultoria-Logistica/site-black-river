@@ -97,7 +97,7 @@ export function SiteFooter() {
           <ul className="flex gap-6">
             <li>
               <Link href="/privacidade" className={linkRodape}>
-                Política de privacidade
+                Política de Privacidade
               </Link>
             </li>
             <li>

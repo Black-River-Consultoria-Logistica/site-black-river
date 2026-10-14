@@ -181,7 +181,6 @@ export function FormularioDeAgendamento() {
   }
 
   const enviando = estado === "enviando";
-  const temAlternativa = Boolean(site.contato.email || site.contato.whatsapp);
 
   return (
     <>
@@ -299,11 +298,7 @@ export function FormularioDeAgendamento() {
           >
             <CircleAlert aria-hidden className="mt-0.5 size-4 shrink-0 text-destructive" />
             <div className="flex flex-col gap-2">
-              <p>
-                {contato.falha.inicio}
-                {temAlternativa ? contato.falha.alternativa : "."}
-              </p>
-              {temAlternativa && <CanaisDiretos />}
+              <MensagemDeFalha />
               <Button type="button" variant="link" className="self-start" onClick={() => formulario.current?.requestSubmit()}>
                 {contato.falha.tentarDeNovo}
               </Button>
@@ -350,26 +345,81 @@ function MensagemDeErro({ campo, erro }: { campo: CampoVisivel; erro?: string })
   );
 }
 
-/** E-mail e WhatsApp institucionais. Só aparecem quando configurados em lib/site.ts (pendência #3). */
+/**
+ * "Não conseguimos enviar. Tente de novo ou escreva para contato@…." A frase acompanha os canais
+ * configurados em lib/site.ts: quando o WhatsApp entrar (pendência #3), vira
+ * "Tente de novo, escreva para contato@… ou chame no WhatsApp." sem mudar este código.
+ */
+function MensagemDeFalha() {
+  const { email, whatsapp } = site.contato;
+  const canais: React.ReactNode[] = [];
+  if (email)
+    canais.push(
+      <span key="email">
+        {contato.falha.email}{" "}
+        <a href={`mailto:${email}`} className={linkInline}>
+          <EmailQuebravel email={email} />
+        </a>
+      </span>,
+    );
+  if (whatsapp)
+    canais.push(
+      <a key="whatsapp" href={`https://wa.me/${whatsapp}`} className={linkInline} target="_blank" rel="noopener noreferrer">
+        {contato.falha.whatsapp}
+      </a>,
+    );
+
+  return (
+    <p>
+      {contato.falha.inicio} {contato.falha.tenteDeNovo}
+      {canais.length === 1 && <> ou {canais[0]}</>}
+      {canais.length === 2 && (
+        <>
+          , {canais[0]} ou {canais[1]}
+        </>
+      )}
+      .
+    </p>
+  );
+}
+
+/** No celular, o e-mail longo quebra depois do "@", nunca no meio de uma palavra. */
+function EmailQuebravel({ email }: { email: string }) {
+  const [usuario, dominio] = email.split("@");
+  return (
+    <>
+      {usuario}@<wbr />
+      {dominio}
+    </>
+  );
+}
+
+/** E-mail e WhatsApp institucionais, abaixo de "O que esperar". Cada um só aparece quando configurado em lib/site.ts. */
 export function CanaisDiretos({ className }: { className?: string }) {
   const { email, whatsapp, whatsappExibicao } = site.contato;
   if (!email && !whatsapp) return null;
   return (
-    <ul className={cn("flex flex-col gap-1", className)}>
+    <dl className={cn("flex flex-col gap-3 text-small", className)}>
       {email && (
-        <li>
-          <a href={`mailto:${email}`} className={linkInline}>
-            {email}
-          </a>
-        </li>
+        <div className="flex flex-col gap-1">
+          <dt className="text-ink-60">E-mail</dt>
+          <dd>
+            <a href={`mailto:${email}`} className={linkInline}>
+              <EmailQuebravel email={email} />
+            </a>
+          </dd>
+        </div>
       )}
       {whatsapp && (
-        <li>
-          <a href={`https://wa.me/${whatsapp}`} className={linkInline} target="_blank" rel="noopener noreferrer">
-            WhatsApp {whatsappExibicao ?? ""}
-          </a>
-        </li>
+        <div className="flex flex-col gap-1">
+          <dt className="text-ink-60">WhatsApp</dt>
+          <dd>
+            <a href={`https://wa.me/${whatsapp}`} className={linkInline} target="_blank" rel="noopener noreferrer">
+              {whatsappExibicao ?? "Conversar pelo WhatsApp"}
+            </a>
+          </dd>
+        </div>
       )}
-    </ul>
+    </dl>
   );
 }
