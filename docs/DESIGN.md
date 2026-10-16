@@ -64,7 +64,7 @@ Regras: corpo nunca abaixo de 16px; medida de leitura de cerca de 70 caracteres 
 - Padding de card: 24–32px. Gap entre elementos de um bloco: 8–16px.
 - Raio de borda: **0** em tudo. Exceção opcional: 2px em input e botão se testes mostrarem perda de usabilidade.
 - Elevação: borda 1px `#E6E6E6` em vez de sombra. Sombra (`0 4px 16px rgba(0,0,0,0.12)`) só no banner de cookies e em menus sobrepostos.
-- Elemento gráfico: o **símbolo do logo** (três faixas em degrau, verde/preto/verde), com os vetores do Brandbook — correção do João em 15/10/2026, que substituiu as faixas retas a ~22° —, em **um único canto** da peça (hero e faixa de CTA final), nunca atrás de texto, opacidade 8–100%, sem gradiente. No celular, as faixas do hero são ocultadas (não há espaço sem sobrepor o título); na faixa de CTA final ficam abaixo do texto.
+- Elemento gráfico: o **símbolo do logo** (três faixas em degrau, verde/preto/verde), com os vetores do Brandbook (correção do João, 15/10/2026). **Hero da Home:** as faixas esticadas cruzam a tela inteira como fundo, em tons muito claros (`#F0F5EB` e `#F2F2F2`), por decisão do João em 15/10/2026: é a única exceção à regra de nunca ficar atrás de texto, com contraste AA conferido (números verdes 3,0:1 como texto grande, demais textos acima de 5:1). No celular e no tablet, viram uma faixa de altura fixa atrás do título. **Faixa de CTA final:** o símbolo em verde num canto, sem texto por cima. Sem gradiente.
 
 ## Componentes
 - Biblioteca principal: **Spell UI** (indicada pelo kit para site sóbrio e institucional). Outras bibliotecas só para lacunas, com registro em `docs/LICENCAS.md`.
@@ -89,7 +89,7 @@ Regras: corpo nunca abaixo de 16px; medida de leitura de cerca de 70 caracteres 
 - Imagens em WebP/AVIF, no tamanho exibido, carregamento sob demanda.
 
 ## Movimento
-- Movimento autorizado na Etapa 4 (14/10/2026): entrada única das faixas do hero ao carregar (250ms, translateX + opacidade, atrasos de 60ms); seta dos links desliza 4px no hover/foco (200ms); botões encolhem para 98% ao toque (150ms). Nada de animação em texto, números ou rolagem.
+- Movimento autorizado na Etapa 4 (14/10/2026), revisto em 15/10/2026: as faixas do hero viraram fundo estático (sem entrada animada); seta dos links desliza 4px no hover/foco (200ms); botões encolhem para 98% ao toque (150ms). Nada de animação em texto, números ou rolagem.
 - Toque: cards, links e botões têm estado `:active` (o hover não existe no celular). Área segura do iPhone ligada (`viewport-fit=cover` + utilitário `px-safe`).
 - Animações curtas (150–250ms), só `transform` e `opacity`, revisadas com `review-animations`. Nada de animação em loop.
 - `prefers-reduced-motion`: desliga tudo que não for troca de estado essencial.
