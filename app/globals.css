@@ -109,12 +109,12 @@
     from { opacity: 0; transform: translateX(-24px); }
     to { opacity: 1; transform: none; }
   }
-  .br-faixas-animadas polygon {
+  .br-faixas-animadas path {
     animation: br-faixa-entra 250ms cubic-bezier(0.23, 1, 0.32, 1) both;
   }
-  .br-faixas-animadas polygon:nth-child(1) { animation-delay: 100ms; }
-  .br-faixas-animadas polygon:nth-child(2) { animation-delay: 160ms; }
-  .br-faixas-animadas polygon:nth-child(3) { animation-delay: 220ms; }
+  .br-faixas-animadas path:nth-child(1) { animation-delay: 100ms; }
+  .br-faixas-animadas path:nth-child(2) { animation-delay: 160ms; }
+  .br-faixas-animadas path:nth-child(3) { animation-delay: 220ms; }
 }
 
 @layer base {

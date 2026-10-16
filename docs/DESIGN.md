@@ -64,7 +64,7 @@ Regras: corpo nunca abaixo de 16px; medida de leitura de cerca de 70 caracteres 
 - Padding de card: 24–32px. Gap entre elementos de um bloco: 8–16px.
 - Raio de borda: **0** em tudo. Exceção opcional: 2px em input e botão se testes mostrarem perda de usabilidade.
 - Elevação: borda 1px `#E6E6E6` em vez de sombra. Sombra (`0 4px 16px rgba(0,0,0,0.12)`) só no banner de cookies e em menus sobrepostos.
-- Elemento gráfico: faixas diagonais da marca reconstruídas em SVG a **~22°**, em **um único canto** da peça (hero e faixa de CTA final), nunca atrás de texto, opacidade 8–100%, sem gradiente. No celular, as faixas do hero são ocultadas (não há espaço sem sobrepor o título); na faixa de CTA final ficam abaixo do texto.
+- Elemento gráfico: o **símbolo do logo** (três faixas em degrau, verde/preto/verde), com os vetores do Brandbook — correção do João em 15/10/2026, que substituiu as faixas retas a ~22° —, em **um único canto** da peça (hero e faixa de CTA final), nunca atrás de texto, opacidade 8–100%, sem gradiente. No celular, as faixas do hero são ocultadas (não há espaço sem sobrepor o título); na faixa de CTA final ficam abaixo do texto.
 
 ## Componentes
 - Biblioteca principal: **Spell UI** (indicada pelo kit para site sóbrio e institucional). Outras bibliotecas só para lacunas, com registro em `docs/LICENCAS.md`.
