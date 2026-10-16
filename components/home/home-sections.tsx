@@ -51,7 +51,7 @@ export function Hero() {
   return (
     <section aria-labelledby="hero-titulo" className="relative isolate overflow-hidden">
       {/* Celular e tablet: uma faixa de altura fixa atrás do título, para o degrau do símbolo continuar legível. */}
-      <FaixasDeFundo className="absolute inset-x-0 top-10 -z-10 h-64 w-full md:top-16 md:h-96 lg:inset-0 lg:h-full" />
+      <FaixasDeFundo className="absolute inset-x-0 top-10 -z-10 h-64 w-full md:top-16 md:h-96 lg:top-0 lg:h-[26rem]" />
       <div className={cn(container, "grid gap-12 pt-16 pb-16 md:pt-24 lg:grid-cols-12 lg:gap-6 lg:pt-24 lg:pb-24")}>
         <div className="flex flex-col gap-6 lg:col-span-8">
           <h1 id="hero-titulo" className="max-w-[16ch] text-h1 md:text-display">
@@ -61,7 +61,7 @@ export function Hero() {
             <p className="font-semibold text-ink">{hero.subtitulo[0]}</p>
             <p className="text-ink-80">{hero.subtitulo[1]}</p>
           </div>
-          <div className="flex flex-col items-start gap-3 pt-2">
+          <div className="flex flex-col items-start gap-3 pt-2 lg:pt-6">
             {/* Abaixo de 1024px o botão fica só na barra fixa inferior (um botão primário por região). */}
             <Cta className="hidden lg:inline-flex" />
             <p className="text-small text-ink-60">{hero.apoio}</p>
